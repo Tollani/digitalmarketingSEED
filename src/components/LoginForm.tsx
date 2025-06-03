@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const FormContainer = styled.div`
@@ -150,10 +150,11 @@ const SignUpText = styled.p`
   font-family: 'Poppins', sans-serif;
 `;
 
-const SignUpLink = styled.span`
+const SignUpLink = styled(Link)`
   color: #1E3A8A;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
   
   &:hover {
     text-decoration: underline;
@@ -271,7 +272,7 @@ const LoginForm = () => {
       </GoogleButton>
       
       <SignUpText>
-        Don't have an account yet? <SignUpLink onClick={handleSignUp}>Sign Up</SignUpLink>
+        Don't have an account yet? <SignUpLink to="/signup">Sign Up</SignUpLink>
       </SignUpText>
     </FormContainer>
   );

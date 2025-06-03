@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
@@ -11,7 +10,7 @@ const ImageContainer = styled.div`
     to top,
     rgba(0, 48, 135, 0.7) 0%,
     transparent 100%
-  ), url('/lovable-uploads/45981f6e-48d9-48de-a38f-7da749986e70.png');
+  ), url('/lovable-uploads/12ff7025-87d4-426c-9a19-eca147fe2274.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

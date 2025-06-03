@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -16,7 +15,7 @@ const StyledButton = styled.button`
   font-family: 'Poppins', sans-serif;
   
   &:hover {
-    background: #0040C1;
+    background: #002566;
   }
   
   &:focus {

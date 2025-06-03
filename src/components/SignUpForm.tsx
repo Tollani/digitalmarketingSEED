@@ -435,6 +435,33 @@ const SignUpForm = () => {
           {errors.country && <ErrorMessage>{errors.country}</ErrorMessage>}
         </InputGroup>
 
+        <RadioSection>
+          <RadioQuestion>
+            Are you signing up as an individual or an organization? This helps us tailor your experience and recommend the most relevant services for your needs.
+          </RadioQuestion>
+          <RadioGroup>
+            <RadioOption>
+              <RadioInput
+                type="radio"
+                name="userType"
+                value="individual"
+                onChange={handleInputChange}
+              />
+              Individual
+            </RadioOption>
+            <RadioOption>
+              <RadioInput
+                type="radio"
+                name="userType"
+                value="organization"
+                onChange={handleInputChange}
+              />
+              Organization
+            </RadioOption>
+          </RadioGroup>
+          {errors.userType && <ErrorMessage>{errors.userType}</ErrorMessage>}
+        </RadioSection>
+
         <InputGroup>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
@@ -476,33 +503,6 @@ const SignUpForm = () => {
           </PasswordToggle>
           {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
         </InputGroup>
-
-        <RadioSection>
-          <RadioQuestion>
-            Are you signing up as an individual or an organization? This helps us tailor your experience and recommend the most relevant services for your needs.
-          </RadioQuestion>
-          <RadioGroup>
-            <RadioOption>
-              <RadioInput
-                type="radio"
-                name="userType"
-                value="individual"
-                onChange={handleInputChange}
-              />
-              Individual
-            </RadioOption>
-            <RadioOption>
-              <RadioInput
-                type="radio"
-                name="userType"
-                value="organization"
-                onChange={handleInputChange}
-              />
-              Organization
-            </RadioOption>
-          </RadioGroup>
-          {errors.userType && <ErrorMessage>{errors.userType}</ErrorMessage>}
-        </RadioSection>
 
         <CheckboxContainer>
           <Checkbox

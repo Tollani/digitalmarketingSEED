@@ -11,19 +11,20 @@ const FormContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 36px;
+  font-weight: 800;
   color: #000000;
   margin-bottom: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Subtitle = styled.p`
   font-size: 16px;
-  color: #6C757D;
+  font-weight: 400;
+  color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Form = styled.form`
@@ -36,13 +37,27 @@ const InputGroup = styled.div`
   position: relative;
 `;
 
+const InputLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 4px;
+  display: block;
+`;
+
 const Input = styled.input`
   width: 100%;
   padding: 10px;
   border: 1px solid #CED4DA;
   border-radius: 4px;
-  font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  
+  &::placeholder {
+    color: #666666;
+  }
   
   &:focus {
     outline: none;
@@ -70,9 +85,11 @@ const PasswordToggle = styled.button`
 `;
 
 const ForgotPassword = styled.a`
-  color: #007BFF;
+  color: #666666;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
   align-self: flex-end;
   cursor: pointer;
   
@@ -96,8 +113,10 @@ const Divider = styled.div`
   
   span {
     padding: 0 16px;
-    color: #6C757D;
-    font-size: 16px;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
   }
 `;
 
@@ -112,8 +131,10 @@ const GoogleButton = styled.button`
   justify-content: center;
   gap: 8px;
   font-size: 16px;
+  font-weight: 500;
+  color: #000000;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     background: #f8f9fa;
@@ -124,12 +145,14 @@ const SignUpText = styled.p`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
-  color: #000000;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  color: #666666;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const SignUpLink = styled.span`
-  color: #007BFF;
+  color: #1E3A8A;
+  font-weight: 500;
   cursor: pointer;
   
   &:hover {
@@ -195,9 +218,11 @@ const LoginForm = () => {
       
       <Form onSubmit={handleSubmit}>
         <InputGroup>
+          <InputLabel htmlFor="email">Email address</InputLabel>
           <Input
+            id="email"
             type="email"
-            placeholder="Input a valid email"
+            placeholder="johnsnow@abc"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={errors.email ? 'error' : ''}
@@ -207,9 +232,11 @@ const LoginForm = () => {
         </InputGroup>
         
         <InputGroup>
+          <InputLabel htmlFor="password">Password</InputLabel>
           <Input
+            id="password"
             type={showPassword ? 'text' : 'password'}
-            placeholder="Input password"
+            placeholder="1234567890"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className={errors.password ? 'error' : ''}
@@ -226,7 +253,7 @@ const LoginForm = () => {
         </InputGroup>
         
         <ForgotPassword onClick={handleForgotPassword}>
-          Forgot Password?
+          Forget Password?
         </ForgotPassword>
         
         <Button type="submit">

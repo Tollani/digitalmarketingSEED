@@ -6,14 +6,14 @@ const StyledButton = styled.button`
   width: 100%;
   padding: 12px;
   background: #003087;
-  color: white;
+  color: #FFFFFF;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     background: #0040C1;

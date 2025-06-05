@@ -10,7 +10,7 @@ const ImageContainer = styled.div`
   position: relative;
   background: linear-gradient(135deg, #E3F2FD 0%, #1565C0 100%);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
   overflow: hidden;
 `;
@@ -32,17 +32,14 @@ const ContentOverlay = styled.div`
   z-index: 2;
   color: white;
   text-align: left;
-  padding: 40px;
+  padding: 40px 30px 30px;
   max-width: 400px;
   width: 100%;
-  align-self: flex-start;
-  margin-top: 20%;
+  background: linear-gradient(to top, rgba(0, 16, 59, 0.9) 0%, rgba(0, 16, 59, 0.7) 50%, transparent 100%);
   
   @media (max-width: 768px) {
     padding: 30px;
     text-align: center;
-    align-self: center;
-    margin-top: 0;
   }
 `;
 
@@ -50,7 +47,7 @@ const CompanyName = styled.h2`
   font-size: 24px;
   font-weight: 800;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
   

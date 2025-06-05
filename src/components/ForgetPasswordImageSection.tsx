@@ -30,8 +30,8 @@ const Overlay = styled.div`
   padding: 40px 30px 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 `;
 
 const CompanyName = styled.h2`
@@ -54,7 +54,6 @@ const ContactInfo = styled.div`
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
 `;
 

@@ -204,14 +204,6 @@ const LoginForm = () => {
     console.log('Google login clicked');
   };
 
-  const handleForgotPassword = () => {
-    console.log('Forgot Password clicked');
-  };
-
-  const handleSignUp = () => {
-    console.log('Sign Up clicked');
-  };
-
   return (
     <FormContainer>
       <Title>Welcome Back!</Title>
@@ -253,7 +245,7 @@ const LoginForm = () => {
           {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </InputGroup>
         
-        <ForgotPassword onClick={handleForgotPassword}>
+        <ForgotPassword as={Link} to="/forget-password">
           Forget Password?
         </ForgotPassword>
         

@@ -10,7 +10,7 @@ const ImageContainer = styled.div`
   background: linear-gradient(135deg, #E3F2FD 0%, #1565C0 100%);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
 `;
 
@@ -20,7 +20,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&h=1728');
+  background-image: url('/lovable-uploads/befc692c-cf56-4860-ae18-5b102cb416c0.png');
   background-size: cover;
   background-position: center;
   opacity: 0.3;
@@ -34,10 +34,14 @@ const ContentOverlay = styled.div`
   padding: 40px;
   max-width: 400px;
   width: 100%;
+  align-self: flex-start;
+  margin-top: 20%;
   
   @media (max-width: 768px) {
     padding: 30px;
     text-align: center;
+    align-self: center;
+    margin-top: 0;
   }
 `;
 

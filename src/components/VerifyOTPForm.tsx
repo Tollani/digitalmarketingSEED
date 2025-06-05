@@ -92,6 +92,7 @@ const VerifyOTPForm = () => {
 
   const handleOTPComplete = (otpValue: string) => {
     setOtp(otpValue);
+    setShowAlert(false); // Clear any previous error when OTP is complete
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -100,6 +101,7 @@ const VerifyOTPForm = () => {
     if (otp === '1234') {
       console.log({ otp });
       setShowAlert(false);
+      // Clear the OTP to reset the form
       setOtp('');
     } else {
       setShowAlert(true);
@@ -133,6 +135,7 @@ const VerifyOTPForm = () => {
           onComplete={handleOTPComplete}
           hasError={showAlert}
           onReset={handleResetAlert}
+          value={otp}
         />
         
         <Button type="submit">

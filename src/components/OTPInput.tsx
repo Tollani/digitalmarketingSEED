@@ -42,9 +42,10 @@ interface OTPInputProps {
   onComplete: (otp: string) => void;
   hasError: boolean;
   onReset: () => void;
+  value?: string;
 }
 
-const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onReset }) => {
+const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onReset, value = '' }) => {
   const [otp, setOtp] = useState(new Array(length).fill(''));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -56,14 +57,27 @@ const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onRes
   }, []);
 
   useEffect(() => {
-    // Reset OTP when hasError changes to false
-    if (!hasError) {
+    // Reset OTP when value prop changes (for form reset)
+    if (value === '') {
       setOtp(new Array(length).fill(''));
       if (inputRefs.current[0]) {
         inputRefs.current[0].focus();
       }
     }
-  }, [hasError, length]);
+  }, [value, length]);
+
+  useEffect(() => {
+    // Reset OTP when hasError changes to false
+    if (!hasError) {
+      const shouldReset = otp.every(digit => digit !== '');
+      if (shouldReset && value === '') {
+        setOtp(new Array(length).fill(''));
+        if (inputRefs.current[0]) {
+          inputRefs.current[0].focus();
+        }
+      }
+    }
+  }, [hasError, length, otp, value]);
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     if (isNaN(Number(element.value))) return;

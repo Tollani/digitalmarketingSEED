@@ -1,7 +1,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Mail, Facebook, MessageCircle } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
+import SocialIcons from './SocialIcons';
 
 const ImageContainer = styled.div`
   width: 100%;
@@ -76,32 +77,6 @@ const ContactItem = styled.p`
   }
 `;
 
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
-`;
-
-const SocialIcon = styled.div`
-  width: 35px;
-  height: 35px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-`;
-
 const VerifyOTPImageSection = () => {
   return (
     <ImageContainer>
@@ -114,20 +89,11 @@ const VerifyOTPImageSection = () => {
             help@digitalmarketingng.com
           </ContactItem>
           <ContactItem>
+            <Phone size={16} />
             +234 123 456 7890
           </ContactItem>
         </ContactInfo>
-        <SocialIcons>
-          <SocialIcon>
-            <Mail size={18} />
-          </SocialIcon>
-          <SocialIcon>
-            <Facebook size={18} />
-          </SocialIcon>
-          <SocialIcon>
-            <MessageCircle size={18} />
-          </SocialIcon>
-        </SocialIcons>
+        <SocialIcons />
       </ContentOverlay>
     </ImageContainer>
   );

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
@@ -20,7 +21,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/lovable-uploads/befc692c-cf56-4860-ae18-5b102cb416c0.png');
+  background-image: url('/lovable-uploads/aec76fd4-e352-49eb-b87b-68bdb9022190.png');
   background-size: cover;
   background-position: center;
   opacity: 0.3;
@@ -74,7 +75,7 @@ const ContactItem = styled.p`
   }
 `;
 
-const VerifyOTPImageSection = () => {
+const CreatePasswordImageSection = () => {
   return (
     <ImageContainer>
       <BackgroundImage />
@@ -96,4 +97,4 @@ const VerifyOTPImageSection = () => {
   );
 };
 
-export default VerifyOTPImageSection;
+export default CreatePasswordImageSection;

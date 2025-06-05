@@ -169,6 +169,12 @@ const CreatePasswordForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (isSuccess) {
+      // If already successful, navigate to sign in
+      navigate('/');
+      return;
+    }
+    
     let hasErrors = false;
     
     if (!validatePassword(newPassword)) {
@@ -184,11 +190,6 @@ const CreatePasswordForm = () => {
     if (!hasErrors) {
       console.log({ newPassword, confirmPassword });
       setIsSuccess(true);
-      
-      // Navigate to sign in after showing success message
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
     }
   };
 
@@ -212,10 +213,12 @@ const CreatePasswordForm = () => {
               onChange={handleNewPasswordChange}
               hasError={!!newPasswordError}
               placeholder="Enter your new password"
+              disabled={isSuccess}
             />
             <ToggleButton
               type="button"
               onClick={() => setShowNewPassword(!showNewPassword)}
+              disabled={isSuccess}
             >
               {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </ToggleButton>
@@ -237,10 +240,12 @@ const CreatePasswordForm = () => {
               onChange={handleConfirmPasswordChange}
               hasError={!!confirmPasswordError}
               placeholder="Confirm your new password"
+              disabled={isSuccess}
             />
             <ToggleButton
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              disabled={isSuccess}
             >
               {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </ToggleButton>
@@ -259,7 +264,7 @@ const CreatePasswordForm = () => {
         {isSuccess && (
           <SuccessMessage>
             <Check size={16} />
-            Password updated successfully! Redirecting to login...
+            Password updated successfully!
           </SuccessMessage>
         )}
       </Form>

@@ -177,7 +177,7 @@ const ForgetPasswordForm = () => {
       </Form>
       
       <SignInText>
-        Have an account already? <SignInLink to="/signup">Sign In</SignInLink>
+        Have an account already? <SignInLink to="/">Sign In</SignInLink>
       </SignInText>
     </FormContainer>
   );

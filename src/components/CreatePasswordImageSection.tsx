@@ -25,6 +25,16 @@ const BackgroundImage = styled.div`
   background-position: center;
 `;
 
+const GradientOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 16, 59, 0.9) 0%, rgba(0, 16, 59, 0.7) 50%, transparent 100%);
+  z-index: 1;
+`;
+
 const ContentOverlay = styled.div`
   position: relative;
   z-index: 2;
@@ -33,7 +43,6 @@ const ContentOverlay = styled.div`
   padding: 40px 30px 30px;
   max-width: 400px;
   width: 100%;
-  background: linear-gradient(to top, rgba(0, 16, 59, 0.9) 0%, rgba(0, 16, 59, 0.7) 50%, transparent 100%);
   
   @media (max-width: 768px) {
     padding: 30px;
@@ -77,6 +86,7 @@ const CreatePasswordImageSection = () => {
   return (
     <ImageContainer>
       <BackgroundImage />
+      <GradientOverlay />
       <ContentOverlay>
         <CompanyName>Digital Marketing Agency</CompanyName>
         <ContactInfo>

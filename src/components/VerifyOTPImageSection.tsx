@@ -8,7 +8,6 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  background: linear-gradient(135deg, #E3F2FD 0%, #1565C0 100%);
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -24,7 +23,6 @@ const BackgroundImage = styled.div`
   background-image: url('/lovable-uploads/befc692c-cf56-4860-ae18-5b102cb416c0.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.3;
 `;
 
 const ContentOverlay = styled.div`

@@ -27,9 +27,9 @@ const ContactInfo = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 180px;
+  width: 120px;
   height: auto;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   display: block;
 `;
 

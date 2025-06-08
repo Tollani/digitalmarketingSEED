@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
@@ -51,14 +50,14 @@ const ContentOverlay = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 180px;
+  width: 120px;
   height: auto;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   display: block;
   
   @media (max-width: 768px) {
-    width: 160px;
-    margin: 0 auto 8px;
+    width: 100px;
+    margin: 0 auto 4px;
   }
 `;
 

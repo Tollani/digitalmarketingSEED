@@ -29,7 +29,7 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: auto;
-  margin-bottom: 2px;
+  margin-bottom: 0;
   display: block;
 `;
 
@@ -37,7 +37,7 @@ const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
 `;

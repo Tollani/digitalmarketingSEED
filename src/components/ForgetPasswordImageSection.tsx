@@ -37,14 +37,14 @@ const Overlay = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: auto;
-  margin-bottom: 2px;
+  margin-bottom: 0;
   display: block;
 `;
 
 const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;

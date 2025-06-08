@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   width: 100%;
   padding: 12px;
-  background: #00103B;
+  background: #7642FE;
   color: #FFFFFF;
   border: none;
   border-radius: 4px;
@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   font-family: 'Poppins', sans-serif;
   
   &:hover {
-    background: #000820;
+    background: #5f35cc;
   }
   
   &:focus {

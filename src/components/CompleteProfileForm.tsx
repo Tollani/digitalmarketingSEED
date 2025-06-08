@@ -1,27 +1,21 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Camera, Upload } from 'lucide-react';
 import Button from './Button';
 import UploadArea from './UploadArea';
 
 const FormContainer = styled.div`
-  max-width: 500px;
   width: 100%;
-  margin: 0 auto;
+  max-width: 400px;
 `;
 
 const Title = styled.h1`
   font-size: 32px;
-  font-weight: 700;
-  color: #1F2937;
+  font-weight: 800;
+  color: #7642FE;
   margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
-  
-  @media (max-width: 480px) {
-    font-size: 28px;
-  }
+  text-align: left;
 `;
 
 const Subtitle = styled.p`

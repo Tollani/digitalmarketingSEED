@@ -37,7 +37,7 @@ const Overlay = styled.div`
 const Logo = styled.img`
   width: 180px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   display: block;
 `;
 

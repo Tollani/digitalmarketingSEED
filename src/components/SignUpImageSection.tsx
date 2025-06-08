@@ -29,7 +29,7 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 180px;
   height: auto;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   display: block;
 `;
 

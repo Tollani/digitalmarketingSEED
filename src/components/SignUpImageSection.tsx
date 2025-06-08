@@ -24,16 +24,12 @@ const ImageContainer = styled.div`
 const ContactInfo = styled.div`
   padding: 20px;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 `;
 
 const Logo = styled.img`
-  width: 140px;
+  width: 120px;
   height: auto;
   margin-bottom: 16px;
-  align-self: flex-start;
 `;
 
 const ContactItem = styled.div`
@@ -43,14 +39,13 @@ const ContactItem = styled.div`
   margin-bottom: 8px;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
-  width: 100%;
 `;
 
 const SignUpImageSection = () => {
   return (
     <ImageContainer>
       <ContactInfo>
-        <Logo src="/lovable-uploads/45981f6e-48d9-48de-a38f-7da749986e70.png" alt="Logo" />
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactItem>
           <Mail size={16} />
           help@digitalmarketing.ng

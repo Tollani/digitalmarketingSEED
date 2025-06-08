@@ -43,32 +43,25 @@ const ContentOverlay = styled.div`
   padding: 40px 30px 30px;
   max-width: 400px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   
   @media (max-width: 768px) {
     padding: 30px;
-    align-items: center;
     text-align: center;
   }
 `;
 
 const Logo = styled.img`
-  width: 140px;
+  width: 120px;
   height: auto;
   margin-bottom: 20px;
-  align-self: flex-start;
   
   @media (max-width: 768px) {
-    width: 120px;
-    align-self: center;
+    width: 100px;
   }
 `;
 
 const ContactInfo = styled.div`
   margin-bottom: 20px;
-  width: 100%;
 `;
 
 const ContactItem = styled.p`
@@ -91,7 +84,7 @@ const VerifyOTPImageSection = () => {
       <BackgroundImage />
       <GradientOverlay />
       <ContentOverlay>
-        <Logo src="/lovable-uploads/45981f6e-48d9-48de-a38f-7da749986e70.png" alt="Logo" />
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
           <ContactItem>
             <Mail size={16} />

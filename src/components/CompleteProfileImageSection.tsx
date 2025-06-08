@@ -51,12 +51,14 @@ const ContentOverlay = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 120px;
+  width: 180px;
   height: auto;
   margin-bottom: 20px;
+  display: block;
   
   @media (max-width: 768px) {
-    width: 100px;
+    width: 160px;
+    margin: 0 auto 20px;
   }
 `;
 

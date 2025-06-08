@@ -64,8 +64,8 @@ const ForgetPasswordImageSection = () => {
         alt="Digital Marketing Agency - Forget Password"
       />
       <Overlay>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
+          <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
           <ContactItem>
             <Mail size={16} />
             <span>help@digitalmarketingng.com</span>

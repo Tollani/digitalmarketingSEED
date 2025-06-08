@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
@@ -83,8 +84,8 @@ const VerifyOTPImageSection = () => {
       <BackgroundImage />
       <GradientOverlay />
       <ContentOverlay>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
+          <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
           <ContactItem>
             <Mail size={16} />
             help@digitalmarketingng.com

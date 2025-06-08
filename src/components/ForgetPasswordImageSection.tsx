@@ -34,12 +34,10 @@ const Overlay = styled.div`
   text-align: left;
 `;
 
-const CompanyName = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
   margin-bottom: 20px;
-  letter-spacing: 1px;
 `;
 
 const ContactInfo = styled.div`
@@ -65,7 +63,7 @@ const ForgetPasswordImageSection = () => {
         alt="Digital Marketing Agency - Forget Password"
       />
       <Overlay>
-        <CompanyName>DIGITAL MARKETING AGENCY</CompanyName>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
           <ContactItem>
             <Mail size={16} />

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -165,6 +164,7 @@ const RadioOption = styled.label`
 const RadioInput = styled.input`
   width: 16px;
   height: 16px;
+  accent-color: #7642FE;
 `;
 
 const CheckboxContainer = styled.label`
@@ -182,10 +182,11 @@ const Checkbox = styled.input`
   width: 16px;
   height: 16px;
   margin-top: 2px;
+  accent-color: #7642FE;
 `;
 
 const Link = styled.a`
-  color: #007BFF;
+  color: #7642FE;
   text-decoration: underline;
 `;
 
@@ -265,7 +266,7 @@ const SignInText = styled.p`
 `;
 
 const SignInLink = styled.a`
-  color: #007BFF;
+  color: #7642FE;
   text-decoration: underline;
   cursor: pointer;
 `;

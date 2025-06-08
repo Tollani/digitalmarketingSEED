@@ -50,17 +50,13 @@ const ContentOverlay = styled.div`
   }
 `;
 
-const CompanyName = styled.h2`
-  font-size: 24px;
-  font-weight: 800;
-  font-family: 'Poppins', sans-serif;
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  white-space: nowrap;
   
   @media (max-width: 768px) {
-    font-size: 20px;
+    width: 100px;
   }
 `;
 
@@ -88,7 +84,7 @@ const CreatePasswordImageSection = () => {
       <BackgroundImage />
       <GradientOverlay />
       <ContentOverlay>
-        <CompanyName>Digital Marketing Agency</CompanyName>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
           <ContactItem>
             <Mail size={16} />

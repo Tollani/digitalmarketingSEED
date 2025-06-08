@@ -26,11 +26,10 @@ const ContactInfo = styled.div`
   color: white;
 `;
 
-const Title = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
   margin-bottom: 16px;
-  font-family: 'Poppins', sans-serif;
 `;
 
 const ContactItem = styled.div`
@@ -46,7 +45,7 @@ const SignUpImageSection = () => {
   return (
     <ImageContainer>
       <ContactInfo>
-        <Title>Digital Marketing Agency</Title>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactItem>
           <Mail size={16} />
           help@digitalmarketing.ng

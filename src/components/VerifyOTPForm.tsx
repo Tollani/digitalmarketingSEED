@@ -52,7 +52,7 @@ const ResendText = styled.span`
 `;
 
 const ResendLink = styled.button`
-  color: #3B82F6;
+  color: #7642FE;
   text-decoration: underline;
   background: none;
   border: none;
@@ -77,7 +77,7 @@ const SignInText = styled.span`
 `;
 
 const SignInLink = styled(Link)`
-  color: #3B82F6;
+  color: #7642FE;
   text-decoration: underline;
   font-weight: 400;
   

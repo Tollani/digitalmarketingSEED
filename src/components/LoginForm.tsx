@@ -86,7 +86,7 @@ const PasswordToggle = styled.button`
 `;
 
 const ForgotPassword = styled.a`
-  color: #666666;
+  color: #7642FE;
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
@@ -152,7 +152,7 @@ const SignUpText = styled.p`
 `;
 
 const SignUpLink = styled(Link)`
-  color: #1E3A8A;
+  color: #7642FE;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;

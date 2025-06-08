@@ -97,7 +97,7 @@ const SignInText = styled.p`
 `;
 
 const SignInLink = styled(Link)`
-  color: #007BFF;
+  color: #7642FE;
   text-decoration: underline;
   cursor: pointer;
   

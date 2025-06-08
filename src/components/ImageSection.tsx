@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
@@ -8,7 +9,7 @@ const ImageContainer = styled.div`
   height: 100%;
   background-image: linear-gradient(
     to top,
-    rgba(0, 48, 135, 0.7) 0%,
+    rgba(0, 16, 59, 0.7) 0%,
     transparent 100%
   ), url('/lovable-uploads/12ff7025-87d4-426c-9a19-eca147fe2274.png');
   background-size: cover;
@@ -25,11 +26,10 @@ const ContactInfo = styled.div`
   color: white;
 `;
 
-const Title = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
+const Logo = styled.img`
+  width: 120px;
+  height: auto;
   margin-bottom: 16px;
-  font-family: 'Poppins', sans-serif;
 `;
 
 const ContactItem = styled.div`
@@ -45,14 +45,14 @@ const ImageSection = () => {
   return (
     <ImageContainer>
       <ContactInfo>
-        <Title>Digital Marketing Agency</Title>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactItem>
           <Mail size={16} />
-          help@digitalmarketing.com
+          help@digitalmarketing.ng
         </ContactItem>
         <ContactItem>
           <Phone size={16} />
-          (+234) 123 456 7890
+          +234 123 456 7890
         </ContactItem>
         <SocialIcons />
       </ContactInfo>

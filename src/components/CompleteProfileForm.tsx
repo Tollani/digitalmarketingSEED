@@ -179,6 +179,8 @@ const RadioOption = styled.label`
 const RadioInput = styled.input`
   width: 16px;
   height: 16px;
+  margin-right: 8px;
+  accent-color: #7642FE;
 `;
 
 const ButtonContainer = styled.div`

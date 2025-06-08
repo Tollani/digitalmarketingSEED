@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -13,7 +14,7 @@ const FormContainer = styled.div`
 const Title = styled.h1`
   font-size: 36px;
   font-weight: 800;
-  color: #000000;
+  color: #7642FE;
   margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
 `;

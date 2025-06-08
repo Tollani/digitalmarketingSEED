@@ -14,7 +14,7 @@ const FormContainer = styled.div`
 const Title = styled.h1`
   font-size: 32px;
   font-weight: 800;
-  color: #171A18;
+  color: #7642FE;
   margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
   text-align: left;

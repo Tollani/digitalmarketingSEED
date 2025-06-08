@@ -12,7 +12,7 @@ const FormContainer = styled.div`
 const Title = styled.h1`
   font-size: 32px;
   font-weight: 800;
-  color: #000000;
+  color: #7642FE;
   margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
 `;
@@ -192,7 +192,7 @@ const Link = styled.a`
 const CreateAccountButton = styled.button`
   width: 100%;
   padding: 12px;
-  background: #00103B;
+  background: #7642FE;
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -203,7 +203,7 @@ const CreateAccountButton = styled.button`
   font-family: 'Poppins', sans-serif;
   
   &:hover {
-    background: #000820;
+    background: #5f35cc;
   }
   
   &:disabled {

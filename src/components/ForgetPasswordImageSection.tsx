@@ -37,14 +37,15 @@ const Overlay = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: auto;
-  margin-bottom: 0;
+  margin: 0;
   display: block;
 `;
 
 const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  margin-top: 2px;
   margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
@@ -54,6 +55,8 @@ const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 0;
+  line-height: 1.2;
 `;
 
 const ForgetPasswordImageSection = () => {
@@ -64,8 +67,8 @@ const ForgetPasswordImageSection = () => {
         alt="Digital Marketing Agency - Forget Password"
       />
       <Overlay>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
-          <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
           <ContactItem>
             <Mail size={16} />
             <span>help@digitalmarketingng.com</span>

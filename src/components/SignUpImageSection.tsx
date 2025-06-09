@@ -29,7 +29,7 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: auto;
-  margin-bottom: 0;
+  margin: 0;
   display: block;
 `;
 
@@ -37,9 +37,17 @@ const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 4px;
+  margin: 0;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
+  line-height: 1.2;
+`;
+
+const ContactGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
 `;
 
 const SignUpImageSection = () => {
@@ -47,14 +55,16 @@ const SignUpImageSection = () => {
     <ImageContainer>
       <ContactInfo>
         <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
-        <ContactItem>
-          <Mail size={16} />
-          help@digitalmarketing.ng
-        </ContactItem>
-        <ContactItem>
-          <Phone size={16} />
-          +234 123 456 7890
-        </ContactItem>
+        <ContactGroup>
+          <ContactItem>
+            <Mail size={16} />
+            help@digitalmarketing.ng
+          </ContactItem>
+          <ContactItem>
+            <Phone size={16} />
+            +234 123 456 7890
+          </ContactItem>
+        </ContactGroup>
         <SocialIcons />
       </ContactInfo>
     </ImageContainer>

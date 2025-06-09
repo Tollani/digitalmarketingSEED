@@ -53,16 +53,17 @@ const ContentOverlay = styled.div`
 const Logo = styled.img`
   width: 120px;
   height: auto;
-  margin-bottom: 0;
+  margin: 0;
   display: block;
   
   @media (max-width: 768px) {
     width: 100px;
-    margin: 0 auto 0;
+    margin: 0 auto;
   }
 `;
 
 const ContactInfo = styled.div`
+  margin-top: 2px;
   margin-bottom: 20px;
 `;
 
@@ -70,13 +71,18 @@ const ContactItem = styled.p`
   font-size: 14px;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 4px;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.2;
   
   @media (max-width: 768px) {
     justify-content: center;
+  }
+  
+  &:not(:last-child) {
+    margin-bottom: 2px;
   }
 `;
 
@@ -86,8 +92,8 @@ const CompleteProfileImageSection = () => {
       <BackgroundImage />
       <GradientOverlay />
       <ContentOverlay>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
-          <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
           <ContactItem>
             <Mail size={16} />
             help@digitalmarketingng.com

@@ -27,7 +27,7 @@ const Overlay = styled.div`
   right: 0;
   background: linear-gradient(to top, rgba(0, 16, 59, 0.9) 0%, rgba(0, 16, 59, 0.7) 50%, transparent 100%);
   color: white;
-  padding: 40px 30px 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,9 +35,10 @@ const Overlay = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 120px;
+  width: 80px;
   height: auto;
   margin: 0;
+  margin-bottom: 0;
   display: block;
 `;
 
@@ -45,8 +46,8 @@ const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-top: 2px;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
 `;

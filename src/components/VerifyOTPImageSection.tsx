@@ -40,30 +40,31 @@ const ContentOverlay = styled.div`
   z-index: 2;
   color: white;
   text-align: left;
-  padding: 40px 30px 30px;
+  padding: 20px;
   max-width: 400px;
   width: 100%;
   
   @media (max-width: 768px) {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
   }
 `;
 
 const Logo = styled.img`
-  width: 120px;
+  width: 80px;
   height: auto;
   margin: 0;
+  margin-bottom: 0;
   
   @media (max-width: 768px) {
-    width: 100px;
+    width: 80px;
     margin: 0 auto;
   }
 `;
 
 const ContactInfo = styled.div`
-  margin-top: 2px;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0;
 `;
 
 const ContactItem = styled.p`

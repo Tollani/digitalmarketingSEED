@@ -27,9 +27,10 @@ const ContactInfo = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 120px;
+  width: 80px;
   height: auto;
   margin: 0;
+  margin-bottom: 0;
   display: block;
 `;
 
@@ -38,7 +39,7 @@ const ContactItem = styled.div`
   align-items: center;
   gap: 8px;
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Poppins', sans-serif;
   line-height: 1.2;
 `;
@@ -47,7 +48,8 @@ const ContactGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-top: 2px;
+  margin: 0;
+  padding: 0;
 `;
 
 const SignUpImageSection = () => {

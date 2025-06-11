@@ -2,31 +2,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ disabled?: boolean }>`
   width: 100%;
   padding: 12px;
-  background: #7642FE;
-  color: #FFFFFF;
+  background: ${props => props.disabled ? '#D1D5DB' : '#7642FE'};
+  color: ${props => props.disabled ? '#1F2937' : '#FFFFFF'};
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: background-color 0.2s ease;
   font-family: 'Poppins', sans-serif;
   
   &:hover {
-    background: #5f35cc;
+    background: ${props => props.disabled ? '#D1D5DB' : '#5f35cc'};
   }
   
   &:focus {
     outline: 2px solid #007BFF;
     outline-offset: 2px;
-  }
-  
-  &:disabled {
-    background: #6C757D;
-    cursor: not-allowed;
   }
 `;
 

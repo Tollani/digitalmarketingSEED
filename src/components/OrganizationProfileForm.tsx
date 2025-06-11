@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +7,7 @@ import UploadArea from './UploadArea';
 
 const FormContainer = styled.div`
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   font-family: 'Poppins', sans-serif;
 `;
 
@@ -52,30 +51,34 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 100%;
-  padding: 10px;
+  padding: 12px 16px;
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
   
   &:focus {
     outline: none;
     border-color: #7642FE;
+    box-shadow: 0 0 0 3px rgba(118, 66, 254, 0.1);
   }
 `;
 
 const Select = styled.select`
   width: 100%;
-  padding: 10px;
+  padding: 12px 16px;
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
   background-color: white;
+  box-sizing: border-box;
   
   &:focus {
     outline: none;
     border-color: #7642FE;
+    box-shadow: 0 0 0 3px rgba(118, 66, 254, 0.1);
   }
 `;
 
@@ -89,13 +92,14 @@ const ProfilePictureUpload = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 2px solid #D1D5DB;
+  border: 2px dashed #D1D5DB;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  background: #F9FAFB;
   
   @media (max-width: 480px) {
     width: 100px;

@@ -43,29 +43,28 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const BrandingRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+const Logo = styled.img`
+  width: 200px;
+  height: auto;
+  margin-bottom: 12px;
+  display: block;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    width: 180px;
+    margin: 0 auto 12px auto;
   }
 `;
 
-const BrandName = styled.span`
-  font-weight: bold;
-  color: white;
-`;
-
-const EmailText = styled.span`
+const EmailText = styled.div`
   color: white;
   font-weight: 400;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const ContactItem = styled.div`
@@ -87,10 +86,8 @@ const OrganizationProfileImageSection = () => {
     <ImageContainer>
       <GradientOverlay />
       <ContentWrapper>
-        <BrandingRow>
-          <BrandName>DMA DIGITAL MARKETING AGENCY</BrandName>
-          <EmailText>help@digitalmarketingng.com</EmailText>
-        </BrandingRow>
+        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="DMA Digital Marketing Agency Logo" />
+        <EmailText>help@digitalmarketingng.com</EmailText>
         <ContactItem>
           <Phone size={16} />
           +234 123 456 7890

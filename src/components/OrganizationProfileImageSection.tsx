@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Mail, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
 const ImageContainer = styled.div`
@@ -43,22 +43,29 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  width: 100px;
-  height: auto;
-  margin-bottom: 20px;
-  display: block;
+const BrandingRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
   
   @media (max-width: 768px) {
-    margin: 0 auto 20px auto;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
 `;
 
-const ContactGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+const BrandName = styled.span`
+  font-weight: bold;
+  color: white;
+`;
+
+const EmailText = styled.span`
+  color: white;
+  font-weight: 400;
 `;
 
 const ContactItem = styled.div`
@@ -68,6 +75,7 @@ const ContactItem = styled.div`
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   color: white;
+  margin-bottom: 20px;
   
   @media (max-width: 768px) {
     justify-content: center;
@@ -79,20 +87,14 @@ const OrganizationProfileImageSection = () => {
     <ImageContainer>
       <GradientOverlay />
       <ContentWrapper>
-        <Logo 
-          src="/lovable-uploads/bccf7651-1547-4753-9c4d-2fc337d2e22a.png" 
-          alt="Digital Marketing Agency Logo" 
-        />
-        <ContactGroup>
-          <ContactItem>
-            <Mail size={16} />
-            help@digitalmarketingng.com
-          </ContactItem>
-          <ContactItem>
-            <Phone size={16} />
-            +234 123 456 7890
-          </ContactItem>
-        </ContactGroup>
+        <BrandingRow>
+          <BrandName>DMA DIGITAL MARKETING AGENCY</BrandName>
+          <EmailText>help@digitalmarketingng.com</EmailText>
+        </BrandingRow>
+        <ContactItem>
+          <Phone size={16} />
+          +234 123 456 7890
+        </ContactItem>
         <SocialIcons />
       </ContentWrapper>
     </ImageContainer>

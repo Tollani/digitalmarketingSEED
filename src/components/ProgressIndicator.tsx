@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Progress } from '@/components/ui/progress';
 import styled from 'styled-components';
 
 const ProgressContainer = styled.div`
@@ -14,18 +13,27 @@ const ProgressContainer = styled.div`
   }
 `;
 
-const ProgressText = styled.p`
-  font-size: 14px;
-  color: #6B7280;
-  margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+const ProgressBarsContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 200px;
+`;
+
+const ProgressBar = styled.div<{ isCompleted: boolean }>`
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background-color: ${props => props.isCompleted ? '#7642FE' : '#E5E7EB'};
 `;
 
 const ProgressIndicator = () => {
   return (
     <ProgressContainer>
-      <ProgressText>Step 6 of 6</ProgressText>
-      <Progress value={100} className="h-2" />
+      <ProgressBarsContainer>
+        <ProgressBar isCompleted={true} />
+        <ProgressBar isCompleted={false} />
+      </ProgressBarsContainer>
     </ProgressContainer>
   );
 };

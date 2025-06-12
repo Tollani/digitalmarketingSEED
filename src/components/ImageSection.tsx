@@ -34,13 +34,13 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   display: block;
   object-fit: contain;
   
   @media (max-width: 768px) {
     width: 180px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 8px auto;
   }
 `;
 
@@ -48,7 +48,7 @@ const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   line-height: 1.2;
@@ -61,8 +61,8 @@ const ContactItem = styled.div`
 const ContactGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 4px;
+  margin-bottom: 16px;
   padding: 0;
 `;
 

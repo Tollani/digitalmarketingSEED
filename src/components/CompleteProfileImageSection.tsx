@@ -53,18 +53,18 @@ const ContentOverlay = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   display: block;
   object-fit: contain;
   
   @media (max-width: 768px) {
     width: 180px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 8px auto;
   }
 `;
 
 const ContactInfo = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 0;
 `;
 
@@ -72,7 +72,7 @@ const ContactItem = styled.p`
   font-size: 14px;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   gap: 12px;

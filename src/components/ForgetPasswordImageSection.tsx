@@ -43,7 +43,7 @@ const Overlay = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   display: block;
   object-fit: contain;
   
@@ -55,8 +55,8 @@ const Logo = styled.img`
 const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 4px;
+  margin-bottom: 16px;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;

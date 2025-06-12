@@ -46,13 +46,13 @@ const ContentWrapper = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   display: block;
   object-fit: contain;
   
   @media (max-width: 768px) {
     width: 180px;
-    margin: 0 auto 12px auto;
+    margin: 0 auto 8px auto;
   }
 `;
 
@@ -61,7 +61,7 @@ const EmailText = styled.div`
   font-weight: 400;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   
   @media (max-width: 768px) {
     text-align: center;
@@ -75,7 +75,7 @@ const ContactItem = styled.div`
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   
   @media (max-width: 768px) {
     justify-content: center;

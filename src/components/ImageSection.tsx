@@ -4,72 +4,115 @@ import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const ImageSectionContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 16, 59, 0.7) 0%,
-    transparent 100%
-  ), url('/lovable-uploads/12ff7025-87d4-426c-9a19-eca147fe2274.png');
+  background-image: url('/lovable-uploads/8deb37e4-5ae4-4872-992a-1c70885b9e34.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+`;
+
+const GradientOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(30, 58, 138, 0.7) 0%,
+    rgba(30, 58, 138, 0.5) 50%,
+    transparent 100%
+  );
+`;
+
+const ContentWrapper = styled.div`
   position: relative;
-`;
-
-const ContactInfo = styled.div`
-  padding: 20px;
+  z-index: 2;
+  margin-top: auto;
+  padding: 30px;
   color: white;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+    text-align: center;
+  }
 `;
 
-const Logo = styled.img`
-  width: 80px;
-  height: auto;
-  margin: 0;
-  margin-bottom: 0;
+const BrandingOverlay = styled.div`
+  position: absolute;
+  top: -149px;
+  left: -71px;
+  width: 300px;
+  height: 74px;
+  z-index: 3;
+  
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 auto 20px auto;
+    width: 250px;
+    height: auto;
+  }
+`;
+
+const BrandingImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
+`;
+
+const ContactEmail = styled.div`
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 0;
+  gap: 12px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.2;
-`;
-
-const ContactGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
+  font-family: 'Sora', sans-serif;
+  color: white;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const ImageSection = () => {
   return (
-    <ImageContainer>
-      <ContactInfo>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
-        <ContactGroup>
-          <ContactItem>
-            <Mail size={16} />
-            help@digitalmarketing.ng
-          </ContactItem>
-          <ContactItem>
-            <Phone size={16} />
-            +234 123 456 7890
-          </ContactItem>
-        </ContactGroup>
+    <ImageSectionContainer>
+      <GradientOverlay />
+      <BrandingOverlay>
+        <BrandingImage 
+          src="/lovable-uploads/3cf04415-b0af-4cc0-87e4-d87dc84a2df4.png" 
+          alt="DMA Digital Marketing Agency Logo" 
+        />
+      </BrandingOverlay>
+      <ContentWrapper>
+        <ContactEmail>help@digitalmarketingng.com</ContactEmail>
+        <ContactItem>
+          <Phone size={16} />
+          +234 123 456 7890
+        </ContactItem>
         <SocialIcons />
-      </ContactInfo>
-    </ImageContainer>
+      </ContentWrapper>
+    </ImageSectionContainer>
   );
 };
 

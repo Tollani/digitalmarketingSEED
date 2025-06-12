@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 const FormContainer = styled.div`
@@ -12,11 +12,16 @@ const FormContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 36px;
-  font-weight: 800;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 275px;
+  height: 40px;
   color: #7642FE;
-  margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  margin: 0 auto 8px auto;
+  text-align: center;
 `;
 
 const Subtitle = styled.p`
@@ -25,7 +30,7 @@ const Subtitle = styled.p`
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Form = styled.form`
@@ -39,7 +44,7 @@ const InputGroup = styled.div`
 `;
 
 const InputLabel = styled.label`
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #000000;
@@ -54,7 +59,7 @@ const Input = styled.input`
   border-radius: 4px;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &::placeholder {
     color: #666666;
@@ -79,6 +84,9 @@ const PasswordToggle = styled.button`
   border: none;
   cursor: pointer;
   color: #6C757D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
     color: #000000;
@@ -90,7 +98,7 @@ const ForgotPassword = styled.a`
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   align-self: flex-end;
   cursor: pointer;
   
@@ -117,7 +125,7 @@ const Divider = styled.div`
     color: #666666;
     font-size: 14px;
     font-weight: 400;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Sora', sans-serif;
   }
 `;
 
@@ -135,7 +143,7 @@ const GoogleButton = styled.button`
   font-weight: 500;
   color: #000000;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #f8f9fa;
@@ -148,7 +156,7 @@ const SignUpText = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #666666;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const SignUpLink = styled(Link)`
@@ -173,6 +181,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -198,6 +207,19 @@ const LoginForm = () => {
     
     if (!newErrors.email && !newErrors.password) {
       console.log('Form submitted:', { email, password });
+      // Navigate to complete profile if valid email and non-empty password
+      navigate('/complete-profile');
+    }
+  };
+
+  const handleForgotPassword = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Navigate to forget password if email is in valid format
+    if (validateEmail(email)) {
+      navigate('/forget-password');
+    } else {
+      // Show error if no valid email
+      setErrors(prev => ({ ...prev, email: 'Please enter a valid email first' }));
     }
   };
 
@@ -246,7 +268,7 @@ const LoginForm = () => {
           {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </InputGroup>
         
-        <ForgotPassword as={Link} to="/forget-password">
+        <ForgotPassword onClick={handleForgotPassword}>
           Forget Password?
         </ForgotPassword>
         

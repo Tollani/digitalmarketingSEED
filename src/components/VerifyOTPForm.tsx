@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 import Alert from './Alert';
 import OTPInput from './OTPInput';
@@ -12,12 +12,16 @@ const FormContainer = styled.div`
 `;
 
 const Title = styled.h1`
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
   font-size: 32px;
-  font-weight: 800;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 275px;
+  height: 40px;
   color: #7642FE;
-  margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
-  text-align: left;
+  margin: 0 auto 8px auto;
+  text-align: center;
 `;
 
 const Subtitle = styled.p`
@@ -26,7 +30,7 @@ const Subtitle = styled.p`
   color: #6B7280;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   text-align: left;
 `;
 
@@ -44,7 +48,7 @@ const ResendContainer = styled.div`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const ResendText = styled.span`
@@ -58,7 +62,7 @@ const ResendLink = styled.button`
   border: none;
   cursor: pointer;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     text-decoration: none;
@@ -69,7 +73,7 @@ const SignInContainer = styled.div`
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const SignInText = styled.span`
@@ -89,6 +93,7 @@ const SignInLink = styled(Link)`
 const VerifyOTPForm = () => {
   const [otp, setOtp] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   const handleOTPComplete = (otpValue: string) => {
     setOtp(otpValue);
@@ -98,11 +103,11 @@ const VerifyOTPForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (otp === '1234') {
+    // If any numbers are entered, navigate to create password
+    if (otp && otp.length > 0) {
       console.log({ otp });
       setShowAlert(false);
-      // Clear the OTP to reset the form
-      setOtp('');
+      navigate('/create-password');
     } else {
       setShowAlert(true);
     }
@@ -126,7 +131,7 @@ const VerifyOTPForm = () => {
       <Form onSubmit={handleSubmit}>
         {showAlert && (
           <AlertWrapper>
-            <Alert message="Incorrect verification code" visible={showAlert} />
+            <Alert message="Please enter the verification code" visible={showAlert} />
           </AlertWrapper>
         )}
         

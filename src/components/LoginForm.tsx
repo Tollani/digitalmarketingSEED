@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -32,7 +31,7 @@ const PageSubtitle = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const LoginForm = styled.form`
+const StyledLoginForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -220,7 +219,7 @@ const LoginForm = () => {
       <PageHeaderTitle>Welcome Back!</PageHeaderTitle>
       <PageSubtitle>Log back into your account</PageSubtitle>
       
-      <LoginForm onSubmit={handleSubmit}>
+      <StyledLoginForm onSubmit={handleSubmit}>
         <InputFieldGroup>
           <InputFieldLabel htmlFor="email">Email address</InputFieldLabel>
           <InputField
@@ -263,7 +262,7 @@ const LoginForm = () => {
         <Button type="submit">
           Continue
         </Button>
-      </LoginForm>
+      </StyledLoginForm>
       
       <FormDivider>
         <span>Or</span>

@@ -40,6 +40,7 @@ const Logo = styled.img`
   margin: 0;
   margin-bottom: 0;
   display: block;
+  object-fit: contain;
 `;
 
 const ContactInfo = styled.div`
@@ -68,7 +69,7 @@ const ForgetPasswordImageSection = () => {
         alt="Digital Marketing Agency - Forget Password"
       />
       <Overlay>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="Digital Marketing Agency Logo" />
+        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
         <ContactInfo>
           <ContactItem>
             <Mail size={16} />

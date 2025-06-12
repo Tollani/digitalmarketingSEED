@@ -48,6 +48,7 @@ const Logo = styled.img`
   height: auto;
   margin-bottom: 12px;
   display: block;
+  object-fit: contain;
   
   @media (max-width: 768px) {
     width: 180px;
@@ -86,7 +87,7 @@ const OrganizationProfileImageSection = () => {
     <ImageContainer>
       <GradientOverlay />
       <ContentWrapper>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="DMA Digital Marketing Agency Logo" />
+        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="DMA Digital Marketing Agency Logo" />
         <EmailText>help@digitalmarketingng.com</EmailText>
         <ContactItem>
           <Phone size={16} />

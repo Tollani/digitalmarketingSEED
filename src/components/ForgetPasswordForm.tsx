@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from './Alert';
 
 const FormContainer = styled.div`
@@ -108,14 +108,11 @@ const SignInLink = styled(Link)`
 const ForgetPasswordForm = () => {
   const [email, setEmail] = useState('johnsnow@abc');
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  };
-
-  const isValidAccount = (email: string) => {
-    return email === 'test@digitalmarketingng.com';
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -136,14 +133,10 @@ const ForgetPasswordForm = () => {
       return;
     }
     
-    if (!isValidAccount(email)) {
-      setShowAlert(true);
-      return;
-    }
-    
-    // Valid email
+    // Valid email - proceed to verify OTP
     setShowAlert(false);
     console.log('Password reset email sent to:', { email });
+    navigate('/verify-otp');
   };
 
   return (
@@ -156,7 +149,7 @@ const ForgetPasswordForm = () => {
       <Form onSubmit={handleSubmit}>
         <InputGroup>
           <Alert 
-            message="This email is not linked to a DIGITAL MARKETING AGENCY NG account."
+            message="Please enter a valid email address."
             visible={showAlert}
           />
           <InputLabel htmlFor="email">Email address</InputLabel>

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
@@ -169,8 +170,8 @@ const CreatePasswordForm = () => {
     e.preventDefault();
     
     if (isSuccess) {
-      // If already successful, navigate to sign in
-      navigate('/');
+      // If already successful, navigate to complete profile
+      navigate('/complete-profile');
       return;
     }
     
@@ -189,10 +190,12 @@ const CreatePasswordForm = () => {
     if (!hasErrors) {
       console.log({ newPassword, confirmPassword });
       setIsSuccess(true);
+      // Auto-navigate to complete profile after 2 seconds
+      setTimeout(() => {
+        navigate('/complete-profile');
+      }, 2000);
     }
   };
-
-  const isFormValid = validatePassword(newPassword) && newPassword === confirmPassword && newPassword && confirmPassword;
 
   return (
     <FormContainer>
@@ -257,13 +260,13 @@ const CreatePasswordForm = () => {
         </FormGroup>
         
         <Button type="submit">
-          {isSuccess ? 'Back to Log In' : 'Continue'}
+          {isSuccess ? 'Redirecting to Profile...' : 'Continue'}
         </Button>
         
         {isSuccess && (
           <SuccessMessage>
             <Check size={16} />
-            Password updated successfully!
+            Password updated successfully! Redirecting...
           </SuccessMessage>
         )}
       </Form>

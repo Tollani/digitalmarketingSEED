@@ -1,8 +1,9 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 const FormContainer = styled.div`
@@ -172,6 +173,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -197,6 +199,8 @@ const LoginForm = () => {
     
     if (!newErrors.email && !newErrors.password) {
       console.log('Form submitted:', { email, password });
+      // Navigate to complete profile when valid credentials are entered
+      navigate('/complete-profile');
     }
   };
 

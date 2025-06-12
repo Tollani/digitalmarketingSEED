@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 import Alert from './Alert';
 import OTPInput from './OTPInput';
@@ -88,6 +89,7 @@ const SignInLink = styled(Link)`
 const VerifyOTPForm = () => {
   const [otp, setOtp] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   const handleOTPComplete = (otpValue: string) => {
     setOtp(otpValue);
@@ -97,11 +99,12 @@ const VerifyOTPForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (otp === '1234') {
+    // Accept any 4 digits as valid OTP
+    if (otp.length === 4 && /^\d{4}$/.test(otp)) {
       console.log({ otp });
       setShowAlert(false);
-      // Clear the OTP to reset the form
-      setOtp('');
+      // Navigate to create password page
+      navigate('/create-password');
     } else {
       setShowAlert(true);
     }
@@ -125,7 +128,7 @@ const VerifyOTPForm = () => {
       <Form onSubmit={handleSubmit}>
         {showAlert && (
           <AlertWrapper>
-            <Alert message="Incorrect verification code" visible={showAlert} />
+            <Alert message="Please enter a valid 4-digit code" visible={showAlert} />
           </AlertWrapper>
         )}
         

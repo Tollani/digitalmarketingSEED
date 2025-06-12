@@ -13,7 +13,7 @@ const StyledButton = styled.button<{ disabled?: boolean }>`
   font-weight: 500;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: background-color 0.2s ease;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     background: ${props => props.disabled ? '#D1D5DB' : '#5f35cc'};

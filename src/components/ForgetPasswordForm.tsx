@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Alert from './Alert';
 
 const FormContainer = styled.div`
@@ -10,16 +10,11 @@ const FormContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
   font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.15px;
-  width: 275px;
-  height: 40px;
+  font-weight: 800;
   color: #7642FE;
-  margin: 0 auto 8px auto;
-  text-align: center;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Subtitle = styled.p`
@@ -28,7 +23,7 @@ const Subtitle = styled.p`
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Form = styled.form`
@@ -44,7 +39,7 @@ const InputGroup = styled.div`
 `;
 
 const InputLabel = styled.label`
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #000000;
@@ -57,7 +52,7 @@ const Input = styled.input<{ hasError?: boolean }>`
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &::placeholder {
     color: #666666;
@@ -80,7 +75,7 @@ const SendEmailButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     background: #5f35cc;
@@ -98,7 +93,7 @@ const SignInText = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #666666;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const SignInLink = styled(Link)`
@@ -114,7 +109,6 @@ const SignInLink = styled(Link)`
 const ForgetPasswordForm = () => {
   const [email, setEmail] = useState('johnsnow@abc');
   const [showAlert, setShowAlert] = useState(false);
-  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -143,10 +137,14 @@ const ForgetPasswordForm = () => {
       return;
     }
     
-    // For any valid email format, proceed to verify OTP
+    if (!isValidAccount(email)) {
+      setShowAlert(true);
+      return;
+    }
+    
+    // Valid email
     setShowAlert(false);
     console.log('Password reset email sent to:', { email });
-    navigate('/verify-otp');
   };
 
   return (

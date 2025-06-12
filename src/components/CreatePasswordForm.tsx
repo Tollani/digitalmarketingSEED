@@ -12,16 +12,12 @@ const FormContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
   font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.15px;
-  width: 275px;
-  height: 40px;
+  font-weight: 800;
   color: #7642FE;
-  margin: 0 auto 8px auto;
-  text-align: center;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
 `;
 
 const Subtitle = styled.p`
@@ -30,7 +26,7 @@ const Subtitle = styled.p`
   color: #6B7280;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: left;
 `;
 
@@ -50,13 +46,11 @@ const Label = styled.label`
   font-size: 14px;
   font-weight: 400;
   color: #1F2937;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const InputWrapper = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
 `;
 
 const Input = styled.input<{ hasError: boolean }>`
@@ -65,7 +59,7 @@ const Input = styled.input<{ hasError: boolean }>`
   border: 2px solid ${props => props.hasError ? '#EF4444' : '#D1D5DB'};
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: white;
   
   &:focus {
@@ -83,9 +77,6 @@ const ToggleButton = styled.button`
   border: none;
   cursor: pointer;
   color: #6B7280;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   
   &:focus {
     outline: none;
@@ -102,7 +93,7 @@ const SuccessMessage = styled.div`
   gap: 8px;
   color: #10B981;
   font-size: 14px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin-top: 16px;
 `;
 
@@ -110,7 +101,7 @@ const SignInContainer = styled.div`
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const SignInText = styled.span`
@@ -199,10 +190,6 @@ const CreatePasswordForm = () => {
     if (!hasErrors) {
       console.log({ newPassword, confirmPassword });
       setIsSuccess(true);
-      // Navigate to complete profile after successful password creation
-      setTimeout(() => {
-        navigate('/complete-profile');
-      }, 1500);
     }
   };
 

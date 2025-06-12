@@ -3,47 +3,43 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
-const LoginFormContainer = styled.div`
+const FormContainer = styled.div`
   width: 100%;
   max-width: 400px;
 `;
 
-const PageHeaderTitle = styled.h1`
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: -0.15px;
-  width: 275px;
-  height: 40px;
+const Title = styled.h1`
+  font-size: 36px;
+  font-weight: 800;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const PageSubtitle = styled.p`
+const Subtitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-const InputFieldGroup = styled.div`
+const InputGroup = styled.div`
   position: relative;
 `;
 
-const InputFieldLabel = styled.label`
-  font-family: 'Sora', sans-serif;
+const InputLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #000000;
@@ -51,14 +47,14 @@ const InputFieldLabel = styled.label`
   display: block;
 `;
 
-const InputField = styled.input`
+const Input = styled.input`
   width: 100%;
-  padding: 10px 40px 10px 10px;
+  padding: 10px;
   border: 1px solid #CED4DA;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &::placeholder {
     color: #666666;
@@ -69,12 +65,12 @@ const InputField = styled.input`
     border-color: #007BFF;
   }
   
-  &.input-error {
+  &.error {
     border-color: #dc3545;
   }
 `;
 
-const PasswordVisibilityToggle = styled.button`
+const PasswordToggle = styled.button`
   position: absolute;
   right: 10px;
   top: 50%;
@@ -83,21 +79,18 @@ const PasswordVisibilityToggle = styled.button`
   border: none;
   cursor: pointer;
   color: #6C757D;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   
   &:hover {
     color: #000000;
   }
 `;
 
-const ForgotPasswordLink = styled.a`
+const ForgotPassword = styled.a`
   color: #7642FE;
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   align-self: flex-end;
   cursor: pointer;
   
@@ -106,7 +99,7 @@ const ForgotPasswordLink = styled.a`
   }
 `;
 
-const FormDivider = styled.div`
+const Divider = styled.div`
   display: flex;
   align-items: center;
   margin: 24px 0;
@@ -124,11 +117,11 @@ const FormDivider = styled.div`
     color: #666666;
     font-size: 14px;
     font-weight: 400;
-    font-family: 'Sora', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 `;
 
-const GoogleAuthButton = styled.button`
+const GoogleButton = styled.button`
   width: 100%;
   padding: 12px;
   border: 1px solid #CED4DA;
@@ -142,23 +135,23 @@ const GoogleAuthButton = styled.button`
   font-weight: 500;
   color: #000000;
   cursor: pointer;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     background: #f8f9fa;
   }
 `;
 
-const SignUpPrompt = styled.p`
+const SignUpText = styled.p`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
   font-weight: 400;
   color: #666666;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const SignUpRedirectLink = styled(Link)`
+const SignUpLink = styled(Link)`
   color: #7642FE;
   font-weight: 500;
   cursor: pointer;
@@ -169,14 +162,13 @@ const SignUpRedirectLink = styled(Link)`
   }
 `;
 
-const ValidationErrorMessage = styled.span`
+const ErrorMessage = styled.span`
   color: #dc3545;
   font-size: 12px;
   margin-top: 4px;
 `;
 
 const LoginForm = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -206,8 +198,6 @@ const LoginForm = () => {
     
     if (!newErrors.email && !newErrors.password) {
       console.log('Form submitted:', { email, password });
-      // Navigate to complete profile for valid credentials
-      navigate('/complete-profile');
     }
   };
 
@@ -216,68 +206,68 @@ const LoginForm = () => {
   };
 
   return (
-    <LoginFormContainer>
-      <PageHeaderTitle>Welcome Back!</PageHeaderTitle>
-      <PageSubtitle>Log back into your account</PageSubtitle>
+    <FormContainer>
+      <Title>Welcome Back!</Title>
+      <Subtitle>Log back into your account</Subtitle>
       
-      <StyledForm onSubmit={handleSubmit}>
-        <InputFieldGroup>
-          <InputFieldLabel htmlFor="email">Email address</InputFieldLabel>
-          <InputField
+      <Form onSubmit={handleSubmit}>
+        <InputGroup>
+          <InputLabel htmlFor="email">Email address</InputLabel>
+          <Input
             id="email"
             type="email"
             placeholder="johnsnow@abc"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={errors.email ? 'input-error' : ''}
+            className={errors.email ? 'error' : ''}
             aria-label="Email address"
           />
-          {errors.email && <ValidationErrorMessage>{errors.email}</ValidationErrorMessage>}
-        </InputFieldGroup>
+          {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+        </InputGroup>
         
-        <InputFieldGroup>
-          <InputFieldLabel htmlFor="password">Password</InputFieldLabel>
-          <InputField
+        <InputGroup>
+          <InputLabel htmlFor="password">Password</InputLabel>
+          <Input
             id="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="1234567890"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={errors.password ? 'input-error' : ''}
+            className={errors.password ? 'error' : ''}
             aria-label="Password"
           />
-          <PasswordVisibilityToggle
+          <PasswordToggle
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
-          </PasswordVisibilityToggle>
-          {errors.password && <ValidationErrorMessage>{errors.password}</ValidationErrorMessage>}
-        </InputFieldGroup>
+          </PasswordToggle>
+          {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+        </InputGroup>
         
-        <ForgotPasswordLink as={Link} to="/forget-password">
+        <ForgotPassword as={Link} to="/forget-password">
           Forget Password?
-        </ForgotPasswordLink>
+        </ForgotPassword>
         
         <Button type="submit">
           Continue
         </Button>
-      </StyledForm>
+      </Form>
       
-      <FormDivider>
+      <Divider>
         <span>Or</span>
-      </FormDivider>
+      </Divider>
       
-      <GoogleAuthButton onClick={handleGoogleLogin}>
+      <GoogleButton onClick={handleGoogleLogin}>
         <FcGoogle size={20} />
         Continue with Google
-      </GoogleAuthButton>
+      </GoogleButton>
       
-      <SignUpPrompt>
-        Don't have an account yet? <SignUpRedirectLink to="/signup">Sign Up</SignUpRedirectLink>
-      </SignUpPrompt>
-    </LoginFormContainer>
+      <SignUpText>
+        Don't have an account yet? <SignUpLink to="/signup">Sign Up</SignUpLink>
+      </SignUpText>
+    </FormContainer>
   );
 };
 

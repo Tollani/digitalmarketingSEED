@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -6,47 +5,43 @@ import { Camera } from 'lucide-react';
 import Button from './Button';
 import UploadArea from './UploadArea';
 
-const OrganizationFormContainer = styled.div`
+const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const PageHeaderTitle = styled.h1`
+const Title = styled.h1`
   font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: -0.15px;
-  width: 275px;
-  height: 40px;
+  font-weight: bold;
   color: #7642FE;
   margin: 0 0 8px 0;
   text-align: left;
 `;
 
-const PageSubtitle = styled.p`
+const Subtitle = styled.p`
   font-size: 16px;
   color: #6B7280;
   margin: 0 0 32px 0;
   text-align: left;
 `;
 
-const OrganizationFormSection = styled.div`
+const Section = styled.div`
   margin-bottom: 24px;
 `;
 
-const OrganizationSectionTitle = styled.h3`
+const SectionTitle = styled.h3`
   font-size: 16px;
   font-weight: 400;
   color: #1F2937;
   margin: 0 0 16px 0;
 `;
 
-const OrganizationFieldGroup = styled.div`
+const FormGroup = styled.div`
   margin-bottom: 20px;
 `;
 
-const OrganizationFieldLabel = styled.label`
+const Label = styled.label`
   display: block;
   font-size: 16px;
   color: #1F2937;
@@ -54,13 +49,13 @@ const OrganizationFieldLabel = styled.label`
   font-weight: 400;
 `;
 
-const OrganizationInputField = styled.input`
+const Input = styled.input`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   
   &:focus {
@@ -70,13 +65,13 @@ const OrganizationInputField = styled.input`
   }
 `;
 
-const OrganizationSelectField = styled.select`
+const Select = styled.select`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: white;
   box-sizing: border-box;
   
@@ -87,13 +82,13 @@ const OrganizationSelectField = styled.select`
   }
 `;
 
-const OrganizationProfilePictureContainer = styled.div`
+const ProfilePictureContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
 
-const OrganizationProfilePictureUpload = styled.div`
+const ProfilePictureUpload = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -112,14 +107,14 @@ const OrganizationProfilePictureUpload = styled.div`
   }
 `;
 
-const OrganizationProfileImage = styled.img`
+const ProfileImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
 `;
 
-const OrganizationHiddenInput = styled.input`
+const HiddenInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
@@ -129,18 +124,18 @@ const OrganizationHiddenInput = styled.input`
   cursor: pointer;
 `;
 
-const OrganizationDocumentSection = styled.div`
+const DocumentSection = styled.div`
   margin-bottom: 32px;
 `;
 
-const OrganizationDocumentSubtitle = styled.p`
+const DocumentSubtitle = styled.p`
   font-size: 14px;
   color: #6B7280;
   margin: 8px 0;
   line-height: 1.4;
 `;
 
-const OrganizationSkipLink = styled.button`
+const SkipLink = styled.button`
   background: none;
   border: none;
   color: #7642FE;
@@ -148,7 +143,7 @@ const OrganizationSkipLink = styled.button`
   cursor: pointer;
   text-decoration: underline;
   margin-top: 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   
   &:hover {
     color: #5f35cc;
@@ -208,52 +203,52 @@ const OrganizationProfileForm = () => {
   };
 
   return (
-    <OrganizationFormContainer>
-      <PageHeaderTitle>Organization Profile</PageHeaderTitle>
-      <PageSubtitle>Complete the KYC registration for your organization</PageSubtitle>
+    <FormContainer>
+      <Title>Organization Profile</Title>
+      <Subtitle>Complete the KYC registration for your organization</Subtitle>
       
       <form onSubmit={handleSubmit}>
-        <OrganizationFormSection>
-          <OrganizationSectionTitle>Upload Your Profile Picture</OrganizationSectionTitle>
-          <OrganizationProfilePictureContainer>
-            <OrganizationProfilePictureUpload>
+        <Section>
+          <SectionTitle>Upload Your Profile Picture</SectionTitle>
+          <ProfilePictureContainer>
+            <ProfilePictureUpload>
               {profilePicture ? (
-                <OrganizationProfileImage src={profilePicture} alt="Profile" />
+                <ProfileImage src={profilePicture} alt="Profile" />
               ) : (
                 <Camera size={32} color="#6B7280" />
               )}
-              <OrganizationHiddenInput
+              <HiddenInput
                 type="file"
                 accept="image/*"
                 onChange={handleProfilePictureChange}
               />
-            </OrganizationProfilePictureUpload>
-          </OrganizationProfilePictureContainer>
-        </OrganizationFormSection>
+            </ProfilePictureUpload>
+          </ProfilePictureContainer>
+        </Section>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization Name</OrganizationFieldLabel>
-          <OrganizationInputField
+        <FormGroup>
+          <Label>Organization Name</Label>
+          <Input
             type="text"
             value={organizationName}
             onChange={(e) => setOrganizationName(e.target.value)}
             placeholder=""
           />
-        </OrganizationFieldGroup>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization Address</OrganizationFieldLabel>
-          <OrganizationInputField
+        <FormGroup>
+          <Label>Organization Address</Label>
+          <Input
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder=""
           />
-        </OrganizationFieldGroup>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Country</OrganizationFieldLabel>
-          <OrganizationSelectField
+        <FormGroup>
+          <Label>Country</Label>
+          <Select
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           >
@@ -262,12 +257,12 @@ const OrganizationProfileForm = () => {
             <option value="Niger">Niger</option>
             <option value="South Africa">South Africa</option>
             <option value="Cuba">Cuba</option>
-          </OrganizationSelectField>
-        </OrganizationFieldGroup>
+          </Select>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization Type</OrganizationFieldLabel>
-          <OrganizationSelectField
+        <FormGroup>
+          <Label>Organization Type</Label>
+          <Select
             value={organizationType}
             onChange={(e) => setOrganizationType(e.target.value)}
           >
@@ -276,12 +271,12 @@ const OrganizationProfileForm = () => {
             <option value="Limited Liability Company">Limited Liability Company</option>
             <option value="Non-Governmental Organization">Non-Governmental Organization</option>
             <option value="Start-up">Start-up</option>
-          </OrganizationSelectField>
-        </OrganizationFieldGroup>
+          </Select>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization Industry/Sector</OrganizationFieldLabel>
-          <OrganizationSelectField
+        <FormGroup>
+          <Label>Organization Industry/Sector</Label>
+          <Select
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
@@ -290,22 +285,22 @@ const OrganizationProfileForm = () => {
             <option value="Agriculture">Agriculture</option>
             <option value="Financial Services">Financial Services</option>
             <option value="Education">Education</option>
-          </OrganizationSelectField>
-        </OrganizationFieldGroup>
+          </Select>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization RC Number</OrganizationFieldLabel>
-          <OrganizationInputField
+        <FormGroup>
+          <Label>Organization RC Number</Label>
+          <Input
             type="text"
             value={rcNumber}
             onChange={(e) => setRcNumber(e.target.value)}
             placeholder=""
           />
-        </OrganizationFieldGroup>
+        </FormGroup>
 
-        <OrganizationFieldGroup>
-          <OrganizationFieldLabel>Organization Staff Size</OrganizationFieldLabel>
-          <OrganizationSelectField
+        <FormGroup>
+          <Label>Organization Staff Size</Label>
+          <Select
             value={staffSize}
             onChange={(e) => setStaffSize(e.target.value)}
           >
@@ -314,19 +309,19 @@ const OrganizationProfileForm = () => {
             <option value="11-50">11-50</option>
             <option value="51-100">51-100</option>
             <option value="Over 101">Over 101</option>
-          </OrganizationSelectField>
-        </OrganizationFieldGroup>
+          </Select>
+        </FormGroup>
 
-        <OrganizationDocumentSection>
-          <OrganizationSectionTitle>Upload Valid Organization Documents</OrganizationSectionTitle>
-          <OrganizationDocumentSubtitle>
+        <DocumentSection>
+          <SectionTitle>Upload Valid Organization Documents</SectionTitle>
+          <DocumentSubtitle>
             e.g. Certificate of Incorporation, Memorandum of Association, Proof of Business Address, Company Status Report
-          </OrganizationDocumentSubtitle>
-          <OrganizationDocumentSubtitle>
+          </DocumentSubtitle>
+          <DocumentSubtitle>
             Upload multiple high quality images for better results
-          </OrganizationDocumentSubtitle>
+          </DocumentSubtitle>
           <UploadArea onImageUpload={handleDocumentUpload} />
-        </OrganizationDocumentSection>
+        </DocumentSection>
 
         <Button 
           type="submit" 
@@ -335,11 +330,11 @@ const OrganizationProfileForm = () => {
           Continue
         </Button>
         
-        <OrganizationSkipLink type="button" onClick={handleSkip}>
+        <SkipLink type="button" onClick={handleSkip}>
           Skip
-        </OrganizationSkipLink>
+        </SkipLink>
       </form>
-    </OrganizationFormContainer>
+    </FormContainer>
   );
 };
 

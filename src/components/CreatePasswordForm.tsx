@@ -6,64 +6,60 @@ import { Eye, EyeOff, Check } from 'lucide-react';
 import Button from './Button';
 import Alert from './Alert';
 
-const CreatePasswordFormContainer = styled.div`
+const FormContainer = styled.div`
   width: 100%;
   max-width: 400px;
 `;
 
-const PageHeaderTitle = styled.h1`
+const Title = styled.h1`
   font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: -0.15px;
-  width: 275px;
-  height: 40px;
+  font-weight: 800;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: left;
 `;
 
-const PageSubtitle = styled.p`
+const Subtitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #6B7280;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: left;
 `;
 
-const PasswordCreationForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const PasswordFieldGroup = styled.div`
+const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-const PasswordFieldLabel = styled.label`
+const Label = styled.label`
   font-size: 14px;
   font-weight: 400;
   color: #1F2937;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const PasswordInputWrapper = styled.div`
+const InputWrapper = styled.div`
   position: relative;
 `;
 
-const PasswordInputField = styled.input<{ hasError: boolean }>`
+const Input = styled.input<{ hasError: boolean }>`
   width: 100%;
   padding: 10px 40px 10px 10px;
   border: 2px solid ${props => props.hasError ? '#EF4444' : '#D1D5DB'};
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: white;
   
   &:focus {
@@ -72,7 +68,7 @@ const PasswordInputField = styled.input<{ hasError: boolean }>`
   }
 `;
 
-const PasswordVisibilityToggleButton = styled.button`
+const ToggleButton = styled.button`
   position: absolute;
   right: 10px;
   top: 50%;
@@ -81,41 +77,38 @@ const PasswordVisibilityToggleButton = styled.button`
   border: none;
   cursor: pointer;
   color: #6B7280;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   
   &:focus {
     outline: none;
   }
 `;
 
-const ValidationAlertWrapper = styled.div`
+const AlertWrapper = styled.div`
   margin-top: 4px;
 `;
 
-const SuccessNotificationMessage = styled.div`
+const SuccessMessage = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
   color: #10B981;
   font-size: 14px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin-top: 16px;
 `;
 
-const SignInPromptContainer = styled.div`
+const SignInContainer = styled.div`
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const SignInPromptText = styled.span`
+const SignInText = styled.span`
   color: #6B7280;
 `;
 
-const SignInRedirectLink = styled(Link)`
+const SignInLink = styled(Link)`
   color: #3B82F6;
   text-decoration: underline;
   font-weight: 400;
@@ -126,7 +119,6 @@ const SignInRedirectLink = styled(Link)`
 `;
 
 const CreatePasswordForm = () => {
-  const navigate = useNavigate();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -134,6 +126,7 @@ const CreatePasswordForm = () => {
   const [newPasswordError, setNewPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const validatePassword = (password: string) => {
     if (password.length < 8) {
@@ -154,6 +147,7 @@ const CreatePasswordForm = () => {
       setNewPasswordError('');
     }
     
+    // Check confirm password match if it exists
     if (confirmPassword && value !== confirmPassword) {
       setConfirmPasswordError('Passwords don\'t match');
     } else if (confirmPassword) {
@@ -176,6 +170,7 @@ const CreatePasswordForm = () => {
     e.preventDefault();
     
     if (isSuccess) {
+      // If already successful, navigate to sign in
       navigate('/');
       return;
     }
@@ -195,27 +190,23 @@ const CreatePasswordForm = () => {
     if (!hasErrors) {
       console.log({ newPassword, confirmPassword });
       setIsSuccess(true);
-      // Navigate to complete profile when passwords match
-      setTimeout(() => {
-        navigate('/complete-profile');
-      }, 1500);
     }
   };
 
   const isFormValid = validatePassword(newPassword) && newPassword === confirmPassword && newPassword && confirmPassword;
 
   return (
-    <CreatePasswordFormContainer>
-      <PageHeaderTitle>Create New Password</PageHeaderTitle>
-      <PageSubtitle>
+    <FormContainer>
+      <Title>Create New Password</Title>
+      <Subtitle>
         Password must be at least 8 characters long and should contain at least one number and one special character
-      </PageSubtitle>
+      </Subtitle>
       
-      <PasswordCreationForm onSubmit={handleSubmit}>
-        <PasswordFieldGroup>
-          <PasswordFieldLabel htmlFor="newPassword">Enter New Password</PasswordFieldLabel>
-          <PasswordInputWrapper>
-            <PasswordInputField
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label htmlFor="newPassword">Enter New Password</Label>
+          <InputWrapper>
+            <Input
               id="newPassword"
               type={showNewPassword ? 'text' : 'password'}
               value={newPassword}
@@ -224,25 +215,25 @@ const CreatePasswordForm = () => {
               placeholder="Enter your new password"
               disabled={isSuccess}
             />
-            <PasswordVisibilityToggleButton
+            <ToggleButton
               type="button"
               onClick={() => setShowNewPassword(!showNewPassword)}
               disabled={isSuccess}
             >
               {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </PasswordVisibilityToggleButton>
-          </PasswordInputWrapper>
+            </ToggleButton>
+          </InputWrapper>
           {newPasswordError && (
-            <ValidationAlertWrapper>
+            <AlertWrapper>
               <Alert message={newPasswordError} visible={true} />
-            </ValidationAlertWrapper>
+            </AlertWrapper>
           )}
-        </PasswordFieldGroup>
+        </FormGroup>
 
-        <PasswordFieldGroup>
-          <PasswordFieldLabel htmlFor="confirmPassword">Confirm Password</PasswordFieldLabel>
-          <PasswordInputWrapper>
-            <PasswordInputField
+        <FormGroup>
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <InputWrapper>
+            <Input
               id="confirmPassword"
               type={showConfirmPassword ? 'text' : 'password'}
               value={confirmPassword}
@@ -251,40 +242,40 @@ const CreatePasswordForm = () => {
               placeholder="Confirm your new password"
               disabled={isSuccess}
             />
-            <PasswordVisibilityToggleButton
+            <ToggleButton
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               disabled={isSuccess}
             >
               {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </PasswordVisibilityToggleButton>
-          </PasswordInputWrapper>
+            </ToggleButton>
+          </InputWrapper>
           {confirmPasswordError && (
-            <ValidationAlertWrapper>
+            <AlertWrapper>
               <Alert message={confirmPasswordError} visible={true} />
-            </ValidationAlertWrapper>
+            </AlertWrapper>
           )}
-        </PasswordFieldGroup>
+        </FormGroup>
         
         <Button type="submit">
           {isSuccess ? 'Back to Log In' : 'Continue'}
         </Button>
         
         {isSuccess && (
-          <SuccessNotificationMessage>
+          <SuccessMessage>
             <Check size={16} />
             Password updated successfully!
-          </SuccessNotificationMessage>
+          </SuccessMessage>
         )}
-      </PasswordCreationForm>
+      </Form>
       
-      <SignInPromptContainer>
-        <SignInPromptText>Remember your password? </SignInPromptText>
-        <SignInRedirectLink to="/">
+      <SignInContainer>
+        <SignInText>Remember your password? </SignInText>
+        <SignInLink to="/">
           Sign In
-        </SignInRedirectLink>
-      </SignInPromptContainer>
-    </CreatePasswordFormContainer>
+        </SignInLink>
+      </SignInContainer>
+    </FormContainer>
   );
 };
 

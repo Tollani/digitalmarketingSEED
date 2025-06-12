@@ -27,27 +27,36 @@ const Overlay = styled.div`
   right: 0;
   background: linear-gradient(to top, rgba(0, 16, 59, 0.9) 0%, rgba(0, 16, 59, 0.7) 50%, transparent 100%);
   color: white;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+  }
 `;
 
 const Logo = styled.img`
-  width: 80px;
+  width: 200px;
   height: auto;
-  margin: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   display: block;
   object-fit: contain;
+  
+  @media (max-width: 768px) {
+    width: 180px;
+  }
 `;
 
 const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin: 0;
+  gap: 8px;
+  margin-bottom: 20px;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
@@ -56,9 +65,13 @@ const ContactInfo = styled.div`
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin: 0;
   line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const ForgetPasswordImageSection = () => {

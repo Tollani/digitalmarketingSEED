@@ -22,34 +22,47 @@ const ImageContainer = styled.div`
 `;
 
 const ContactInfo = styled.div`
-  padding: 20px;
+  padding: 30px;
   color: white;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+    text-align: center;
+  }
 `;
 
 const Logo = styled.img`
-  width: 80px;
+  width: 200px;
   height: auto;
-  margin: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   display: block;
   object-fit: contain;
+  
+  @media (max-width: 768px) {
+    width: 180px;
+    margin: 0 auto 20px auto;
+  }
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 0;
+  gap: 12px;
+  margin-bottom: 8px;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   line-height: 1.2;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const ContactGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin: 0;
+  gap: 8px;
+  margin-bottom: 20px;
   padding: 0;
 `;
 
@@ -61,7 +74,7 @@ const ImageSection = () => {
         <ContactGroup>
           <ContactItem>
             <Mail size={16} />
-            help@digitalmarketing.ng
+            help@digitalmarketingng.com
           </ContactItem>
           <ContactItem>
             <Phone size={16} />

@@ -40,7 +40,7 @@ const ContentOverlay = styled.div`
   z-index: 2;
   color: white;
   text-align: left;
-  padding: 20px;
+  padding: 30px;
   max-width: 400px;
   width: 100%;
   
@@ -51,20 +51,19 @@ const ContentOverlay = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 80px;
+  width: 200px;
   height: auto;
-  margin: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   object-fit: contain;
   
   @media (max-width: 768px) {
-    width: 80px;
-    margin: 0 auto;
+    width: 180px;
+    margin: 0 auto 20px auto;
   }
 `;
 
 const ContactInfo = styled.div`
-  margin: 0;
+  margin-bottom: 20px;
   padding: 0;
 `;
 
@@ -72,18 +71,18 @@ const ContactItem = styled.p`
   font-size: 14px;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
-  margin: 0;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   line-height: 1.2;
   
   @media (max-width: 768px) {
     justify-content: center;
   }
   
-  &:not(:last-child) {
-    margin-bottom: 2px;
+  &:last-child {
+    margin-bottom: 0;
   }
 `;
 

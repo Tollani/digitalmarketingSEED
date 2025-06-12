@@ -32,7 +32,7 @@ const PageSubtitle = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const StyledForm = styled.form`
+const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -220,7 +220,7 @@ const LoginForm = () => {
       <PageHeaderTitle>Welcome Back!</PageHeaderTitle>
       <PageSubtitle>Log back into your account</PageSubtitle>
       
-      <StyledForm onSubmit={handleSubmit}>
+      <LoginForm onSubmit={handleSubmit}>
         <InputFieldGroup>
           <InputFieldLabel htmlFor="email">Email address</InputFieldLabel>
           <InputField
@@ -263,7 +263,7 @@ const LoginForm = () => {
         <Button type="submit">
           Continue
         </Button>
-      </StyledForm>
+      </LoginForm>
       
       <FormDivider>
         <span>Or</span>

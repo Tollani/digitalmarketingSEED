@@ -106,7 +106,7 @@ const CreatePasswordImageSection = () => {
           </ContactItem>
         </ContactInfo>
         <SocialIcons />
-      </ContactOverlay>
+      </ContentOverlay>
     </ImageContainer>
   );
 };

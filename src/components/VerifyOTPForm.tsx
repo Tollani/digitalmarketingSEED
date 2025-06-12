@@ -1,82 +1,86 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 import Alert from './Alert';
 import OTPInput from './OTPInput';
 
-const FormContainer = styled.div`
+const OTPFormContainer = styled.div`
   width: 100%;
   max-width: 400px;
 `;
 
-const Title = styled.h1`
+const PageHeaderTitle = styled.h1`
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 275px;
+  height: 40px;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   text-align: left;
 `;
 
-const Subtitle = styled.p`
+const PageSubtitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #6B7280;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   text-align: left;
 `;
 
-const Form = styled.form`
+const OTPVerificationForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const AlertWrapper = styled.div`
+const AlertMessageWrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-const ResendContainer = styled.div`
+const ResendCodeContainer = styled.div`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const ResendText = styled.span`
+const ResendCodeText = styled.span`
   color: #6B7280;
 `;
 
-const ResendLink = styled.button`
+const ResendCodeLink = styled.button`
   color: #7642FE;
   text-decoration: underline;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     text-decoration: none;
   }
 `;
 
-const SignInContainer = styled.div`
+const SignInPromptContainer = styled.div`
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const SignInText = styled.span`
+const SignInPromptText = styled.span`
   color: #6B7280;
 `;
 
-const SignInLink = styled(Link)`
+const SignInRedirectLink = styled(Link)`
   color: #7642FE;
   text-decoration: underline;
   font-weight: 400;
@@ -87,22 +91,23 @@ const SignInLink = styled(Link)`
 `;
 
 const VerifyOTPForm = () => {
+  const navigate = useNavigate();
   const [otp, setOtp] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
   const handleOTPComplete = (otpValue: string) => {
     setOtp(otpValue);
-    setShowAlert(false); // Clear any previous error when OTP is complete
+    setShowAlert(false);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (otp === '1234') {
+    // Accept any 4-digit number and route to create password
+    if (otp.length === 4 && /^\d{4}$/.test(otp)) {
       console.log({ otp });
       setShowAlert(false);
-      // Clear the OTP to reset the form
-      setOtp('');
+      navigate('/create-password');
     } else {
       setShowAlert(true);
     }
@@ -119,15 +124,15 @@ const VerifyOTPForm = () => {
   };
 
   return (
-    <FormContainer>
-      <Title>Verify Your Email Address</Title>
-      <Subtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</Subtitle>
+    <OTPFormContainer>
+      <PageHeaderTitle>Verify Your Email Address</PageHeaderTitle>
+      <PageSubtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</PageSubtitle>
       
-      <Form onSubmit={handleSubmit}>
+      <OTPVerificationForm onSubmit={handleSubmit}>
         {showAlert && (
-          <AlertWrapper>
+          <AlertMessageWrapper>
             <Alert message="Incorrect verification code" visible={showAlert} />
-          </AlertWrapper>
+          </AlertMessageWrapper>
         )}
         
         <OTPInput 
@@ -141,22 +146,22 @@ const VerifyOTPForm = () => {
         <Button type="submit">
           VERIFY CODE
         </Button>
-      </Form>
+      </OTPVerificationForm>
       
-      <ResendContainer>
-        <ResendText>Didn't receive a code? </ResendText>
-        <ResendLink onClick={handleResendOTP}>
+      <ResendCodeContainer>
+        <ResendCodeText>Didn't receive a code? </ResendCodeText>
+        <ResendCodeLink onClick={handleResendOTP}>
           Resend Code
-        </ResendLink>
-      </ResendContainer>
+        </ResendCodeLink>
+      </ResendCodeContainer>
       
-      <SignInContainer>
-        <SignInText>Have an account already? </SignInText>
-        <SignInLink to="/">
+      <SignInPromptContainer>
+        <SignInPromptText>Have an account already? </SignInPromptText>
+        <SignInRedirectLink to="/">
           Sign In
-        </SignInLink>
-      </SignInContainer>
-    </FormContainer>
+        </SignInRedirectLink>
+      </SignInPromptContainer>
+    </OTPFormContainer>
   );
 };
 

@@ -1,58 +1,62 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from './Alert';
 
-const FormContainer = styled.div`
+const ForgetPasswordFormContainer = styled.div`
   width: 100%;
   max-width: 400px;
 `;
 
-const Title = styled.h1`
+const PageHeaderTitle = styled.h1`
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 275px;
+  height: 40px;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const Subtitle = styled.p`
+const PageSubtitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const Form = styled.form`
+const PasswordResetForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const InputGroup = styled.div`
+const EmailInputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-const InputLabel = styled.label`
-  font-family: 'Poppins', sans-serif;
+const EmailInputLabel = styled.label`
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #000000;
 `;
 
-const Input = styled.input<{ hasError?: boolean }>`
+const EmailInputField = styled.input<{ hasError?: boolean }>`
   width: 100%;
   padding: 10px;
   border: 1px solid ${props => props.hasError ? '#EF4444' : '#D1D5DB'};
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &::placeholder {
     color: #666666;
@@ -64,7 +68,7 @@ const Input = styled.input<{ hasError?: boolean }>`
   }
 `;
 
-const SendEmailButton = styled.button`
+const SendEmailActionButton = styled.button`
   width: 100%;
   padding: 12px;
   background: #7642FE;
@@ -75,7 +79,7 @@ const SendEmailButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #5f35cc;
@@ -87,16 +91,16 @@ const SendEmailButton = styled.button`
   }
 `;
 
-const SignInText = styled.p`
+const SignInPromptText = styled.p`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
   font-weight: 400;
   color: #666666;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const SignInLink = styled(Link)`
+const SignInRedirectLink = styled(Link)`
   color: #7642FE;
   text-decoration: underline;
   cursor: pointer;
@@ -107,6 +111,7 @@ const SignInLink = styled(Link)`
 `;
 
 const ForgetPasswordForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('johnsnow@abc');
   const [showAlert, setShowAlert] = useState(false);
 
@@ -142,26 +147,27 @@ const ForgetPasswordForm = () => {
       return;
     }
     
-    // Valid email
+    // Valid email - navigate to OTP verification
     setShowAlert(false);
     console.log('Password reset email sent to:', { email });
+    navigate('/verify-otp');
   };
 
   return (
-    <FormContainer>
-      <Title>Forget Password?</Title>
-      <Subtitle>
+    <ForgetPasswordFormContainer>
+      <PageHeaderTitle>Forget Password?</PageHeaderTitle>
+      <PageSubtitle>
         Enter the email linked to your account and we will send you instructions to reset your password.
-      </Subtitle>
+      </PageSubtitle>
       
-      <Form onSubmit={handleSubmit}>
-        <InputGroup>
+      <PasswordResetForm onSubmit={handleSubmit}>
+        <EmailInputGroup>
           <Alert 
             message="This email is not linked to a DIGITAL MARKETING AGENCY NG account."
             visible={showAlert}
           />
-          <InputLabel htmlFor="email">Email address</InputLabel>
-          <Input
+          <EmailInputLabel htmlFor="email">Email address</EmailInputLabel>
+          <EmailInputField
             id="email"
             type="email"
             value={email}
@@ -169,17 +175,17 @@ const ForgetPasswordForm = () => {
             hasError={showAlert}
             aria-label="Email address"
           />
-        </InputGroup>
+        </EmailInputGroup>
         
-        <SendEmailButton type="submit">
+        <SendEmailActionButton type="submit">
           SEND EMAIL
-        </SendEmailButton>
-      </Form>
+        </SendEmailActionButton>
+      </PasswordResetForm>
       
-      <SignInText>
-        Have an account already? <SignInLink to="/">Sign In</SignInLink>
-      </SignInText>
-    </FormContainer>
+      <SignInPromptText>
+        Have an account already? <SignInRedirectLink to="/">Sign In</SignInRedirectLink>
+      </SignInPromptText>
+    </ForgetPasswordFormContainer>
   );
 };
 

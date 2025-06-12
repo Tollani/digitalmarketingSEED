@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const ProfileImageContainer = styled.div`
   width: 100%;
   height: 100%;
   background-image: url('/lovable-uploads/8deb37e4-5ae4-4872-992a-1c70885b9e34.png');
@@ -16,7 +16,7 @@ const ImageContainer = styled.div`
   flex-direction: column;
 `;
 
-const GradientOverlay = styled.div`
+const ProfileGradientOverlay = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -30,7 +30,7 @@ const GradientOverlay = styled.div`
   );
 `;
 
-const ContentWrapper = styled.div`
+const ProfileContentWrapper = styled.div`
   position: relative;
   z-index: 2;
   margin-top: auto;
@@ -43,23 +43,29 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  width: 200px;
-  height: auto;
+const BrandLogo = styled.img`
+  width: 373px;
+  height: 373px;
+  position: relative;
+  top: -149px;
+  left: -71px;
   margin-bottom: 12px;
   display: block;
   
   @media (max-width: 768px) {
     width: 180px;
+    height: 180px;
+    top: -50px;
+    left: -20px;
     margin: 0 auto 12px auto;
   }
 `;
 
-const EmailText = styled.div`
+const ContactEmailText = styled.div`
   color: white;
   font-weight: 400;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   margin-bottom: 20px;
   
   @media (max-width: 768px) {
@@ -67,12 +73,12 @@ const EmailText = styled.div`
   }
 `;
 
-const ContactItem = styled.div`
+const ContactPhoneItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   color: white;
   margin-bottom: 20px;
   
@@ -83,18 +89,18 @@ const ContactItem = styled.div`
 
 const OrganizationProfileImageSection = () => {
   return (
-    <ImageContainer>
-      <GradientOverlay />
-      <ContentWrapper>
-        <Logo src="/lovable-uploads/62d34d9a-8807-4c0b-acfd-d014738bec3c.png" alt="DMA Digital Marketing Agency Logo" />
-        <EmailText>help@digitalmarketingng.com</EmailText>
-        <ContactItem>
+    <ProfileImageContainer>
+      <ProfileGradientOverlay />
+      <ProfileContentWrapper>
+        <BrandLogo src="/lovable-uploads/9490901e-37de-4b30-ad5d-93c18fe773d9.png" alt="DMA Digital Marketing Agency Logo" />
+        <ContactEmailText>help@digitalmarketingng.com</ContactEmailText>
+        <ContactPhoneItem>
           <Phone size={16} />
           +234 123 456 7890
-        </ContactItem>
+        </ContactPhoneItem>
         <SocialIcons />
-      </ContentWrapper>
-    </ImageContainer>
+      </ProfileContentWrapper>
+    </ProfileImageContainer>
   );
 };
 

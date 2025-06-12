@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Camera } from 'lucide-react';
@@ -5,65 +6,69 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import UploadArea from './UploadArea';
 
-const FormContainer = styled.div`
+const CompleteProfileFormContainer = styled.div`
   width: 100%;
   max-width: 500px;
 `;
 
-const Title = styled.h1`
+const PageHeaderTitle = styled.h1`
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 275px;
+  height: 40px;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const Subtitle = styled.p`
+const PageSubtitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const Form = styled.form`
+const ProfileCompletionForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const Section = styled.div`
+const FormSection = styled.div`
   margin-bottom: 24px;
 `;
 
-const SectionTitle = styled.h2`
+const FormSectionTitle = styled.h2`
   font-size: 20px;
   font-weight: 600;
   color: #333333;
   margin-bottom: 12px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const SectionSubtitle = styled.p`
+const FormSectionSubtitle = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #666666;
   margin-bottom: 16px;
   line-height: 1.4;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const AdditionalText = styled.p`
+const AdditionalInstructionText = styled.p`
   font-size: 12px;
   font-weight: 400;
   color: #777;
   margin-top: 8px;
   font-style: italic;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const CircularUploadContainer = styled.div`
+const ProfilePictureUploadContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +76,7 @@ const CircularUploadContainer = styled.div`
   margin-bottom: 16px;
 `;
 
-const CircularUpload = styled.div`
+const ProfilePictureUploadCircle = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -83,7 +88,7 @@ const CircularUpload = styled.div`
   color: #6B7280;
 `;
 
-const UploadButton = styled.button`
+const ProfilePictureUploadButton = styled.button`
   background: #7642FE;
   color: white;
   border: none;
@@ -93,14 +98,14 @@ const UploadButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #5f35cc;
   }
 `;
 
-const ProfilePictureContainer = styled.div`
+const ProfilePictureDisplayContainer = styled.div`
   position: relative;
   width: 120px;
   height: 120px;
@@ -109,13 +114,13 @@ const ProfilePictureContainer = styled.div`
   margin-bottom: 16px;
 `;
 
-const ProfilePicture = styled.img`
+const ProfilePictureDisplayImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-const ChangeImageButton = styled.button`
+const ProfilePictureChangeButton = styled.button`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -126,14 +131,14 @@ const ChangeImageButton = styled.button`
   padding: 8px;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
-const HiddenInput = styled.input`
+const HiddenFileInput = styled.input`
   display: none;
 `;
 
-const UploadedFiles = styled.div`
+const UploadedDocumentsPreview = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 10px;
@@ -141,55 +146,55 @@ const UploadedFiles = styled.div`
   padding-bottom: 10px;
 `;
 
-const UploadedImage = styled.img`
+const UploadedDocumentImage = styled.img`
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 8px;
 `;
 
-const RadioSection = styled.div`
+const BusinessQuestionSection = styled.div`
   margin: 10px 0;
 `;
 
-const RadioQuestion = styled.p`
-  font-family: 'Poppins', sans-serif;
+const BusinessQuestionText = styled.p`
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   margin-bottom: 12px;
   line-height: 1.4;
 `;
 
-const RadioGroup = styled.div`
+const RadioOptionsGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
 
-const RadioOption = styled.label`
+const RadioOptionLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   cursor: pointer;
 `;
 
-const RadioInput = styled.input`
+const RadioOptionInput = styled.input`
   width: 16px;
   height: 16px;
   margin-right: 8px;
   accent-color: #7642FE;
 `;
 
-const ButtonContainer = styled.div`
+const ActionButtonContainer = styled.div`
   display: flex;
   gap: 16px;
   margin-top: 32px;
 `;
 
-const SkipButton = styled.button`
+const SkipActionButton = styled.button`
   background: none;
   color: #666666;
   border: 1px solid #CED4DA;
@@ -199,7 +204,7 @@ const SkipButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #f8f9fa;
@@ -234,22 +239,22 @@ const CompleteProfileForm = () => {
   };
 
   return (
-    <FormContainer>
-      <Title>Complete Your Profile</Title>
-      <Subtitle>Complete your KYC registration</Subtitle>
+    <CompleteProfileFormContainer>
+      <PageHeaderTitle>Complete Your Profile</PageHeaderTitle>
+      <PageSubtitle>Complete your KYC registration</PageSubtitle>
       
-      <Form>
-        <Section>
-          <SectionTitle>Upload Your Profile Picture</SectionTitle>
+      <ProfileCompletionForm>
+        <FormSection>
+          <FormSectionTitle>Upload Your Profile Picture</FormSectionTitle>
           {profilePicture ? (
-            <ProfilePictureContainer>
-              <ProfilePicture src={profilePicture} alt="Profile" />
-              <ChangeImageButton 
+            <ProfilePictureDisplayContainer>
+              <ProfilePictureDisplayImage src={profilePicture} alt="Profile" />
+              <ProfilePictureChangeButton 
                 onClick={() => document.getElementById('profile-upload')?.click()}
               >
                 Change image
-              </ChangeImageButton>
-              <HiddenInput
+              </ProfilePictureChangeButton>
+              <HiddenFileInput
                 id="profile-upload"
                 type="file"
                 accept="image/*"
@@ -261,18 +266,18 @@ const CompleteProfileForm = () => {
                   }
                 }}
               />
-            </ProfilePictureContainer>
+            </ProfilePictureDisplayContainer>
           ) : (
-            <CircularUploadContainer>
-              <CircularUpload>
+            <ProfilePictureUploadContainer>
+              <ProfilePictureUploadCircle>
                 <Camera size={32} />
-              </CircularUpload>
-              <UploadButton 
+              </ProfilePictureUploadCircle>
+              <ProfilePictureUploadButton 
                 onClick={() => document.getElementById('profile-upload')?.click()}
               >
                 Upload
-              </UploadButton>
-              <HiddenInput
+              </ProfilePictureUploadButton>
+              <HiddenFileInput
                 id="profile-upload"
                 type="file"
                 accept="image/*"
@@ -284,35 +289,35 @@ const CompleteProfileForm = () => {
                   }
                 }}
               />
-            </CircularUploadContainer>
+            </ProfilePictureUploadContainer>
           )}
-        </Section>
+        </FormSection>
 
-        <Section>
-          <SectionTitle>Upload Valid Means of Identification</SectionTitle>
-          <SectionSubtitle>e.g. National ID, Drivers License, International Passport, Voters ID.</SectionSubtitle>
-          <AdditionalText>Upload multiple high quality images for better results</AdditionalText>
+        <FormSection>
+          <FormSectionTitle>Upload Valid Means of Identification</FormSectionTitle>
+          <FormSectionSubtitle>e.g. National ID, Drivers License, International Passport, Voters ID.</FormSectionSubtitle>
+          <AdditionalInstructionText>Upload multiple high quality images for better results</AdditionalInstructionText>
           
           <UploadArea onImageUpload={handleIdentificationUpload} />
           
           {identificationFiles.length > 0 && (
-            <UploadedFiles>
+            <UploadedDocumentsPreview>
               {identificationFiles.map((file, index) => (
-                <UploadedImage key={index} src={file} alt={`ID ${index + 1}`} />
+                <UploadedDocumentImage key={index} src={file} alt={`ID ${index + 1}`} />
               ))}
-            </UploadedFiles>
+            </UploadedDocumentsPreview>
           )}
-        </Section>
+        </FormSection>
 
-        <Section>
-          <SectionTitle>Do you own a registered business?</SectionTitle>
-          <RadioSection>
-            <RadioQuestion>
+        <FormSection>
+          <FormSectionTitle>Do you own a registered business?</FormSectionTitle>
+          <BusinessQuestionSection>
+            <BusinessQuestionText>
               Please let us know if you own a registered business. This will help us tailor your experience and provide the most relevant services for your needs.
-            </RadioQuestion>
-            <RadioGroup>
-              <RadioOption>
-                <RadioInput
+            </BusinessQuestionText>
+            <RadioOptionsGroup>
+              <RadioOptionLabel>
+                <RadioOptionInput
                   type="radio"
                   name="ownsBusiness"
                   value="yes"
@@ -320,9 +325,9 @@ const CompleteProfileForm = () => {
                   onChange={(e) => setOwnsBusiness(e.target.value)}
                 />
                 Yes
-              </RadioOption>
-              <RadioOption>
-                <RadioInput
+              </RadioOptionLabel>
+              <RadioOptionLabel>
+                <RadioOptionInput
                   type="radio"
                   name="ownsBusiness"
                   value="no"
@@ -330,20 +335,20 @@ const CompleteProfileForm = () => {
                   onChange={(e) => setOwnsBusiness(e.target.value)}
                 />
                 No
-              </RadioOption>
-            </RadioGroup>
-          </RadioSection>
-        </Section>
+              </RadioOptionLabel>
+            </RadioOptionsGroup>
+          </BusinessQuestionSection>
+        </FormSection>
 
-        <Section>
-          <SectionTitle>Are you registered with a business or organization?</SectionTitle>
-          <RadioSection>
-            <RadioQuestion>
+        <FormSection>
+          <FormSectionTitle>Are you registered with a business or organization?</FormSectionTitle>
+          <BusinessQuestionSection>
+            <BusinessQuestionText>
               Please let us know if you are registered with a business or organization. This will help us tailor your experience and provide the most relevant services for your needs.
-            </RadioQuestion>
-            <RadioGroup>
-              <RadioOption>
-                <RadioInput
+            </BusinessQuestionText>
+            <RadioOptionsGroup>
+              <RadioOptionLabel>
+                <RadioOptionInput
                   type="radio"
                   name="registerWithBusiness"
                   value="yes"
@@ -351,9 +356,9 @@ const CompleteProfileForm = () => {
                   onChange={(e) => setRegisterWithBusiness(e.target.value)}
                 />
                 Yes
-              </RadioOption>
-              <RadioOption>
-                <RadioInput
+              </RadioOptionLabel>
+              <RadioOptionLabel>
+                <RadioOptionInput
                   type="radio"
                   name="registerWithBusiness"
                   value="no"
@@ -361,17 +366,17 @@ const CompleteProfileForm = () => {
                   onChange={(e) => setRegisterWithBusiness(e.target.value)}
                 />
                 No
-              </RadioOption>
-            </RadioGroup>
-          </RadioSection>
-        </Section>
+              </RadioOptionLabel>
+            </RadioOptionsGroup>
+          </BusinessQuestionSection>
+        </FormSection>
 
-        <ButtonContainer>
-          <SkipButton onClick={handleSkip}>Skip</SkipButton>
+        <ActionButtonContainer>
+          <SkipActionButton onClick={handleSkip}>Skip</SkipActionButton>
           <Button onClick={handleSubmit}>Complete Profile</Button>
-        </ButtonContainer>
-      </Form>
-    </FormContainer>
+        </ActionButtonContainer>
+      </ProfileCompletionForm>
+    </CompleteProfileFormContainer>
   );
 };
 

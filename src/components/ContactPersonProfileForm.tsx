@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -186,6 +185,14 @@ const SkipLink = styled.button`
   }
 `;
 
+const UploadText = styled.span`
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 4px;
+  text-align: center;
+`;
+
 const ContactPersonProfileForm = () => {
   const navigate = useNavigate();
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
@@ -241,7 +248,7 @@ const ContactPersonProfileForm = () => {
               </>
             ) : (
               <>
-                <CameraIcon size={24} />
+                <Camera size={24} />
                 <UploadText>Upload Photo</UploadText>
               </>
             )}

@@ -31,6 +31,34 @@ const FormSection = styled.div`
   }
 `;
 
+const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 400px;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+const ProgressBarsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 32px;
+`;
+
+const ProgressBarTop = styled.div`
+  height: 5px;
+  width: 100%;
+  background-color: #7642FE;
+`;
+
+const ProgressBarBottom = styled.div`
+  height: 5px;
+  width: 100%;
+  background-color: #7642FE;
+`;
+
 const ImageSectionWrapper = styled.div`
   flex: 1;
   
@@ -47,7 +75,13 @@ const ContactPersonProfile = () => {
   return (
     <ContactPersonProfileContainer>
       <FormSection>
-        <ContactPersonProfileForm />
+        <FormWrapper>
+          <ProgressBarsContainer>
+            <ProgressBarTop />
+            <ProgressBarBottom />
+          </ProgressBarsContainer>
+          <ContactPersonProfileForm />
+        </FormWrapper>
       </FormSection>
       <ImageSectionWrapper>
         <ContactPersonProfileImageSection />

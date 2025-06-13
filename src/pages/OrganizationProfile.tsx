@@ -27,6 +27,7 @@ const FormSection = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  font-family: 'Sora', sans-serif;
   
   @media (max-width: 1024px) {
     padding: 30px;

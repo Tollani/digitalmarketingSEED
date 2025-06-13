@@ -12,10 +12,14 @@ const FormContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 700;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 100%;
+  max-width: 275px;
 `;
 
 const Subtitle = styled.p`
@@ -24,7 +28,7 @@ const Subtitle = styled.p`
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Form = styled.form`
@@ -42,7 +46,7 @@ const SectionTitle = styled.h2`
   font-weight: 600;
   color: #333333;
   margin-bottom: 12px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const SectionSubtitle = styled.p`
@@ -51,7 +55,7 @@ const SectionSubtitle = styled.p`
   color: #666666;
   margin-bottom: 16px;
   line-height: 1.4;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const AdditionalText = styled.p`
@@ -60,7 +64,7 @@ const AdditionalText = styled.p`
   color: #777;
   margin-top: 8px;
   font-style: italic;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const CircularUploadContainer = styled.div`
@@ -93,7 +97,7 @@ const UploadButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #5f35cc;
@@ -126,7 +130,7 @@ const ChangeImageButton = styled.button`
   padding: 8px;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const HiddenInput = styled.input`
@@ -153,7 +157,7 @@ const RadioSection = styled.div`
 `;
 
 const RadioQuestion = styled.p`
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   margin-bottom: 12px;
@@ -170,7 +174,7 @@ const RadioOption = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   cursor: pointer;
@@ -199,7 +203,7 @@ const SkipButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #f8f9fa;

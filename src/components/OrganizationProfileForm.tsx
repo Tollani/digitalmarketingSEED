@@ -8,15 +8,20 @@ import UploadArea from './UploadArea';
 const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Title = styled.h1`
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 700;
   color: #7642FE;
   margin: 0 0 8px 0;
   text-align: left;
+  font-family: 'Sora', sans-serif;
+  line-height: 40px;
+  letter-spacing: -0.15px;
+  width: 100%;
+  max-width: 275px;
 `;
 
 const Subtitle = styled.p`
@@ -24,6 +29,7 @@ const Subtitle = styled.p`
   color: #6B7280;
   margin: 0 0 32px 0;
   text-align: left;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Section = styled.div`
@@ -35,6 +41,7 @@ const SectionTitle = styled.h3`
   font-weight: 400;
   color: #1F2937;
   margin: 0 0 16px 0;
+  font-family: 'Sora', sans-serif;
 `;
 
 const FormGroup = styled.div`
@@ -47,6 +54,7 @@ const Label = styled.label`
   color: #1F2937;
   margin-bottom: 8px;
   font-weight: 400;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Input = styled.input`
@@ -55,7 +63,7 @@ const Input = styled.input`
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   box-sizing: border-box;
   
   &:focus {
@@ -71,7 +79,7 @@ const Select = styled.select`
   border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   background-color: white;
   box-sizing: border-box;
   
@@ -133,6 +141,7 @@ const DocumentSubtitle = styled.p`
   color: #6B7280;
   margin: 8px 0;
   line-height: 1.4;
+  font-family: 'Sora', sans-serif;
 `;
 
 const SkipLink = styled.button`
@@ -143,7 +152,7 @@ const SkipLink = styled.button`
   cursor: pointer;
   text-decoration: underline;
   margin-top: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     color: #5f35cc;

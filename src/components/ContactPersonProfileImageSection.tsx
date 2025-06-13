@@ -7,11 +7,7 @@ import SocialIcons from './SocialIcons';
 const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 16, 59, 0.7) 0%,
-    transparent 100%
-  ), url('/lovable-uploads/207b1138-6b5c-47f8-a2b1-e26cb35e6f02.png');
+  background-image: url('/lovable-uploads/207b1138-6b5c-47f8-a2b1-e26cb35e6f02.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,9 +17,27 @@ const ImageContainer = styled.div`
   position: relative;
 `;
 
+const GradientOverlay = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 58, 138, 0) 0%,
+    rgba(30, 58, 138, 0.7) 50%,
+    rgba(30, 58, 138, 0.7) 100%
+  );
+`;
+
 const ContactInfo = styled.div`
   padding: 30px;
   color: white;
+  position: relative;
+  z-index: 2;
   
   @media (max-width: 768px) {
     padding: 20px;
@@ -69,6 +83,7 @@ const ContactGroup = styled.div`
 const ContactPersonProfileImageSection = () => {
   return (
     <ImageContainer>
+      <GradientOverlay />
       <ContactInfo>
         <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
         <ContactGroup>

@@ -35,8 +35,7 @@ const ImageSectionWrapper = styled.div`
   flex: 1;
   
   @media (max-width: 768px) {
-    height: 300px;
-    order: 2;
+    display: none;
   }
   
   @media (min-width: 769px) {

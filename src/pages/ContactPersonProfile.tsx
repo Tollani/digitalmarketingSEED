@@ -1,10 +1,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import VerifyOTPForm from '../components/VerifyOTPForm';
-import VerifyOTPImageSection from '../components/VerifyOTPImageSection';
+import ContactPersonProfileForm from '../components/ContactPersonProfileForm';
+import ContactPersonProfileImageSection from '../components/ContactPersonProfileImageSection';
 
-const VerifyOTPContainer = styled.div`
+const ContactPersonProfileContainer = styled.div`
   display: flex;
   min-height: 100vh;
   
@@ -43,17 +43,17 @@ const ImageSectionWrapper = styled.div`
   }
 `;
 
-const VerifyOTP = () => {
+const ContactPersonProfile = () => {
   return (
-    <VerifyOTPContainer>
+    <ContactPersonProfileContainer>
       <FormSection>
-        <VerifyOTPForm />
+        <ContactPersonProfileForm />
       </FormSection>
       <ImageSectionWrapper>
-        <VerifyOTPImageSection />
+        <ContactPersonProfileImageSection />
       </ImageSectionWrapper>
-    </VerifyOTPContainer>
+    </ContactPersonProfileContainer>
   );
 };
 
-export default VerifyOTP;
+export default ContactPersonProfile;

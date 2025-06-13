@@ -11,6 +11,7 @@ import VerifyOTP from "./pages/VerifyOTP";
 import CreatePassword from "./pages/CreatePassword";
 import CompleteProfile from "./pages/CompleteProfile";
 import OrganizationProfile from "./pages/OrganizationProfile";
+import ContactPersonProfile from "./pages/ContactPersonProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/create-password" element={<CreatePassword />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
           <Route path="/organization-profile" element={<OrganizationProfile />} />
+          <Route path="/contact-person-profile" element={<ContactPersonProfile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -42,20 +42,16 @@ const FormWrapper = styled.div`
 
 const ProgressBarsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  width: 100%;
+  max-width: 200px;
   margin-bottom: 32px;
 `;
 
-const ProgressBarTop = styled.div`
-  height: 5px;
-  width: 100%;
-  background-color: #7642FE;
-`;
-
-const ProgressBarBottom = styled.div`
-  height: 5px;
-  width: 100%;
+const ProgressBar = styled.div`
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
   background-color: #7642FE;
 `;
 
@@ -77,8 +73,8 @@ const ContactPersonProfile = () => {
       <FormSection>
         <FormWrapper>
           <ProgressBarsContainer>
-            <ProgressBarTop />
-            <ProgressBarBottom />
+            <ProgressBar />
+            <ProgressBar />
           </ProgressBarsContainer>
           <ContactPersonProfileForm />
         </FormWrapper>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Camera } from 'lucide-react';
+import { Camera, X } from 'lucide-react';
 import Button from './Button';
 import UploadArea from './UploadArea';
 
@@ -80,15 +80,29 @@ const ProfileImage = styled.img`
   border-radius: 50%;
 `;
 
-const CameraIcon = styled(Camera)`
-  color: #7642FE;
-  margin-bottom: 8px;
+const ProfileImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 50%;
+  
+  ${ProfilePictureUpload}:hover & {
+    opacity: 1;
+  }
 `;
 
-const UploadText = styled.span`
+const ChangeImageText = styled.span`
   font-family: 'Sora', sans-serif;
   font-size: 12px;
-  color: #7642FE;
+  color: white;
   text-align: center;
 `;
 
@@ -219,7 +233,12 @@ const ContactPersonProfileForm = () => {
           <SectionTitle>Upload Your Profile Picture</SectionTitle>
           <ProfilePictureUpload>
             {profilePicture ? (
-              <ProfileImage src={profilePicture} alt="Profile" />
+              <>
+                <ProfileImage src={profilePicture} alt="Profile" />
+                <ProfileImageOverlay>
+                  <ChangeImageText>Change Image</ChangeImageText>
+                </ProfileImageOverlay>
+              </>
             ) : (
               <>
                 <CameraIcon size={24} />

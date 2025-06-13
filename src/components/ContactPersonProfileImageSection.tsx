@@ -11,7 +11,7 @@ const ImageContainer = styled.div`
     to top,
     rgba(0, 16, 59, 0.7) 0%,
     transparent 100%
-  ), url('/lovable-uploads/207b1138-6b5c-47f8-a2b1-e26cb35e6f02.png');
+  ), url('/lovable-uploads/5f5177d5-e44e-4a23-b347-4d4c12f466.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

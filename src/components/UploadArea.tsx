@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Upload, Plus } from 'lucide-react';
+import { Upload, Plus, Image } from 'lucide-react';
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
   overflow: hidden;
   background: #FAFAFA;
   min-height: 180px;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
   
   @media (max-width: 480px) {
     min-height: 150px;
@@ -63,12 +63,23 @@ const DocumentItem = styled.div`
   overflow: hidden;
   position: relative;
   border: 1px solid #E5E7EB;
+  background: white;
 `;
 
 const DocumentImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+const DocumentPlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F3F4F6;
+  color: #9CA3AF;
 `;
 
 const AddButton = styled.div`
@@ -98,7 +109,7 @@ const DragText = styled.p`
   font-size: 14px;
   color: #6B7280;
   margin: 0 0 16px 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-weight: 400;
 `;
 
@@ -112,7 +123,7 @@ const UploadButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -174,7 +185,13 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload }) => {
           <DocumentPreview>
             {uploadedImages.map((image, index) => (
               <DocumentItem key={index}>
-                <DocumentImage src={image} alt={`Document ${index + 1}`} />
+                {image.includes('blob:') ? (
+                  <DocumentImage src={image} alt={`Document ${index + 1}`} />
+                ) : (
+                  <DocumentPlaceholder>
+                    <Image size={24} />
+                  </DocumentPlaceholder>
+                )}
               </DocumentItem>
             ))}
             <AddButton>

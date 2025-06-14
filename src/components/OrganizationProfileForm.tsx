@@ -187,8 +187,8 @@ const OrganizationProfileForm = () => {
     return organizationName && address && country && organizationType && industry && rcNumber && staffSize && documents.length > 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (isFormValid()) {
       const formData = {
         profilePicture,
@@ -202,7 +202,7 @@ const OrganizationProfileForm = () => {
         documents
       };
       console.log('Organization profile data:', formData);
-      navigate('/');
+      navigate('/contact-person-profile');
     }
   };
 
@@ -334,6 +334,7 @@ const OrganizationProfileForm = () => {
 
         <Button 
           type="submit" 
+          onClick={handleSubmit}
           disabled={!isFormValid()}
         >
           Continue

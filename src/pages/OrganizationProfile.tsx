@@ -1,14 +1,15 @@
-
 import React from 'react';
 import styled from 'styled-components';
 import OrganizationProfileForm from '../components/OrganizationProfileForm';
 import OrganizationProfileImageSection from '../components/OrganizationProfileImageSection';
 import ProgressIndicator from '../components/ProgressIndicator';
 
+// Add Sora font for the whole section
 const OrganizationProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Sora', sans-serif;
 `;
 
 const ContentContainer = styled.div`

@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import CompleteProfileForm from '../components/CompleteProfileForm';
 import CompleteProfileImageSection from '../components/CompleteProfileImageSection';
 
+// Add font-family: 'Sora' to top-level container
 const CompleteProfileContainer = styled.div`
   display: flex;
   min-height: 100vh;
-  
+  font-family: 'Sora', sans-serif;
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -58,3 +60,4 @@ const CompleteProfile = () => {
 };
 
 export default CompleteProfile;
+

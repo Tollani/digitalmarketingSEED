@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Camera } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import UploadArea from './UploadArea';
 
 const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Title = styled.h1`
@@ -215,6 +216,7 @@ const CompleteProfileForm = () => {
   const [identificationFiles, setIdentificationFiles] = useState<string[]>([]);
   const [ownsBusiness, setOwnsBusiness] = useState('');
   const [registerWithBusiness, setRegisterWithBusiness] = useState('');
+  const navigate = useNavigate();
 
   const handleProfilePictureUpload = (imageUrl: string) => {
     setProfilePicture(imageUrl);
@@ -224,17 +226,33 @@ const CompleteProfileForm = () => {
     setIdentificationFiles(prev => [...prev, imageUrl]);
   };
 
-  const handleSubmit = () => {
-    console.log({
-      profilePicture,
-      identificationFiles,
-      ownsBusiness,
+  // Check if all required fields are filled before continuing
+  const isFormValid = () => {
+    return (
+      profilePicture &&
+      identificationFiles.length > 0 &&
+      ownsBusiness &&
       registerWithBusiness
-    });
+    );
+  };
+
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (isFormValid()) {
+      // Simulate submit, then route
+      console.log({
+        profilePicture,
+        identificationFiles,
+        ownsBusiness,
+        registerWithBusiness
+      });
+      navigate('/organization-profile');
+    }
   };
 
   const handleSkip = () => {
     console.log('Skipped profile completion');
+    // Optionally, route as you like here or leave as-is
   };
 
   return (
@@ -371,8 +389,14 @@ const CompleteProfileForm = () => {
         </Section>
 
         <ButtonContainer>
-          <SkipButton onClick={handleSkip}>Skip</SkipButton>
-          <Button onClick={handleSubmit}>Complete Profile</Button>
+          <SkipButton type="button" onClick={handleSkip}>Skip</SkipButton>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            disabled={!isFormValid()}
+          >
+            Complete Profile
+          </Button>
         </ButtonContainer>
       </Form>
     </FormContainer>

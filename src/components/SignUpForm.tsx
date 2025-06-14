@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 const FormContainer = styled.div`
   width: 100%;
   max-width: 500px;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Title = styled.h1`
@@ -13,7 +14,7 @@ const Title = styled.h1`
   font-weight: 800;
   color: #7642FE;
   margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Subtitle = styled.p`
@@ -22,7 +23,7 @@ const Subtitle = styled.p`
   color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const Form = styled.form`
@@ -36,7 +37,7 @@ const InputGroup = styled.div`
 `;
 
 const InputLabel = styled.label`
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #000000;
@@ -51,7 +52,7 @@ const Input = styled.input`
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   transition: border-color 0.2s ease;
   
   &::placeholder {
@@ -79,7 +80,7 @@ const Select = styled.select`
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   background: white;
   transition: border-color 0.2s ease;
   
@@ -104,7 +105,7 @@ const CountryCode = styled.select`
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   background: white;
   width: 120px;
   
@@ -138,7 +139,7 @@ const RadioSection = styled.div`
 `;
 
 const RadioQuestion = styled.p`
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   margin-bottom: 12px;
@@ -155,7 +156,7 @@ const RadioOption = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   cursor: pointer;
@@ -171,7 +172,7 @@ const CheckboxContainer = styled.label`
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
   cursor: pointer;
@@ -201,7 +202,7 @@ const CreateAccountButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #5f35cc;
@@ -231,7 +232,7 @@ const Divider = styled.div`
     color: #666666;
     font-size: 14px;
     font-weight: 400;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Sora', sans-serif;
   }
 `;
 
@@ -249,7 +250,7 @@ const GoogleButton = styled.button`
   font-weight: 500;
   color: #000000;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: #f8f9fa;
@@ -262,7 +263,7 @@ const SignInText = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #666666;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
 `;
 
 const SignInLink = styled.a`
@@ -689,3 +690,5 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+// NOTE: This file is very long—please consider breaking it into smaller components soon.

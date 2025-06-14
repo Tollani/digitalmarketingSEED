@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import SignUpForm from '../components/SignUpForm';
 import SignUpImageSection from '../components/SignUpImageSection';
 
+// Add font-family: 'Sora' to main containers
 const SignUpContainer = styled.div`
   display: flex;
   min-height: 100vh;
-  
+  font-family: 'Sora', sans-serif;
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -57,3 +59,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+

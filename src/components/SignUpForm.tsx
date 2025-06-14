@@ -1,15 +1,16 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 
-const FormContainer = styled.div`
+const SignUpFormContainer = styled.div`
   width: 100%;
   max-width: 500px;
   font-family: 'Sora', sans-serif;
 `;
 
-const Title = styled.h1`
+const MainTitle = styled.h1`
   font-size: 32px;
   font-weight: 800;
   color: #7642FE;
@@ -17,7 +18,7 @@ const Title = styled.h1`
   font-family: 'Sora', sans-serif;
 `;
 
-const Subtitle = styled.p`
+const DescriptionText = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: #666666;
@@ -26,17 +27,17 @@ const Subtitle = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const Form = styled.form`
+const RegistrationForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const InputGroup = styled.div`
+const FormFieldGroup = styled.div`
   position: relative;
 `;
 
-const InputLabel = styled.label`
+const FieldLabel = styled.label`
   font-family: 'Sora', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -45,7 +46,7 @@ const InputLabel = styled.label`
   display: block;
 `;
 
-const Input = styled.input`
+const TextInput = styled.input`
   width: 100%;
   padding: 10px;
   border: 1px solid #CED4DA;
@@ -73,7 +74,7 @@ const Input = styled.input`
   }
 `;
 
-const Select = styled.select`
+const DropdownSelect = styled.select`
   width: 100%;
   padding: 10px;
   border: 1px solid #CED4DA;
@@ -94,12 +95,12 @@ const Select = styled.select`
   }
 `;
 
-const PhoneInputContainer = styled.div`
+const PhoneNumberContainer = styled.div`
   display: flex;
   gap: 8px;
 `;
 
-const CountryCode = styled.select`
+const CountryCodeSelect = styled.select`
   padding: 10px;
   border: 1px solid #CED4DA;
   border-radius: 8px;
@@ -115,11 +116,11 @@ const CountryCode = styled.select`
   }
 `;
 
-const PhoneInput = styled(Input)`
+const PhoneNumberInput = styled(TextInput)`
   flex: 1;
 `;
 
-const PasswordToggle = styled.button`
+const PasswordVisibilityToggle = styled.button`
   position: absolute;
   right: 10px;
   top: 50%;
@@ -134,11 +135,11 @@ const PasswordToggle = styled.button`
   }
 `;
 
-const RadioSection = styled.div`
+const UserTypeSection = styled.div`
   margin: 10px 0;
 `;
 
-const RadioQuestion = styled.p`
+const UserTypeQuestion = styled.p`
   font-family: 'Sora', sans-serif;
   font-size: 14px;
   color: #000000;
@@ -146,13 +147,13 @@ const RadioQuestion = styled.p`
   line-height: 1.4;
 `;
 
-const RadioGroup = styled.div`
+const RadioOptionsGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
 
-const RadioOption = styled.label`
+const RadioOptionLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -162,13 +163,13 @@ const RadioOption = styled.label`
   cursor: pointer;
 `;
 
-const RadioInput = styled.input`
+const RadioButton = styled.input`
   width: 16px;
   height: 16px;
   accent-color: #7642FE;
 `;
 
-const CheckboxContainer = styled.label`
+const TermsCheckboxContainer = styled.label`
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -179,14 +180,14 @@ const CheckboxContainer = styled.label`
   line-height: 1.4;
 `;
 
-const Checkbox = styled.input`
+const CheckboxInput = styled.input`
   width: 16px;
   height: 16px;
   margin-top: 2px;
   accent-color: #7642FE;
 `;
 
-const Link = styled.a`
+const ExternalLink = styled.a`
   color: #7642FE;
   text-decoration: underline;
 `;
@@ -214,7 +215,7 @@ const CreateAccountButton = styled.button`
   }
 `;
 
-const Divider = styled.div`
+const SectionDivider = styled.div`
   display: flex;
   align-items: center;
   margin: 24px 0;
@@ -236,7 +237,7 @@ const Divider = styled.div`
   }
 `;
 
-const GoogleButton = styled.button`
+const GoogleSignUpButton = styled.button`
   width: 100%;
   padding: 12px;
   border: 1px solid #D1D5DB;
@@ -257,7 +258,7 @@ const GoogleButton = styled.button`
   }
 `;
 
-const SignInText = styled.p`
+const SignInPromptText = styled.p`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
@@ -266,19 +267,19 @@ const SignInText = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const SignInLink = styled.a`
+const SignInNavigationLink = styled.a`
   color: #7642FE;
   text-decoration: underline;
   cursor: pointer;
 `;
 
-const ErrorMessage = styled.span`
+const ValidationErrorMessage = styled.span`
   color: #dc3545;
   font-size: 12px;
   margin-top: 4px;
 `;
 
-const countries = [
+const supportedCountries = [
   { name: 'Afghanistan', code: 'AF', phoneCode: '+93' },
   { name: 'Albania', code: 'AL', phoneCode: '+355' },
   { name: 'Algeria', code: 'DZ', phoneCode: '+213' },
@@ -375,8 +376,20 @@ const countries = [
   { name: 'Zimbabwe', code: 'ZW', phoneCode: '+263' }
 ];
 
+interface UserRegistrationData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  country: string;
+  password: string;
+  confirmPassword: string;
+  userType: string;
+  agreeToTerms: boolean;
+}
+
 const SignUpForm = () => {
-  const [formData, setFormData] = useState({
+  const [registrationData, setRegistrationData] = useState<UserRegistrationData>({
     fullName: '',
     email: '',
     phoneNumber: '',
@@ -388,307 +401,305 @@ const SignUpForm = () => {
     agreeToTerms: false
   });
   
-  const [countryCode, setCountryCode] = useState('NG +234');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [validFields, setValidFields] = useState<Record<string, boolean>>({});
+  const [selectedCountryCode, setSelectedCountryCode] = useState('NG +234');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [validatedFields, setValidatedFields] = useState<Record<string, boolean>>({});
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const isValidEmail = (email: string) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   };
 
-  const validatePhoneNumber = (phone: string) => {
-    const phoneRegex = /^\d+$/;
-    return phoneRegex.test(phone);
+  const isValidPhoneNumber = (phone: string) => {
+    const phonePattern = /^\d+$/;
+    return phonePattern.test(phone);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFormFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      setRegistrationData(prev => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setRegistrationData(prev => ({ ...prev, [name]: value }));
       
-      // Real-time validation
-      const newValidFields = { ...validFields };
+      // Real-time field validation
+      const newValidatedFields = { ...validatedFields };
       
       switch (name) {
         case 'fullName':
-          newValidFields.fullName = value.trim().length > 0;
+          newValidatedFields.fullName = value.trim().length > 0;
           break;
         case 'email':
-          newValidFields.email = validateEmail(value);
+          newValidatedFields.email = isValidEmail(value);
           break;
         case 'phoneNumber':
-          newValidFields.phoneNumber = validatePhoneNumber(value) && value.length > 0;
+          newValidatedFields.phoneNumber = isValidPhoneNumber(value) && value.length > 0;
           break;
         case 'address':
-          newValidFields.address = value.trim().length > 0;
+          newValidatedFields.address = value.trim().length > 0;
           break;
         case 'country':
-          newValidFields.country = value !== '';
+          newValidatedFields.country = value !== '';
           break;
         case 'password':
-          newValidFields.password = value.length >= 6;
+          newValidatedFields.password = value.length >= 6;
           break;
         case 'confirmPassword':
-          newValidFields.confirmPassword = value === formData.password && value.length > 0;
+          newValidatedFields.confirmPassword = value === registrationData.password && value.length > 0;
           break;
       }
       
-      setValidFields(newValidFields);
+      setValidatedFields(newValidatedFields);
     }
   };
 
-  const getInputClassName = (fieldName: string) => {
-    if (errors[fieldName]) return 'error';
-    if (validFields[fieldName]) return 'valid';
+  const getFieldValidationClass = (fieldName: string) => {
+    if (validationErrors[fieldName]) return 'error';
+    if (validatedFields[fieldName]) return 'valid';
     return '';
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmission = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const newErrors: Record<string, string> = {};
+    const formErrors: Record<string, string> = {};
     
-    if (!formData.fullName) newErrors.fullName = 'Full name is required';
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+    if (!registrationData.fullName) formErrors.fullName = 'Full name is required';
+    if (!registrationData.email) {
+      formErrors.email = 'Email is required';
+    } else if (!isValidEmail(registrationData.email)) {
+      formErrors.email = 'Please enter a valid email';
     }
-    if (!formData.phoneNumber) {
-      newErrors.phoneNumber = 'Phone number is required';
-    } else if (!validatePhoneNumber(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Please enter only numbers';
+    if (!registrationData.phoneNumber) {
+      formErrors.phoneNumber = 'Phone number is required';
+    } else if (!isValidPhoneNumber(registrationData.phoneNumber)) {
+      formErrors.phoneNumber = 'Please enter only numbers';
     }
-    if (!formData.address) newErrors.address = 'Address is required';
-    if (!formData.country) newErrors.country = 'Country is required';
-    if (!formData.password) newErrors.password = 'Password is required';
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = 'Confirm password is required';
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+    if (!registrationData.address) formErrors.address = 'Address is required';
+    if (!registrationData.country) formErrors.country = 'Country is required';
+    if (!registrationData.password) formErrors.password = 'Password is required';
+    if (!registrationData.confirmPassword) {
+      formErrors.confirmPassword = 'Confirm password is required';
+    } else if (registrationData.password !== registrationData.confirmPassword) {
+      formErrors.confirmPassword = 'Passwords do not match';
     }
-    if (!formData.userType) newErrors.userType = 'Please select user type';
-    if (!formData.agreeToTerms) newErrors.agreeToTerms = 'You must agree to the terms';
+    if (!registrationData.userType) formErrors.userType = 'Please select user type';
+    if (!registrationData.agreeToTerms) formErrors.agreeToTerms = 'You must agree to the terms';
     
-    setErrors(newErrors);
+    setValidationErrors(formErrors);
     
-    if (Object.keys(newErrors).length === 0) {
-      console.log('Form submitted:', { 
-        ...formData, 
-        phoneNumber: `${countryCode} ${formData.phoneNumber}` 
+    if (Object.keys(formErrors).length === 0) {
+      console.log('Registration form submitted:', { 
+        ...registrationData, 
+        phoneNumber: `${selectedCountryCode} ${registrationData.phoneNumber}` 
       });
     }
   };
 
-  const handleGoogleSignUp = () => {
-    console.log('Continue with Google clicked');
+  const handleGoogleRegistration = () => {
+    console.log('Google registration initiated');
   };
 
   return (
-    <FormContainer>
-      <Title>Sign Up</Title>
-      <Subtitle>Create your account to get started</Subtitle>
+    <SignUpFormContainer>
+      <MainTitle>Sign Up</MainTitle>
+      <DescriptionText>Create your account to get started</DescriptionText>
       
-      <Form onSubmit={handleSubmit}>
-        <InputGroup>
-          <InputLabel htmlFor="fullName">Full Name</InputLabel>
-          <Input
+      <RegistrationForm onSubmit={handleFormSubmission}>
+        <FormFieldGroup>
+          <FieldLabel htmlFor="fullName">Full Name</FieldLabel>
+          <TextInput
             id="fullName"
             name="fullName"
             type="text"
             placeholder="Input name"
-            value={formData.fullName}
-            onChange={handleInputChange}
-            className={getInputClassName('fullName')}
+            value={registrationData.fullName}
+            onChange={handleFormFieldChange}
+            className={getFieldValidationClass('fullName')}
           />
-          {errors.fullName && <ErrorMessage>{errors.fullName}</ErrorMessage>}
-        </InputGroup>
+          {validationErrors.fullName && <ValidationErrorMessage>{validationErrors.fullName}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="email">Email Address</InputLabel>
-          <Input
+        <FormFieldGroup>
+          <FieldLabel htmlFor="email">Email Address</FieldLabel>
+          <TextInput
             id="email"
             name="email"
             type="email"
             placeholder="Input a valid email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className={getInputClassName('email')}
+            value={registrationData.email}
+            onChange={handleFormFieldChange}
+            className={getFieldValidationClass('email')}
           />
-          {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
-        </InputGroup>
+          {validationErrors.email && <ValidationErrorMessage>{validationErrors.email}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="phoneNumber">Phone Number</InputLabel>
-          <PhoneInputContainer>
-            <CountryCode 
-              value={countryCode} 
-              onChange={(e) => setCountryCode(e.target.value)}
+        <FormFieldGroup>
+          <FieldLabel htmlFor="phoneNumber">Phone Number</FieldLabel>
+          <PhoneNumberContainer>
+            <CountryCodeSelect 
+              value={selectedCountryCode} 
+              onChange={(e) => setSelectedCountryCode(e.target.value)}
             >
-              {countries.map((country) => (
+              {supportedCountries.map((country) => (
                 <option key={country.code} value={`${country.code} ${country.phoneCode}`}>
                   {country.code} {country.phoneCode}
                 </option>
               ))}
-            </CountryCode>
-            <PhoneInput
+            </CountryCodeSelect>
+            <PhoneNumberInput
               id="phoneNumber"
               name="phoneNumber"
               type="text"
               placeholder="Phone number"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              className={getInputClassName('phoneNumber')}
+              value={registrationData.phoneNumber}
+              onChange={handleFormFieldChange}
+              className={getFieldValidationClass('phoneNumber')}
             />
-          </PhoneInputContainer>
-          {errors.phoneNumber && <ErrorMessage>{errors.phoneNumber}</ErrorMessage>}
-        </InputGroup>
+          </PhoneNumberContainer>
+          {validationErrors.phoneNumber && <ValidationErrorMessage>{validationErrors.phoneNumber}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="address">Address</InputLabel>
-          <Input
+        <FormFieldGroup>
+          <FieldLabel htmlFor="address">Address</FieldLabel>
+          <TextInput
             id="address"
             name="address"
             type="text"
             placeholder="Input your address"
-            value={formData.address}
-            onChange={handleInputChange}
-            className={getInputClassName('address')}
+            value={registrationData.address}
+            onChange={handleFormFieldChange}
+            className={getFieldValidationClass('address')}
           />
-          {errors.address && <ErrorMessage>{errors.address}</ErrorMessage>}
-        </InputGroup>
+          {validationErrors.address && <ValidationErrorMessage>{validationErrors.address}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="country">Country</InputLabel>
-          <Select
+        <FormFieldGroup>
+          <FieldLabel htmlFor="country">Country</FieldLabel>
+          <DropdownSelect
             id="country"
             name="country"
-            value={formData.country}
-            onChange={handleInputChange}
-            className={validFields.country ? 'valid' : ''}
+            value={registrationData.country}
+            onChange={handleFormFieldChange}
+            className={validatedFields.country ? 'valid' : ''}
           >
             <option value="">Country...</option>
-            {countries.map((country) => (
+            {supportedCountries.map((country) => (
               <option key={country.code} value={country.name}>
                 {country.name}
               </option>
             ))}
-          </Select>
-          {errors.country && <ErrorMessage>{errors.country}</ErrorMessage>}
-        </InputGroup>
+          </DropdownSelect>
+          {validationErrors.country && <ValidationErrorMessage>{validationErrors.country}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <RadioSection>
-          <RadioQuestion>
+        <UserTypeSection>
+          <UserTypeQuestion>
             Are you signing up as an individual or an organization? This helps us tailor your experience and recommend the most relevant services for your needs.
-          </RadioQuestion>
-          <RadioGroup>
-            <RadioOption>
-              <RadioInput
+          </UserTypeQuestion>
+          <RadioOptionsGroup>
+            <RadioOptionLabel>
+              <RadioButton
                 type="radio"
                 name="userType"
                 value="individual"
-                onChange={handleInputChange}
+                onChange={handleFormFieldChange}
               />
               Individual
-            </RadioOption>
-            <RadioOption>
-              <RadioInput
+            </RadioOptionLabel>
+            <RadioOptionLabel>
+              <RadioButton
                 type="radio"
                 name="userType"
                 value="organization"
-                onChange={handleInputChange}
+                onChange={handleFormFieldChange}
               />
               Organization
-            </RadioOption>
-          </RadioGroup>
-          {errors.userType && <ErrorMessage>{errors.userType}</ErrorMessage>}
-        </RadioSection>
+            </RadioOptionLabel>
+          </RadioOptionsGroup>
+          {validationErrors.userType && <ValidationErrorMessage>{validationErrors.userType}</ValidationErrorMessage>}
+        </UserTypeSection>
 
-        <InputGroup>
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <Input
+        <FormFieldGroup>
+          <FieldLabel htmlFor="password">Password</FieldLabel>
+          <TextInput
             id="password"
             name="password"
-            type={showPassword ? 'text' : 'password'}
+            type={isPasswordVisible ? 'text' : 'password'}
             placeholder="Input password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className={getInputClassName('password')}
+            value={registrationData.password}
+            onChange={handleFormFieldChange}
+            className={getFieldValidationClass('password')}
           />
-          <PasswordToggle
+          <PasswordVisibilityToggle
             type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+            aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
           >
-            {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
-          </PasswordToggle>
-          {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
-        </InputGroup>
+            {isPasswordVisible ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+          </PasswordVisibilityToggle>
+          {validationErrors.password && <ValidationErrorMessage>{validationErrors.password}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
-          <Input
+        <FormFieldGroup>
+          <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
+          <TextInput
             id="confirmPassword"
             name="confirmPassword"
-            type={showConfirmPassword ? 'text' : 'password'}
+            type={isConfirmPasswordVisible ? 'text' : 'password'}
             placeholder="Confirm password"
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-            className={getInputClassName('confirmPassword')}
+            value={registrationData.confirmPassword}
+            onChange={handleFormFieldChange}
+            className={getFieldValidationClass('confirmPassword')}
           />
-          <PasswordToggle
+          <PasswordVisibilityToggle
             type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+            onClick={() => setIsConfirmPasswordVisible(!isConfirmPasswordVisible)}
+            aria-label={isConfirmPasswordVisible ? 'Hide password' : 'Show password'}
           >
-            {showConfirmPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
-          </PasswordToggle>
-          {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
-        </InputGroup>
+            {isConfirmPasswordVisible ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+          </PasswordVisibilityToggle>
+          {validationErrors.confirmPassword && <ValidationErrorMessage>{validationErrors.confirmPassword}</ValidationErrorMessage>}
+        </FormFieldGroup>
 
-        <CheckboxContainer>
-          <Checkbox
+        <TermsCheckboxContainer>
+          <CheckboxInput
             type="checkbox"
             name="agreeToTerms"
-            onChange={handleInputChange}
+            onChange={handleFormFieldChange}
           />
           <span>
             By continuing, you agree to our{' '}
-            <Link href="#" target="_blank">Terms & Conditions</Link>{' '}
+            <ExternalLink href="#" target="_blank">Terms & Conditions</ExternalLink>{' '}
             and{' '}
-            <Link href="#" target="_blank">Privacy Policy</Link>
+            <ExternalLink href="#" target="_blank">Privacy Policy</ExternalLink>
           </span>
-        </CheckboxContainer>
-        {errors.agreeToTerms && <ErrorMessage>{errors.agreeToTerms}</ErrorMessage>}
+        </TermsCheckboxContainer>
+        {validationErrors.agreeToTerms && <ValidationErrorMessage>{validationErrors.agreeToTerms}</ValidationErrorMessage>}
         
         <CreateAccountButton type="submit">
           CREATE ACCOUNT
         </CreateAccountButton>
-      </Form>
+      </RegistrationForm>
       
-      <Divider>
+      <SectionDivider>
         <span>Or</span>
-      </Divider>
+      </SectionDivider>
       
-      <GoogleButton onClick={handleGoogleSignUp}>
+      <GoogleSignUpButton onClick={handleGoogleRegistration}>
         <FcGoogle size={20} />
         Continue with Google
-      </GoogleButton>
+      </GoogleSignUpButton>
       
-      <SignInText>
-        Have an account already? <SignInLink href="/">Sign In</SignInLink>
-      </SignInText>
-    </FormContainer>
+      <SignInPromptText>
+        Have an account already? <SignInNavigationLink href="/">Sign In</SignInNavigationLink>
+      </SignInPromptText>
+    </SignUpFormContainer>
   );
 };
 
 export default SignUpForm;
-
-// NOTE: This file is very long—please consider breaking it into smaller components soon.

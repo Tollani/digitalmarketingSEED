@@ -1,17 +1,18 @@
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { Camera } from 'lucide-react';
 import Button from './Button';
-import UploadArea from './UploadArea';
+import DMAMediaUploadArea from './UploadArea';
 
-const FormContainer = styled.div`
+const OrganizationFormContainer = styled.div`
   width: 100%;
   max-width: 500px;
   font-family: 'Sora', sans-serif;
 `;
 
-const Title = styled.h1`
+const FormTitle = styled.h1`
   font-size: 32px;
   font-weight: 700;
   color: #7642FE;
@@ -24,7 +25,7 @@ const Title = styled.h1`
   max-width: 275px;
 `;
 
-const Subtitle = styled.p`
+const FormDescription = styled.p`
   font-size: 16px;
   color: #6B7280;
   margin: 0 0 32px 0;
@@ -32,11 +33,11 @@ const Subtitle = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const Section = styled.div`
+const FormSection = styled.div`
   margin-bottom: 24px;
 `;
 
-const SectionTitle = styled.h3`
+const SectionHeader = styled.h3`
   font-size: 16px;
   font-weight: 400;
   color: #1F2937;
@@ -44,11 +45,11 @@ const SectionTitle = styled.h3`
   font-family: 'Sora', sans-serif;
 `;
 
-const FormGroup = styled.div`
+const InputGroup = styled.div`
   margin-bottom: 20px;
 `;
 
-const Label = styled.label`
+const InputLabel = styled.label`
   display: block;
   font-size: 16px;
   color: #1F2937;
@@ -57,7 +58,7 @@ const Label = styled.label`
   font-family: 'Sora', sans-serif;
 `;
 
-const Input = styled.input`
+const TextInput = styled.input`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #D1D5DB;
@@ -73,7 +74,7 @@ const Input = styled.input`
   }
 `;
 
-const Select = styled.select`
+const SelectDropdown = styled.select`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #D1D5DB;
@@ -90,13 +91,13 @@ const Select = styled.select`
   }
 `;
 
-const ProfilePictureContainer = styled.div`
+const ProfileImageSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
 
-const ProfilePictureUpload = styled.div`
+const ProfileImageUploadArea = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -115,14 +116,14 @@ const ProfilePictureUpload = styled.div`
   }
 `;
 
-const ProfileImage = styled.img`
+const ProfileImagePreview = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
 `;
 
-const HiddenInput = styled.input`
+const HiddenFileInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
@@ -132,11 +133,11 @@ const HiddenInput = styled.input`
   cursor: pointer;
 `;
 
-const DocumentSection = styled.div`
+const DocumentUploadSection = styled.div`
   margin-bottom: 32px;
 `;
 
-const DocumentSubtitle = styled.p`
+const DocumentDescription = styled.p`
   font-size: 14px;
   color: #6B7280;
   margin: 8px 0;
@@ -144,7 +145,7 @@ const DocumentSubtitle = styled.p`
   font-family: 'Sora', sans-serif;
 `;
 
-const SkipLink = styled.button`
+const SkipFormButton = styled.button`
   background: none;
   border: none;
   color: #7642FE;
@@ -159,192 +160,225 @@ const SkipLink = styled.button`
   }
 `;
 
+interface OrganizationData {
+  profilePicture: string | null;
+  organizationName: string;
+  address: string;
+  country: string;
+  organizationType: string;
+  industry: string;
+  rcNumber: string;
+  staffSize: string;
+  documents: string[];
+}
+
 const OrganizationProfileForm = () => {
   const navigate = useNavigate();
-  const [profilePicture, setProfilePicture] = useState<string | null>(null);
-  const [organizationName, setOrganizationName] = useState('');
-  const [address, setAddress] = useState('');
-  const [country, setCountry] = useState('');
-  const [organizationType, setOrganizationType] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [rcNumber, setRcNumber] = useState('');
-  const [staffSize, setStaffSize] = useState('');
-  const [documents, setDocuments] = useState<string[]>([]);
+  const [organizationProfileImage, setOrganizationProfileImage] = useState<string | null>(null);
+  const [organizationData, setOrganizationData] = useState<OrganizationData>({
+    profilePicture: null,
+    organizationName: '',
+    address: '',
+    country: '',
+    organizationType: '',
+    industry: '',
+    rcNumber: '',
+    staffSize: '',
+    documents: []
+  });
 
-  const handleProfilePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setProfilePicture(imageUrl);
+  const handleProfileImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const imageUrl = URL.createObjectURL(selectedFile);
+      setOrganizationProfileImage(imageUrl);
+      setOrganizationData(prev => ({ ...prev, profilePicture: imageUrl }));
+      console.log('Organization profile image uploaded');
     }
   };
 
-  const handleDocumentUpload = (imageUrl: string) => {
-    setDocuments([...documents, imageUrl]);
+  const handleDocumentUpload = (documentUrl: string) => {
+    setOrganizationData(prev => ({
+      ...prev,
+      documents: [...prev.documents, documentUrl]
+    }));
+    console.log('Organization document uploaded');
   };
 
-  const isFormValid = () => {
-    return organizationName && address && country && organizationType && industry && rcNumber && staffSize && documents.length > 0;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setOrganizationData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e?: React.FormEvent) => {
+  const isFormComplete = () => {
+    return organizationData.organizationName && 
+           organizationData.address && 
+           organizationData.country && 
+           organizationData.organizationType && 
+           organizationData.industry && 
+           organizationData.rcNumber && 
+           organizationData.staffSize && 
+           organizationData.documents.length > 0;
+  };
+
+  const handleFormSubmission = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (isFormValid()) {
-      const formData = {
-        profilePicture,
-        organizationName,
-        address,
-        country,
-        organizationType,
-        industry,
-        rcNumber,
-        staffSize,
-        documents
+    if (isFormComplete()) {
+      const completeOrganizationData = {
+        ...organizationData,
+        profilePicture: organizationProfileImage
       };
-      console.log('Organization profile data:', formData);
+      console.log('Organization profile data submitted:', completeOrganizationData);
       navigate('/contact-person-profile');
     }
   };
 
-  const handleSkip = () => {
-    console.log('Profile completion skipped');
+  const handleSkipRegistration = () => {
+    console.log('Organization profile registration skipped');
     navigate('/');
   };
 
   return (
-    <FormContainer>
-      <Title>Organization Profile</Title>
-      <Subtitle>Complete the KYC registration for your organization</Subtitle>
+    <OrganizationFormContainer>
+      <FormTitle>Organization Profile</FormTitle>
+      <FormDescription>Complete the KYC registration for your organization</FormDescription>
       
-      <form onSubmit={handleSubmit}>
-        <Section>
-          <SectionTitle>Upload Your Profile Picture</SectionTitle>
-          <ProfilePictureContainer>
-            <ProfilePictureUpload>
-              {profilePicture ? (
-                <ProfileImage src={profilePicture} alt="Profile" />
+      <form onSubmit={handleFormSubmission}>
+        <FormSection>
+          <SectionHeader>Upload Your Profile Picture</SectionHeader>
+          <ProfileImageSection>
+            <ProfileImageUploadArea>
+              {organizationProfileImage ? (
+                <ProfileImagePreview src={organizationProfileImage} alt="Organization Profile" />
               ) : (
                 <Camera size={32} color="#6B7280" />
               )}
-              <HiddenInput
+              <HiddenFileInput
                 type="file"
                 accept="image/*"
-                onChange={handleProfilePictureChange}
+                onChange={handleProfileImageUpload}
               />
-            </ProfilePictureUpload>
-          </ProfilePictureContainer>
-        </Section>
+            </ProfileImageUploadArea>
+          </ProfileImageSection>
+        </FormSection>
 
-        <FormGroup>
-          <Label>Organization Name</Label>
-          <Input
+        <InputGroup>
+          <InputLabel>Organization Name</InputLabel>
+          <TextInput
             type="text"
-            value={organizationName}
-            onChange={(e) => setOrganizationName(e.target.value)}
+            name="organizationName"
+            value={organizationData.organizationName}
+            onChange={handleInputChange}
             placeholder=""
           />
-        </FormGroup>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Organization Address</Label>
-          <Input
+        <InputGroup>
+          <InputLabel>Organization Address</InputLabel>
+          <TextInput
             type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            name="address"
+            value={organizationData.address}
+            onChange={handleInputChange}
             placeholder=""
           />
-        </FormGroup>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Country</Label>
-          <Select
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
+        <InputGroup>
+          <InputLabel>Country</InputLabel>
+          <SelectDropdown
+            name="country"
+            value={organizationData.country}
+            onChange={handleInputChange}
           >
             <option value="">Select...</option>
             <option value="Nigeria">Nigeria</option>
             <option value="Niger">Niger</option>
             <option value="South Africa">South Africa</option>
             <option value="Cuba">Cuba</option>
-          </Select>
-        </FormGroup>
+          </SelectDropdown>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Organization Type</Label>
-          <Select
-            value={organizationType}
-            onChange={(e) => setOrganizationType(e.target.value)}
+        <InputGroup>
+          <InputLabel>Organization Type</InputLabel>
+          <SelectDropdown
+            name="organizationType"
+            value={organizationData.organizationType}
+            onChange={handleInputChange}
           >
             <option value="">Select...</option>
             <option value="Sole Proprietorship">Sole Proprietorship</option>
             <option value="Limited Liability Company">Limited Liability Company</option>
             <option value="Non-Governmental Organization">Non-Governmental Organization</option>
             <option value="Start-up">Start-up</option>
-          </Select>
-        </FormGroup>
+          </SelectDropdown>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Organization Industry/Sector</Label>
-          <Select
-            value={industry}
-            onChange={(e) => setIndustry(e.target.value)}
+        <InputGroup>
+          <InputLabel>Organization Industry/Sector</InputLabel>
+          <SelectDropdown
+            name="industry"
+            value={organizationData.industry}
+            onChange={handleInputChange}
           >
             <option value="">Select...</option>
             <option value="Public Sector">Public Sector</option>
             <option value="Agriculture">Agriculture</option>
             <option value="Financial Services">Financial Services</option>
             <option value="Education">Education</option>
-          </Select>
-        </FormGroup>
+          </SelectDropdown>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Organization RC Number</Label>
-          <Input
+        <InputGroup>
+          <InputLabel>Organization RC Number</InputLabel>
+          <TextInput
             type="text"
-            value={rcNumber}
-            onChange={(e) => setRcNumber(e.target.value)}
+            name="rcNumber"
+            value={organizationData.rcNumber}
+            onChange={handleInputChange}
             placeholder=""
           />
-        </FormGroup>
+        </InputGroup>
 
-        <FormGroup>
-          <Label>Organization Staff Size</Label>
-          <Select
-            value={staffSize}
-            onChange={(e) => setStaffSize(e.target.value)}
+        <InputGroup>
+          <InputLabel>Organization Staff Size</InputLabel>
+          <SelectDropdown
+            name="staffSize"
+            value={organizationData.staffSize}
+            onChange={handleInputChange}
           >
             <option value="">Select...</option>
             <option value="1-10">1-10</option>
             <option value="11-50">11-50</option>
             <option value="51-100">51-100</option>
             <option value="Over 101">Over 101</option>
-          </Select>
-        </FormGroup>
+          </SelectDropdown>
+        </InputGroup>
 
-        <DocumentSection>
-          <SectionTitle>Upload Valid Organization Documents</SectionTitle>
-          <DocumentSubtitle>
+        <DocumentUploadSection>
+          <SectionHeader>Upload Valid Organization Documents</SectionHeader>
+          <DocumentDescription>
             e.g. Certificate of Incorporation, Memorandum of Association, Proof of Business Address, Company Status Report
-          </DocumentSubtitle>
-          <DocumentSubtitle>
+          </DocumentDescription>
+          <DocumentDescription>
             Upload multiple high quality images for better results
-          </DocumentSubtitle>
-          <UploadArea onImageUpload={handleDocumentUpload} />
-        </DocumentSection>
+          </DocumentDescription>
+          <DMAMediaUploadArea onImageUpload={handleDocumentUpload} />
+        </DocumentUploadSection>
 
         <Button 
           type="submit" 
-          onClick={handleSubmit}
-          disabled={!isFormValid()}
+          onClick={handleFormSubmission}
+          disabled={!isFormComplete()}
         >
           Continue
         </Button>
         
-        <SkipLink type="button" onClick={handleSkip}>
+        <SkipFormButton type="button" onClick={handleSkipRegistration}>
           Skip
-        </SkipLink>
+        </SkipFormButton>
       </form>
-    </FormContainer>
+    </OrganizationFormContainer>
   );
 };
 

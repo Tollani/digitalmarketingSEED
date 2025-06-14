@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Upload, Plus } from 'lucide-react';
 
-const Container = styled.div`
+const MediaUploadContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -27,7 +27,7 @@ const Container = styled.div`
   }
 `;
 
-const EmptyState = styled.div`
+const EmptyUploadState = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,21 +42,21 @@ const EmptyState = styled.div`
   }
 `;
 
-const UploadedState = styled.div`
+const MediaDisplayState = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 16px;
 `;
 
-const DocumentPreview = styled.div`
+const MediaPreviewGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-start;
 `;
 
-const DocumentItem = styled.div`
+const MediaThumbnailContainer = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 8px;
@@ -65,13 +65,13 @@ const DocumentItem = styled.div`
   border: 1px solid #E5E7EB;
 `;
 
-const DocumentImage = styled.img`
+const MediaThumbnailImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-const AddButton = styled.div`
+const AddMediaButton = styled.div`
   width: 80px;
   height: 80px;
   border: 2px dashed #D1D5DB;
@@ -94,15 +94,15 @@ const AddButton = styled.div`
   }
 `;
 
-const DragText = styled.p`
+const DragInstructionText = styled.p`
   font-size: 14px;
   color: #6B7280;
   margin: 0 0 16px 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-weight: 400;
 `;
 
-const UploadButton = styled.button`
+const UploadMediaButton = styled.button`
   background: #7642FE;
   color: white;
   border: none;
@@ -112,7 +112,7 @@ const UploadButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -122,7 +122,7 @@ const UploadButton = styled.button`
   }
 `;
 
-const HiddenInput = styled.input`
+const HiddenFileInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
@@ -132,61 +132,71 @@ const HiddenInput = styled.input`
   cursor: pointer;
 `;
 
-interface UploadAreaProps {
+interface MediaUploadAreaProps {
   onImageUpload: (imageUrl: string) => void;
 }
 
-const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload }) => {
-  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+const DMAMediaUploadArea: React.FC<MediaUploadAreaProps> = ({ onImageUpload }) => {
+  const [uploadedMediaFiles, setUploadedMediaFiles] = useState<string[]>([]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setUploadedImages([...uploadedImages, imageUrl]);
-      onImageUpload(imageUrl);
+  const handleMediaFileSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const mediaFileUrl = URL.createObjectURL(selectedFile);
+      setUploadedMediaFiles([...uploadedMediaFiles, mediaFileUrl]);
+      onImageUpload(mediaFileUrl);
+      console.log('DMA-Media file uploaded:', selectedFile.name);
     }
   };
 
-  const handleAddMore = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setUploadedImages([...uploadedImages, imageUrl]);
-      onImageUpload(imageUrl);
+  const handleAdditionalMediaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const mediaFileUrl = URL.createObjectURL(selectedFile);
+      setUploadedMediaFiles([...uploadedMediaFiles, mediaFileUrl]);
+      onImageUpload(mediaFileUrl);
+      console.log('Additional DMA-Media file uploaded:', selectedFile.name);
     }
   };
 
   return (
-    <Container>
-      {uploadedImages.length === 0 ? (
-        <EmptyState>
-          <DragText>Hold and drag media to reorder</DragText>
-          <UploadButton>
+    <MediaUploadContainer>
+      {uploadedMediaFiles.length === 0 ? (
+        <EmptyUploadState>
+          <DragInstructionText>Hold and drag DMA-Media to reorder</DragInstructionText>
+          <UploadMediaButton>
             <Upload size={16} />
-            Upload New
-          </UploadButton>
-          <HiddenInput type="file" accept="image/*,video/*,.3ds,.obj,.gltf" onChange={handleImageChange} />
-        </EmptyState>
+            Upload New DMA-Media
+          </UploadMediaButton>
+          <HiddenFileInput 
+            type="file" 
+            accept="image/*,video/*,.3ds,.obj,.gltf" 
+            onChange={handleMediaFileSelection} 
+          />
+        </EmptyUploadState>
       ) : (
-        <UploadedState>
-          <DragText>Hold and drag media to reorder</DragText>
-          <DocumentPreview>
-            {uploadedImages.map((image, index) => (
-              <DocumentItem key={index}>
-                <DocumentImage src={image} alt={`Document ${index + 1}`} />
-              </DocumentItem>
+        <MediaDisplayState>
+          <DragInstructionText>Hold and drag DMA-Media to reorder</DragInstructionText>
+          <MediaPreviewGrid>
+            {uploadedMediaFiles.map((mediaFile, index) => (
+              <MediaThumbnailContainer key={index}>
+                <MediaThumbnailImage src={mediaFile} alt={`DMA-Media ${index + 1}`} />
+              </MediaThumbnailContainer>
             ))}
-            <AddButton>
+            <AddMediaButton>
               <Plus size={16} />
               <span>Add</span>
-              <HiddenInput type="file" accept="image/*,video/*,.3ds,.obj,.gltf" onChange={handleAddMore} />
-            </AddButton>
-          </DocumentPreview>
-        </UploadedState>
+              <HiddenFileInput 
+                type="file" 
+                accept="image/*,video/*,.3ds,.obj,.gltf" 
+                onChange={handleAdditionalMediaUpload} 
+              />
+            </AddMediaButton>
+          </MediaPreviewGrid>
+        </MediaDisplayState>
       )}
-    </Container>
+    </MediaUploadContainer>
   );
 };
 
-export default UploadArea;
+export default DMAMediaUploadArea;

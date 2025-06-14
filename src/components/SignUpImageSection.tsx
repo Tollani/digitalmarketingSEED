@@ -12,13 +12,13 @@ const ImageContainer = styled.div`
     rgba(0, 16, 59, 0.7) 0%,
     transparent 100%
   ), url('/lovable-uploads/d73df5b9-3489-4658-b8a1-cd4c182998f5.png');
-  background-size: cover;
+  background-size:auto;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: relative;
+  position: fixed;
 `;
 
 const ContactInfo = styled.div`
@@ -34,9 +34,8 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  margin-bottom: 8px;
-  display: block;
-  object-fit: contain;
+  // margin-bottom: 8px;
+  // object-fit: contain;
   
   @media (max-width: 768px) {
     width: 180px;

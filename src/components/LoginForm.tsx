@@ -74,7 +74,7 @@ const PasswordToggle = styled.button`
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  // transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
@@ -182,21 +182,21 @@ const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const newErrors = { email: '', password: '' };
-    
+
     if (!email) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    
+
     if (!password) {
       newErrors.password = 'Password is required';
     }
-    
+
     setErrors(newErrors);
-    
+
     if (!newErrors.email && !newErrors.password) {
       console.log('Form submitted:', { email, password });
       // Navigate to complete profile when valid credentials are entered
@@ -212,7 +212,7 @@ const LoginForm = () => {
     <FormContainer>
       <Title>Welcome Back!</Title>
       <Subtitle>Log back into your account</Subtitle>
-      
+
       <Form onSubmit={handleSubmit}>
         <InputGroup>
           <InputLabel htmlFor="email">Email address</InputLabel>
@@ -227,7 +227,7 @@ const LoginForm = () => {
           />
           {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
         </InputGroup>
-        
+
         <InputGroup>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
@@ -248,25 +248,25 @@ const LoginForm = () => {
           </PasswordToggle>
           {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
         </InputGroup>
-        
+
         <ForgotPassword as={Link} to="/forget-password">
           Forget Password?
         </ForgotPassword>
-        
+
         <Button type="submit">
           Continue
         </Button>
       </Form>
-      
+
       <Divider>
         <span>Or</span>
       </Divider>
-      
+
       <GoogleButton onClick={handleGoogleLogin}>
         <FcGoogle size={20} />
         Continue with Google
       </GoogleButton>
-      
+
       <SignUpText>
         Don't have an account yet? <SignUpLink to="/signup">Sign Up</SignUpLink>
       </SignUpText>

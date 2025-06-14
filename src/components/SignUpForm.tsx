@@ -124,7 +124,7 @@ const PasswordVisibilityToggle = styled.button`
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  // transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;

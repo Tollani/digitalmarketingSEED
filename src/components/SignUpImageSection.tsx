@@ -34,8 +34,7 @@ const ContactInfo = styled.div`
 const Logo = styled.img`
   width: 200px;
   height: auto;
-  // margin-bottom: 8px;
-  // object-fit: contain;
+  margin-bottom: 8px;
   
   @media (max-width: 768px) {
     width: 180px;

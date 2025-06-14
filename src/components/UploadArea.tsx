@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Upload, Plus } from 'lucide-react';
 
-const MediaUploadContainer = styled.div`
+const MediaUploadContainer = styled.div.attrs({
+  className: 'media-upload-container'
+})`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -27,7 +29,9 @@ const MediaUploadContainer = styled.div`
   }
 `;
 
-const EmptyUploadState = styled.div`
+const EmptyUploadState = styled.div.attrs({
+  className: 'empty-upload-state'
+})`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,21 +46,27 @@ const EmptyUploadState = styled.div`
   }
 `;
 
-const MediaDisplayState = styled.div`
+const MediaDisplayState = styled.div.attrs({
+  className: 'media-display-state'
+})`
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 16px;
 `;
 
-const MediaPreviewGrid = styled.div`
+const MediaPreviewGrid = styled.div.attrs({
+  className: 'media-preview-grid'
+})`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-start;
 `;
 
-const MediaThumbnailContainer = styled.div`
+const MediaThumbnailContainer = styled.div.attrs({
+  className: 'media-thumbnail-container'
+})`
   width: 80px;
   height: 80px;
   border-radius: 8px;
@@ -65,13 +75,17 @@ const MediaThumbnailContainer = styled.div`
   border: 1px solid #E5E7EB;
 `;
 
-const MediaThumbnailImage = styled.img`
+const MediaThumbnailImage = styled.img.attrs({
+  className: 'media-thumbnail-image'
+})`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-const AddMediaButton = styled.div`
+const AddMediaButton = styled.div.attrs({
+  className: 'add-media-button'
+})`
   width: 80px;
   height: 80px;
   border: 2px dashed #D1D5DB;
@@ -87,6 +101,7 @@ const AddMediaButton = styled.div`
   gap: 4px;
   background: white;
   transition: all 0.2s ease;
+  position: relative;
   
   &:hover {
     border-color: #7642FE;
@@ -94,7 +109,9 @@ const AddMediaButton = styled.div`
   }
 `;
 
-const DragInstructionText = styled.p`
+const DragInstructionText = styled.p.attrs({
+  className: 'drag-instruction-text'
+})`
   font-size: 14px;
   color: #6B7280;
   margin: 0 0 16px 0;
@@ -102,7 +119,9 @@ const DragInstructionText = styled.p`
   font-weight: 400;
 `;
 
-const UploadMediaButton = styled.button`
+const UploadMediaButton = styled.button.attrs({
+  className: 'upload-media-button'
+})`
   background: #7642FE;
   color: white;
   border: none;
@@ -122,7 +141,9 @@ const UploadMediaButton = styled.button`
   }
 `;
 
-const HiddenFileInput = styled.input`
+const HiddenFileInput = styled.input.attrs({
+  className: 'hidden-file-input'
+})`
   position: absolute;
   top: 0;
   left: 0;

@@ -5,13 +5,14 @@ import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
 const ImageContainer = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100%;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   overflow: hidden;
+  position:fixed
 `;
 
 const BackgroundImage = styled.div`

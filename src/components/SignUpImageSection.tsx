@@ -5,7 +5,7 @@ import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
 const ImageContainer = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-image: linear-gradient(
     to top,

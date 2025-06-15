@@ -1,30 +1,43 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { AlertCircle } from 'lucide-react';
 
-const AlertContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+const AlertContainer = styled.div.attrs({
+  className: 'alert-container'
+})<{ visible: boolean }>`
+  display: ${props => props.visible ? 'flex' : 'none'};
+  align-items: center;
   gap: 8px;
-  padding: 10px;
-  background-color: #FEE2E2;
-  border-left: 3px solid #EF4444;
+  padding: 12px 16px;
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
   border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 8px;
+`;
+
+const AlertIcon = styled.div.attrs({
+  className: 'alert-icon'
+})`
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #EF4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+`;
+
+const AlertMessage = styled.span.attrs({
+  className: 'alert-message'
+})`
+  color: #991B1B;
   font-size: 14px;
-  font-weight: 400;
-  color: #1F2937;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.4;
-`;
-
-const IconWrapper = styled.div`
-  color: #EF4444;
-  margin-top: 1px;
-`;
-
-const AlertText = styled.span`
-  flex: 1;
 `;
 
 interface AlertProps {
@@ -33,14 +46,10 @@ interface AlertProps {
 }
 
 const Alert: React.FC<AlertProps> = ({ message, visible }) => {
-  if (!visible) return null;
-
   return (
-    <AlertContainer>
-      <IconWrapper>
-        <AlertCircle size={16} />
-      </IconWrapper>
-      <AlertText>{message}</AlertText>
+    <AlertContainer visible={visible}>
+      <AlertIcon>!</AlertIcon>
+      <AlertMessage>{message}</AlertMessage>
     </AlertContainer>
   );
 };

@@ -1,131 +1,95 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const OTPContainer = styled.div`
+const OTPContainer = styled.div.attrs({
+  className: 'otp-container'
+})`
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
-  margin: 20px 0;
-  
-  @media (max-width: 480px) {
-    gap: 8px;
-  }
+  margin: 16px 0;
 `;
 
-const OTPBox = styled.input<{ hasError: boolean }>`
-  width: 40px;
-  height: 40px;
-  border: 2px solid ${props => props.hasError ? '#EF4444' : '#D1D5DB'};
+const OTPDigitInput = styled.input.attrs({
+  className: 'otp-digit-input'
+})`
+  width: 48px;
+  height: 48px;
+  border: 2px solid #D1D5DB;
   border-radius: 8px;
   text-align: center;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  color: #1F2937;
-  background: white;
   
   &:focus {
     outline: none;
-    border-color: ${props => props.hasError ? '#EF4444' : '#007BFF'};
+    border-color: #7642FE;
+    box-shadow: 0 0 0 3px rgba(118, 66, 254, 0.1);
   }
   
-  @media (max-width: 480px) {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  &[type=number] {
+    -moz-appearance: textfield;
   }
 `;
 
 interface OTPInputProps {
-  length: number;
-  onComplete: (otp: string) => void;
-  hasError: boolean;
-  onReset: () => void;
-  value?: string;
+  value: string;
+  onChange: (value: string) => void;
 }
 
-const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onReset, value = '' }) => {
-  const [otp, setOtp] = useState(new Array(length).fill(''));
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
-  useEffect(() => {
-    // Focus on first input when component mounts
-    if (inputRefs.current[0]) {
-      inputRefs.current[0].focus();
-    }
-  }, []);
-
-  useEffect(() => {
-    // Reset OTP when value prop changes (for form reset)
-    if (value === '') {
-      setOtp(new Array(length).fill(''));
-      if (inputRefs.current[0]) {
-        inputRefs.current[0].focus();
-      }
-    }
-  }, [value, length]);
-
-  useEffect(() => {
-    // Reset OTP when hasError changes to false
-    if (!hasError) {
-      const shouldReset = otp.every(digit => digit !== '');
-      if (shouldReset && value === '') {
-        setOtp(new Array(length).fill(''));
-        if (inputRefs.current[0]) {
-          inputRefs.current[0].focus();
-        }
-      }
-    }
-  }, [hasError, length, otp, value]);
-
-  const handleChange = (element: HTMLInputElement, index: number) => {
-    if (isNaN(Number(element.value))) return;
-
-    const newOtp = [...otp];
-    newOtp[index] = element.value;
-    setOtp(newOtp);
-
-    // Focus next input
-    if (element.value && index < length - 1 && inputRefs.current[index + 1]) {
-      inputRefs.current[index + 1]?.focus();
-    }
-
-    // Check if OTP is complete
-    if (newOtp.every(digit => digit !== '') && newOtp.join('').length === length) {
-      onComplete(newOtp.join(''));
+const OTPInput: React.FC<OTPInputProps> = ({ value, onChange }) => {
+  const handleChange = (index: number, digit: string) => {
+    if (digit.length > 1) return;
+    
+    const newValue = value.split('');
+    newValue[index] = digit;
+    onChange(newValue.join(''));
+    
+    // Auto-focus next input
+    if (digit && index < 5) {
+      const nextInput = document.getElementById(`otp-${index + 1}`);
+      nextInput?.focus();
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    if (e.key === 'Backspace') {
-      const newOtp = [...otp];
-      if (otp[index]) {
-        newOtp[index] = '';
-        setOtp(newOtp);
-      } else if (index > 0 && inputRefs.current[index - 1]) {
-        newOtp[index - 1] = '';
-        setOtp(newOtp);
-        inputRefs.current[index - 1]?.focus();
-      }
-      onReset();
+  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
+    if (e.key === 'Backspace' && !value[index] && index > 0) {
+      const prevInput = document.getElementById(`otp-${index - 1}`);
+      prevInput?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').slice(0, 6);
+    if (/^\d+$/.test(pastedData)) {
+      onChange(pastedData.padEnd(6, ''));
     }
   };
 
   return (
     <OTPContainer>
-      {otp.map((digit, index) => (
-        <OTPBox
+      {[...Array(6)].map((_, index) => (
+        <OTPDigitInput
           key={index}
+          id={`otp-${index}`}
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           maxLength={1}
-          value={digit}
-          hasError={hasError}
-          ref={(ref) => {
-            inputRefs.current[index] = ref;
-          }}
-          onChange={(e) => handleChange(e.target, index)}
-          onKeyDown={(e) => handleKeyDown(e, index)}
+          value={value[index] || ''}
+          onChange={(e) => handleChange(index, e.target.value)}
+          onKeyDown={(e) => handleKeyDown(index, e)}
+          onPaste={handlePaste}
+          autoComplete="off"
         />
       ))}
     </OTPContainer>

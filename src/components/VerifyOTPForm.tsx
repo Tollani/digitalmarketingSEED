@@ -1,85 +1,128 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from './Button';
-import Alert from './Alert';
 import OTPInput from './OTPInput';
+import Button from './Button';
 
-const FormContainer = styled.div`
+const OTPFormContainer = styled.div.attrs({
+  className: 'otp-form-container'
+})`
   width: 100%;
   max-width: 400px;
 `;
 
-const Title = styled.h1`
+const OTPTitle = styled.h1.attrs({
+  className: 'otp-title'
+})`
   font-size: 32px;
   font-weight: 800;
   color: #7642FE;
   margin-bottom: 8px;
   font-family: 'Sora', sans-serif;
-  text-align: left;
 `;
 
-const Subtitle = styled.p`
+const OTPSubtitle = styled.p.attrs({
+  className: 'otp-subtitle'
+})`
   font-size: 16px;
   font-weight: 400;
-  color: #6B7280;
+  color: #666666;
   margin-bottom: 32px;
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
-  text-align: left;
 `;
 
-const Form = styled.form`
+const OTPForm = styled.form.attrs({
+  className: 'otp-form'
+})`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 `;
 
-const AlertWrapper = styled.div`
-  margin-bottom: 16px;
+const OTPInputContainer = styled.div.attrs({
+  className: 'otp-input-container'
+})`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
-const ResendContainer = styled.div`
-  text-align: center;
-  margin-top: 24px;
+const OTPLabel = styled.label.attrs({
+  className: 'otp-label'
+})`
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+`;
+
+const ResendSection = styled.div.attrs({
+  className: 'resend-section'
+})`
+  text-align: center;
+  margin: 16px 0;
+`;
+
+const ResendText = styled.p.attrs({
+  className: 'resend-text'
+})`
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin-bottom: 8px;
   font-family: 'Poppins', sans-serif;
 `;
 
-const ResendText = styled.span`
-  color: #6B7280;
-`;
-
-const ResendLink = styled.button`
-  color: #7642FE;
-  text-decoration: underline;
+const ResendButton = styled.button.attrs({
+  className: 'resend-button'
+})`
   background: none;
   border: none;
-  cursor: pointer;
+  color: #7642FE;
   font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
   font-family: 'Poppins', sans-serif;
   
   &:hover {
     text-decoration: none;
   }
+  
+  &:disabled {
+    color: #6C757D;
+    cursor: not-allowed;
+    text-decoration: none;
+  }
 `;
 
-const SignInContainer = styled.div`
-  text-align: center;
-  margin-top: 16px;
+const TimerText = styled.span.attrs({
+  className: 'timer-text'
+})`
+  color: #6C757D;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
 `;
 
-const SignInText = styled.span`
-  color: #6B7280;
+const LoginPrompt = styled.p.attrs({
+  className: 'login-prompt'
+})`
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  font-family: 'Poppins', sans-serif;
 `;
 
-const SignInLink = styled(Link)`
+const LoginLink = styled(Link).attrs({
+  className: 'login-link'
+})`
   color: #7642FE;
   text-decoration: underline;
-  font-weight: 400;
+  cursor: pointer;
   
   &:hover {
     text-decoration: none;
@@ -88,77 +131,75 @@ const SignInLink = styled(Link)`
 
 const VerifyOTPForm = () => {
   const [otp, setOtp] = useState('');
-  const [showAlert, setShowAlert] = useState(false);
+  const [timer, setTimer] = useState(30);
+  const [canResend, setCanResend] = useState(false);
   const navigate = useNavigate();
 
-  const handleOTPComplete = (otpValue: string) => {
-    setOtp(otpValue);
-    setShowAlert(false); // Clear any previous error when OTP is complete
+  useEffect(() => {
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer(prev => prev - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    } else {
+      setCanResend(true);
+    }
+  }, [timer]);
+
+  const handleOTPChange = (value: string) => {
+    setOtp(value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Accept any 4 digits as valid OTP
-    if (otp.length === 4 && /^\d{4}$/.test(otp)) {
-      console.log({ otp });
-      setShowAlert(false);
-      // Navigate to create password page
+    if (otp.length === 6) {
+      console.log('OTP submitted:', otp);
       navigate('/create-password');
-    } else {
-      setShowAlert(true);
     }
   };
 
-  const handleResendOTP = () => {
-    console.log('Resend OTP requested');
-    setShowAlert(false);
-    setOtp('');
-  };
-
-  const handleResetAlert = () => {
-    setShowAlert(false);
+  const handleResend = () => {
+    if (canResend) {
+      console.log('Resending OTP...');
+      setTimer(30);
+      setCanResend(false);
+      setOtp('');
+    }
   };
 
   return (
-    <FormContainer>
-      <Title>Verify Your Email Address</Title>
-      <Subtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</Subtitle>
+    <OTPFormContainer>
+      <OTPTitle>Verify Your Email</OTPTitle>
+      <OTPSubtitle>
+        We've sent a 6-digit verification code to your email address. Please enter it below to continue.
+      </OTPSubtitle>
       
-      <Form onSubmit={handleSubmit}>
-        {showAlert && (
-          <AlertWrapper>
-            <Alert message="Please enter a valid 4-digit code" visible={showAlert} />
-          </AlertWrapper>
-        )}
+      <OTPForm onSubmit={handleSubmit}>
+        <OTPInputContainer>
+          <OTPLabel htmlFor="otp">Enter Verification Code</OTPLabel>
+          <OTPInput value={otp} onChange={handleOTPChange} />
+        </OTPInputContainer>
         
-        <OTPInput 
-          length={4} 
-          onComplete={handleOTPComplete}
-          hasError={showAlert}
-          onReset={handleResetAlert}
-          value={otp}
-        />
-        
-        <Button type="submit">
-          VERIFY CODE
+        <Button type="submit" disabled={otp.length !== 6}>
+          Verify Email
         </Button>
-      </Form>
+      </OTPForm>
       
-      <ResendContainer>
-        <ResendText>Didn't receive a code? </ResendText>
-        <ResendLink onClick={handleResendOTP}>
-          Resend Code
-        </ResendLink>
-      </ResendContainer>
+      <ResendSection>
+        <ResendText>Didn't receive the code?</ResendText>
+        {canResend ? (
+          <ResendButton type="button" onClick={handleResend}>
+            Resend Code
+          </ResendButton>
+        ) : (
+          <TimerText>Resend in {timer}s</TimerText>
+        )}
+      </ResendSection>
       
-      <SignInContainer>
-        <SignInText>Have an account already? </SignInText>
-        <SignInLink to="/">
-          Sign In
-        </SignInLink>
-      </SignInContainer>
-    </FormContainer>
+      <LoginPrompt>
+        Remember your password? <LoginLink to="/">Sign In</LoginLink>
+      </LoginPrompt>
+    </OTPFormContainer>
   );
 };
 

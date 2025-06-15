@@ -282,7 +282,11 @@ const CompleteProfileForm = () => {
     console.log('Identification file uploaded');
   };
 
-  const triggerProfilePictureUpload = () => {
+  const triggerProfilePictureUpload = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault(); // Prevent form submission
+      e.stopPropagation(); // Stop event bubbling
+    }
     const fileInput = document.getElementById('profile-picture-upload') as HTMLInputElement;
     if (fileInput) {
       fileInput.click();
@@ -337,7 +341,10 @@ const CompleteProfileForm = () => {
               <CircularUploadArea onClick={triggerProfilePictureUpload}>
                 <Camera size={32} />
               </CircularUploadArea>
-              <UploadActionButton onClick={triggerProfilePictureUpload}>
+              <UploadActionButton 
+                type="button" 
+                onClick={triggerProfilePictureUpload}
+              >
                 Upload
               </UploadActionButton>
             </ProfilePictureUploadContainer>

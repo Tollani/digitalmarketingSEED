@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import { Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const OrganizationProfileImageContainer = styled.div.attrs({
+  className: 'organization-profile-image-container'
+})`
   width: 100%;
   height: 100%;
-  background-image: url('/lovable-uploads/8deb37e4-5ae4-4872-992a-1c70885b9e34.png');
+  background-image: url('/DMA-uploads/8deb37e4-5ae4-4872-992a-1c70885b9e34.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,7 +18,9 @@ const ImageContainer = styled.div`
   flex-direction: column;
 `;
 
-const GradientOverlay = styled.div`
+const OrganizationProfileGradientOverlay = styled.div.attrs({
+  className: 'organization-profile-gradient-overlay'
+})`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -30,7 +34,9 @@ const GradientOverlay = styled.div`
   );
 `;
 
-const ContentWrapper = styled.div`
+const OrganizationProfileContentWrapper = styled.div.attrs({
+  className: 'organization-profile-content-wrapper'
+})`
   position: relative;
   z-index: 2;
   margin-top: auto;
@@ -43,7 +49,9 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const OrganizationProfileLogo = styled.img.attrs({
+  className: 'organization-profile-logo'
+})`
   width: 200px;
   height: auto;
   margin-bottom: 8px;
@@ -56,11 +64,13 @@ const Logo = styled.img`
   }
 `;
 
-const EmailText = styled.div`
+const OrganizationProfileEmailText = styled.div.attrs({
+  className: 'organization-profile-email-text'
+})`
   color: white;
   font-weight: 400;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   margin-bottom: 4px;
   
   @media (max-width: 768px) {
@@ -68,12 +78,14 @@ const EmailText = styled.div`
   }
 `;
 
-const ContactItem = styled.div`
+const OrganizationProfileContactItem = styled.div.attrs({
+  className: 'organization-profile-contact-item'
+})`
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   color: white;
   margin-bottom: 16px;
   
@@ -84,18 +96,18 @@ const ContactItem = styled.div`
 
 const OrganizationProfileImageSection = () => {
   return (
-    <ImageContainer>
-      <GradientOverlay />
-      <ContentWrapper>
-        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="DMA Digital Marketing Agency Logo" />
-        <EmailText>help@digitalmarketingng.com</EmailText>
-        <ContactItem>
+    <OrganizationProfileImageContainer>
+      <OrganizationProfileGradientOverlay />
+      <OrganizationProfileContentWrapper>
+        <OrganizationProfileLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="DMA Digital Marketing Agency Logo" />
+        <OrganizationProfileEmailText>help@digitalmarketingng.com</OrganizationProfileEmailText>
+        <OrganizationProfileContactItem>
           <Phone size={16} />
           +234 123 456 7890
-        </ContactItem>
+        </OrganizationProfileContactItem>
         <SocialIcons />
-      </ContentWrapper>
-    </ImageContainer>
+      </OrganizationProfileContentWrapper>
+    </OrganizationProfileImageContainer>
   );
 };
 

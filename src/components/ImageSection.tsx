@@ -4,14 +4,16 @@ import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const MainImageContainer = styled.div.attrs({
+  className: 'main-image-container'
+})`
   width: 50%;
   height: 100%;
   background-image: linear-gradient(
     to top,
     rgba(0, 16, 59, 0.7) 0%,
     transparent 100%
-  ), url('/lovable-uploads/12ff7025-87d4-426c-9a19-eca147fe2274.png');
+  ), url('/DMA-uploads/12ff7025-87d4-426c-9a19-eca147fe2274.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,7 +23,9 @@ const ImageContainer = styled.div`
   position: fixed;
 `;
 
-const ContactInfo = styled.div`
+const ContactInfoSection = styled.div.attrs({
+  className: 'contact-info-section'
+})`
   padding: 30px;
   color: white;
   
@@ -31,7 +35,9 @@ const ContactInfo = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const CompanyLogo = styled.img.attrs({
+  className: 'company-logo'
+})`
   width: 200px;
   height: auto;
   margin-bottom: 8px;
@@ -44,13 +50,15 @@ const Logo = styled.img`
   }
 `;
 
-const ContactItem = styled.div`
+const ContactInfoItem = styled.div.attrs({
+  className: 'contact-info-item'
+})`
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 4px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   line-height: 1.2;
   
   @media (max-width: 768px) {
@@ -58,7 +66,9 @@ const ContactItem = styled.div`
   }
 `;
 
-const ContactGroup = styled.div`
+const ContactInfoGroup = styled.div.attrs({
+  className: 'contact-info-group'
+})`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -68,22 +78,22 @@ const ContactGroup = styled.div`
 
 const ImageSection = () => {
   return (
-    <ImageContainer>
-      <ContactInfo>
-        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
-        <ContactGroup>
-          <ContactItem>
+    <MainImageContainer>
+      <ContactInfoSection>
+        <CompanyLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
+        <ContactInfoGroup>
+          <ContactInfoItem>
             <Mail size={16} />
             help@digitalmarketingng.com
-          </ContactItem>
-          <ContactItem>
+          </ContactInfoItem>
+          <ContactInfoItem>
             <Phone size={16} />
             +234 123 456 7890
-          </ContactItem>
-        </ContactGroup>
+          </ContactInfoItem>
+        </ContactInfoGroup>
         <SocialIcons />
-      </ContactInfo>
-    </ImageContainer>
+      </ContactInfoSection>
+    </MainImageContainer>
   );
 };
 

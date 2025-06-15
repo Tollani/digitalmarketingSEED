@@ -2,44 +2,38 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProgressContainer = styled.div.attrs({
-  className: 'progress-container'
-})`
+const ProgressContainer = styled.div`
   width: 100%;
-  height: 80px;
-  background: #F8FAFC;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #E2E8F0;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #E5E7EB;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
-const ProgressWrapper = styled.div.attrs({
-  className: 'progress-wrapper'
-})`
+const ProgressBarsContainer = styled.div`
   display: flex;
   gap: 8px;
   width: 100%;
   max-width: 200px;
 `;
 
-const ProgressStep = styled.div.attrs({
-  className: 'progress-step'
-})<{ active: boolean }>`
+const ProgressBar = styled.div<{ isCompleted: boolean }>`
   height: 4px;
   flex: 1;
   border-radius: 2px;
-  background-color: ${props => props.active ? '#7642FE' : '#E2E8F0'};
-  transition: background-color 0.3s ease;
+  background-color: ${props => props.isCompleted ? '#7642FE' : '#E5E7EB'};
 `;
 
 const ProgressIndicator = () => {
   return (
     <ProgressContainer>
-      <ProgressWrapper>
-        <ProgressStep active={true} />
-        <ProgressStep active={false} />
-      </ProgressWrapper>
+      <ProgressBarsContainer>
+        <ProgressBar isCompleted={true} />
+        <ProgressBar isCompleted={false} />
+      </ProgressBarsContainer>
     </ProgressContainer>
   );
 };

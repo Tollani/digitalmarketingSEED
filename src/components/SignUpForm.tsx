@@ -33,7 +33,7 @@ const SignUpSubtitle = styled.p.attrs({
   font-family: 'Poppins', sans-serif;
 `;
 
-const SignUpForm = styled.form.attrs({
+const StyledForm = styled.form.attrs({
   className: 'signup-form'
 })`
   display: flex;
@@ -325,7 +325,7 @@ const SignUpForm = () => {
       <SignUpTitle>Create Account</SignUpTitle>
       <SignUpSubtitle>Enter your details to get started</SignUpSubtitle>
 
-      <SignUpForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <InputFieldGroup>
           <FieldLabel htmlFor="firstName">First Name</FieldLabel>
           <TextInput
@@ -433,7 +433,7 @@ const SignUpForm = () => {
         <Button type="submit">
           Continue
         </Button>
-      </SignUpForm>
+      </StyledForm>
 
       <FormDivider>
         <span>Or</span>

@@ -2,7 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledButton = styled.button<{ disabled?: boolean }>`
+const StyledActionButton = styled.button.attrs({
+  className: 'styled-action-button'
+})<{ disabled?: boolean }>`
   width: 100%;
   padding: 12px;
   background: ${props => props.disabled ? '#D1D5DB' : '#7642FE'};
@@ -13,7 +15,7 @@ const StyledButton = styled.button<{ disabled?: boolean }>`
   font-weight: 500;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: background-color 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   
   &:hover {
     background: ${props => props.disabled ? '#D1D5DB' : '#5f35cc'};
@@ -34,9 +36,9 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ children, type = 'button', onClick, disabled = false }) => {
   return (
-    <StyledButton type={type} onClick={onClick} disabled={disabled}>
+    <StyledActionButton type={type} onClick={onClick} disabled={disabled}>
       {children}
-    </StyledButton>
+    </StyledActionButton>
   );
 };
 

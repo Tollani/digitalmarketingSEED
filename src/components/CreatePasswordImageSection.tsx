@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const CreatePasswordImageContainer = styled.div.attrs({
+  className: 'create-password-image-container'
+})`
   width: 100%;
   height: 100%;
   position: relative;
@@ -14,18 +16,22 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const BackgroundImage = styled.div`
+const CreatePasswordBackgroundImage = styled.div.attrs({
+  className: 'create-password-background-image'
+})`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/lovable-uploads/aec76fd4-e352-49eb-b87b-68bdb9022190.png');
+  background-image: url('/DMA-uploads/aec76fd4-e352-49eb-b87b-68bdb9022190.png');
   background-size: cover;
   background-position: center;
 `;
 
-const GradientOverlay = styled.div`
+const CreatePasswordGradientOverlay = styled.div.attrs({
+  className: 'create-password-gradient-overlay'
+})`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -35,7 +41,9 @@ const GradientOverlay = styled.div`
   z-index: 1;
 `;
 
-const ContentOverlay = styled.div`
+const CreatePasswordContentOverlay = styled.div.attrs({
+  className: 'create-password-content-overlay'
+})`
   position: relative;
   z-index: 2;
   color: white;
@@ -50,7 +58,9 @@ const ContentOverlay = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const CreatePasswordLogo = styled.img.attrs({
+  className: 'create-password-logo'
+})`
   width: 200px;
   height: auto;
   margin-bottom: 8px;
@@ -63,15 +73,19 @@ const Logo = styled.img`
   }
 `;
 
-const ContactInfo = styled.div`
+const CreatePasswordContactInfo = styled.div.attrs({
+  className: 'create-password-contact-info'
+})`
   margin-bottom: 16px;
   padding: 0;
 `;
 
-const ContactItem = styled.p`
+const CreatePasswordContactItem = styled.p.attrs({
+  className: 'create-password-contact-item'
+})`
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   margin-bottom: 4px;
   display: flex;
   align-items: center;
@@ -89,24 +103,24 @@ const ContactItem = styled.p`
 
 const CreatePasswordImageSection = () => {
   return (
-    <ImageContainer>
-      <BackgroundImage />
-      <GradientOverlay />
-      <ContentOverlay>
-        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
-        <ContactInfo>
-          <ContactItem>
+    <CreatePasswordImageContainer>
+      <CreatePasswordBackgroundImage />
+      <CreatePasswordGradientOverlay />
+      <CreatePasswordContentOverlay>
+        <CreatePasswordLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
+        <CreatePasswordContactInfo>
+          <CreatePasswordContactItem>
             <Mail size={16} />
             help@digitalmarketingng.com
-          </ContactItem>
-          <ContactItem>
+          </CreatePasswordContactItem>
+          <CreatePasswordContactItem>
             <Phone size={16} />
             +234 123 456 7890
-          </ContactItem>
-        </ContactInfo>
+          </CreatePasswordContactItem>
+        </CreatePasswordContactInfo>
         <SocialIcons />
-      </ContentOverlay>
-    </ImageContainer>
+      </CreatePasswordContentOverlay>
+    </CreatePasswordImageContainer>
   );
 };
 

@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const CompleteProfileImageContainer = styled.div.attrs({
+  className: 'complete-profile-image-container'
+})`
   width: 50%;
   height: 100%;
   position: relative;
@@ -15,18 +17,22 @@ const ImageContainer = styled.div`
   position:fixed
 `;
 
-const BackgroundImage = styled.div`
+const CompleteProfileBackgroundImage = styled.div.attrs({
+  className: 'complete-profile-background-image'
+})`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/lovable-uploads/0589d284-827d-4b54-96dc-a6b830dded54.png');
+  background-image: url('/DMA-uploads/0589d284-827d-4b54-96dc-a6b830dded54.png');
   background-size: cover;
   background-position: center;
 `;
 
-const GradientOverlay = styled.div`
+const CompleteProfileGradientOverlay = styled.div.attrs({
+  className: 'complete-profile-gradient-overlay'
+})`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -36,7 +42,9 @@ const GradientOverlay = styled.div`
   z-index: 1;
 `;
 
-const ContentOverlay = styled.div`
+const CompleteProfileContentOverlay = styled.div.attrs({
+  className: 'complete-profile-content-overlay'
+})`
   position: relative;
   z-index: 2;
   color: white;
@@ -51,7 +59,9 @@ const ContentOverlay = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const CompleteProfileLogo = styled.img.attrs({
+  className: 'complete-profile-logo'
+})`
   width: 200px;
   height: auto;
   margin-bottom: 8px;
@@ -64,15 +74,19 @@ const Logo = styled.img`
   }
 `;
 
-const ContactInfo = styled.div`
+const CompleteProfileContactInfo = styled.div.attrs({
+  className: 'complete-profile-contact-info'
+})`
   margin-bottom: 16px;
   padding: 0;
 `;
 
-const ContactItem = styled.p`
+const CompleteProfileContactItem = styled.p.attrs({
+  className: 'complete-profile-contact-item'
+})`
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   margin-bottom: 4px;
   display: flex;
   align-items: center;
@@ -90,24 +104,24 @@ const ContactItem = styled.p`
 
 const CompleteProfileImageSection = () => {
   return (
-    <ImageContainer>
-      <BackgroundImage />
-      <GradientOverlay />
-      <ContentOverlay>
-        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
-        <ContactInfo>
-          <ContactItem>
+    <CompleteProfileImageContainer>
+      <CompleteProfileBackgroundImage />
+      <CompleteProfileGradientOverlay />
+      <CompleteProfileContentOverlay>
+        <CompleteProfileLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
+        <CompleteProfileContactInfo>
+          <CompleteProfileContactItem>
             <Mail size={16} />
             help@digitalmarketingng.com
-          </ContactItem>
-          <ContactItem>
+          </CompleteProfileContactItem>
+          <CompleteProfileContactItem>
             <Phone size={16} />
             +234 123 456 7890
-          </ContactItem>
-        </ContactInfo>
+          </CompleteProfileContactItem>
+        </CompleteProfileContactInfo>
         <SocialIcons />
-      </ContentOverlay>
-    </ImageContainer>
+      </CompleteProfileContentOverlay>
+    </CompleteProfileImageContainer>
   );
 };
 

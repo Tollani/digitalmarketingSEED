@@ -4,14 +4,16 @@ import styled from 'styled-components';
 import { Mail, Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const ImageContainer = styled.div`
+const SignUpImageContainer = styled.div.attrs({
+  className: 'signup-image-container'
+})`
   width: 50%;
   height: 100%;
   background-image: linear-gradient(
     to top,
     rgba(0, 16, 59, 0.7) 0%,
     transparent 100%
-  ), url('/lovable-uploads/d73df5b9-3489-4658-b8a1-cd4c182998f5.png');
+  ), url('/DMA-uploads/d73df5b9-3489-4658-b8a1-cd4c182998f5.png');
   background-size:auto;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,7 +23,9 @@ const ImageContainer = styled.div`
   position: fixed;
 `;
 
-const ContactInfo = styled.div`
+const SignUpContactInfo = styled.div.attrs({
+  className: 'signup-contact-info'
+})`
   padding: 30px;
   color: white;
   
@@ -31,7 +35,9 @@ const ContactInfo = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const SignUpLogo = styled.img.attrs({
+  className: 'signup-logo'
+})`
   width: 200px;
   height: auto;
   margin-bottom: 8px;
@@ -42,13 +48,15 @@ const Logo = styled.img`
   }
 `;
 
-const ContactItem = styled.div`
+const SignUpContactItem = styled.div.attrs({
+  className: 'signup-contact-item'
+})`
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 4px;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Sora', sans-serif;
   line-height: 1.2;
   
   @media (max-width: 768px) {
@@ -56,7 +64,9 @@ const ContactItem = styled.div`
   }
 `;
 
-const ContactGroup = styled.div`
+const SignUpContactGroup = styled.div.attrs({
+  className: 'signup-contact-group'
+})`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -66,22 +76,22 @@ const ContactGroup = styled.div`
 
 const SignUpImageSection = () => {
   return (
-    <ImageContainer>
-      <ContactInfo>
-        <Logo src="/lovable-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
-        <ContactGroup>
-          <ContactItem>
+    <SignUpImageContainer>
+      <SignUpContactInfo>
+        <SignUpLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="Digital Marketing Agency Logo" />
+        <SignUpContactGroup>
+          <SignUpContactItem>
             <Mail size={16} />
             help@digitalmarketingng.com
-          </ContactItem>
-          <ContactItem>
+          </SignUpContactItem>
+          <SignUpContactItem>
             <Phone size={16} />
             +234 123 456 7890
-          </ContactItem>
-        </ContactGroup>
+          </SignUpContactItem>
+        </SignUpContactGroup>
         <SocialIcons />
-      </ContactInfo>
-    </ImageContainer>
+      </SignUpContactInfo>
+    </SignUpImageContainer>
   );
 };
 

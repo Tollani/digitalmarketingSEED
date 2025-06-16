@@ -43,8 +43,8 @@ const FormWrapper = styled.div`
 const ProgressBarsContainer = styled.div`
   display: flex;
   gap: 8px;
-  width: 100%;
-  max-width: 200px;
+  width: 200%;
+  max-width: 400px;
   margin-bottom: 32px;
 `;
 

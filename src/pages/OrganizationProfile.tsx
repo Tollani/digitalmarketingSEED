@@ -25,6 +25,7 @@ const ContentContainer = styled.div`
 
 const FormSection = styled.div`
   flex: 1;
+  width: 50%;
   background: #ffffff;
   padding: 40px;
   overflow-y: auto;
@@ -37,6 +38,7 @@ const FormSection = styled.div`
   @media (max-width: 768px) {
     padding: 20px;
     order: 1;
+    width: 100%;
     overflow-y: visible;
   }
 `;

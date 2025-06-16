@@ -15,6 +15,7 @@ const ContactPersonProfileContainer = styled.div`
 
 const FormSection = styled.div`
   flex: 1;
+  width: 50%;
   background: #ffffff;
   padding: 40px;
   display: flex;
@@ -29,6 +30,7 @@ const FormSection = styled.div`
   @media (max-width: 768px) {
     padding: 20px;
     order: 1;
+    width: 100%;
     overflow-y: visible;
   }
 `;

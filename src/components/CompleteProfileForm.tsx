@@ -331,10 +331,26 @@ const CompleteProfileForm = () => {
           <SectionTitle>Upload Your Profile Picture</SectionTitle>
           {profilePicture ? (
             <ProfilePictureContainer>
+              <ProfilePicture src={profilePicture} alt="Profile" />
+              <ChangeImageButton 
+                onClick={() => document.getElementById('profile-upload-change')?.click()}
+              >
               <ProfilePictureImage src={profilePicture} alt="Profile" />
               <ChangeImageButton onClick={triggerProfilePictureUpload}>
                 Change image
               </ChangeImageButton>
+              <HiddenInput
+                id="profile-upload-change"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const imageUrl = URL.createObjectURL(file);
+                    handleProfilePictureUpload(imageUrl);
+                  }
+                }}
+              />
             </ProfilePictureContainer>
           ) : (
             <ProfilePictureUploadContainer>

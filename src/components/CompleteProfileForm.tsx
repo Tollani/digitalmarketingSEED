@@ -267,12 +267,12 @@ const CompleteProfileForm = () => {
             <ProfilePictureContainer>
               <ProfilePicture src={profilePicture} alt="Profile" />
               <ChangeImageButton 
-                onClick={() => document.getElementById('profile-upload')?.click()}
+                onClick={() => document.getElementById('profile-upload-change')?.click()}
               >
                 Change image
               </ChangeImageButton>
               <HiddenInput
-                id="profile-upload"
+                id="profile-upload-change"
                 type="file"
                 accept="image/*"
                 onChange={(e) => {

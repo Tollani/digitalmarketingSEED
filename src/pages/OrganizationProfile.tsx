@@ -24,7 +24,7 @@ const ContentContainer = styled.div`
 `;
 
 const FormSection = styled.div`
-  flex: 0 0 50%;
+  flex: 1;
   background: #ffffff;
   padding: 40px;
   overflow-y: auto;
@@ -37,16 +37,16 @@ const FormSection = styled.div`
   @media (max-width: 768px) {
     padding: 20px;
     order: 1;
-    flex: 1;
     overflow-y: visible;
   }
 `;
 
 const ImageSectionWrapper = styled.div`
-  flex: 0 0 50%;
+  flex: 1;
   position: fixed;
   right: 0;
   top: 80px;
+  width: 50%;
   height: calc(100vh - 80px);
   
   @media (max-width: 768px) {

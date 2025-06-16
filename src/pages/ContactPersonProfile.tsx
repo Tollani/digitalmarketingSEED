@@ -14,7 +14,7 @@ const ContactPersonProfileContainer = styled.div`
 `;
 
 const FormSection = styled.div`
-  flex: 0 0 50%;
+  flex: 1;
   background: #ffffff;
   padding: 40px;
   display: flex;
@@ -29,7 +29,6 @@ const FormSection = styled.div`
   @media (max-width: 768px) {
     padding: 20px;
     order: 1;
-    flex: 1;
     overflow-y: visible;
   }
 `;
@@ -59,10 +58,11 @@ const ProgressBar = styled.div`
 `;
 
 const ImageSectionWrapper = styled.div`
-  flex: 0 0 50%;
+  flex: 1;
   position: fixed;
   right: 0;
   top: 0;
+  width: 50%;
   height: 100vh;
   
   @media (max-width: 768px) {

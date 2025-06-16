@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Camera } from 'lucide-react';
@@ -184,7 +183,7 @@ const UploadedImageThumbnail = styled.img.attrs({
   className: 'uploaded-image-thumbnail'
 })`
   width: 100px;
-  height: 100px;
+  height: 100%;
   object-fit: cover;
   border-radius: 8px;
 `;
@@ -284,8 +283,8 @@ const CompleteProfileForm = () => {
 
   const triggerProfilePictureUpload = (e?: React.MouseEvent) => {
     if (e) {
-      e.preventDefault(); // Prevent form submission
-      e.stopPropagation(); // Stop event bubbling
+      e.preventDefault();
+      e.stopPropagation();
     }
     const fileInput = document.getElementById('profile-picture-upload') as HTMLInputElement;
     if (fileInput) {
@@ -293,7 +292,6 @@ const CompleteProfileForm = () => {
     }
   };
 
-  // Check if all required fields are filled before continuing
   const isFormValid = () => {
     return (
       profilePicture &&
@@ -331,26 +329,10 @@ const CompleteProfileForm = () => {
           <SectionTitle>Upload Your Profile Picture</SectionTitle>
           {profilePicture ? (
             <ProfilePictureContainer>
-              <ProfilePicture src={profilePicture} alt="Profile" />
-              <ChangeImageButton 
-                onClick={() => document.getElementById('profile-upload-change')?.click()}
-              >
               <ProfilePictureImage src={profilePicture} alt="Profile" />
               <ChangeImageButton onClick={triggerProfilePictureUpload}>
                 Change image
               </ChangeImageButton>
-              <HiddenInput
-                id="profile-upload-change"
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    const imageUrl = URL.createObjectURL(file);
-                    handleProfilePictureUpload(imageUrl);
-                  }
-                }}
-              />
             </ProfilePictureContainer>
           ) : (
             <ProfilePictureUploadContainer>

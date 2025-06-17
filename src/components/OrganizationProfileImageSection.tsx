@@ -22,15 +22,17 @@ const OrganizationProfileGradientOverlay = styled.div.attrs({
   className: 'organization-profile-gradient-overlay'
 })`
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 0;
   right: 0;
+  bottom: 0;
   height: 50%;
+  width: 100%;
   background: linear-gradient(
-    to top,
-    rgba(0, 16, 59, 0.9) 0%,
-    rgba(0, 16, 59, 0.6) 50%,
-    transparent 100%
+    to bottom,
+    rgba(30, 58, 138, 0) 0%,
+    rgba(30, 58, 138, 0.7) 50%,
+    rgba(30, 58, 138, 0.7) 100%
   );
 `;
 

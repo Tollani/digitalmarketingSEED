@@ -12,6 +12,7 @@ import CreatePassword from "./pages/CreatePassword";
 import CompleteProfile from "./pages/CompleteProfile";
 import OrganizationProfile from "./pages/OrganizationProfile";
 import ContactPersonProfile from "./pages/ContactPersonProfile";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

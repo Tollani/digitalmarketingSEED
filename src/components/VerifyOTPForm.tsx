@@ -36,7 +36,7 @@ const VerifyOTPSubtitle = styled.p.attrs({
   text-align: left;
 `;
 
-const VerifyOTPForm = styled.form.attrs({
+const VerifyOTPFormElement = styled.form.attrs({
   className: 'verify-otp-form'
 })`
   display: flex;
@@ -147,7 +147,7 @@ const VerifyOTPForm = () => {
       <VerifyOTPTitle>Verify Your Email Address</VerifyOTPTitle>
       <VerifyOTPSubtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</VerifyOTPSubtitle>
       
-      <VerifyOTPForm onSubmit={handleSubmit}>
+      <VerifyOTPFormElement onSubmit={handleSubmit}>
         {showAlert && (
           <AlertWrapper>
             <Alert message="Please enter a valid 4-digit code" visible={showAlert} />
@@ -165,7 +165,7 @@ const VerifyOTPForm = () => {
         <Button type="submit">
           VERIFY CODE
         </Button>
-      </VerifyOTPForm>
+      </VerifyOTPFormElement>
       
       <ResendContainer>
         <ResendText>Didn't receive a code? </ResendText>

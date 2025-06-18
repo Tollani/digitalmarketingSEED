@@ -1,10 +1,16 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Clock, FileText, TrendingUp, Calendar } from 'lucide-react';
+import { Clock, FileText, TrendingUp, Calendar, X } from 'lucide-react';
 import DashboardHeader from '../components/DashboardHeader';
 import StatsCard from '../components/StatsCard';
 import Footer from '../components/Footer';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const DashboardContainer = styled.div.attrs({
   className: 'container'
@@ -69,16 +75,64 @@ const NotificationBanner = styled.div.attrs({
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  position: relative;
+`;
+
+const NotificationContent = styled.div.attrs({
+  className: 'notification-content'
+})`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+`;
+
+const NotificationIcon = styled.div.attrs({
+  className: 'notification-icon'
+})`
+  width: 40px;
+  height: 40px;
+  background: #7642FE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+`;
+
+const NotificationTextContainer = styled.div.attrs({
+  className: 'notification-text-container'
+})`
+  flex: 1;
+`;
+
+const NotificationTitle = styled.h4.attrs({
+  className: 'notification-title'
+})`
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
 `;
 
 const NotificationText = styled.p.attrs({
   className: 'notification-text'
 })`
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  color: #1E40AF;
+  font-size: 12px;
+  color: #6B7280;
   margin: 0;
-  flex: 1;
+`;
+
+const NotificationActions = styled.div.attrs({
+  className: 'notification-actions'
+})`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
 const UpdateButton = styled.button.attrs({
@@ -97,6 +151,21 @@ const UpdateButton = styled.button.attrs({
   
   &:hover {
     background: #5f35cc;
+  }
+`;
+
+const CloseButton = styled.button.attrs({
+  className: 'close-button'
+})`
+  background: none;
+  border: none;
+  color: #6B7280;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: #374151;
   }
 `;
 
@@ -150,8 +219,8 @@ const ChartTitle = styled.h3.attrs({
   margin: 0;
 `;
 
-const ChartDropdown = styled.select.attrs({
-  className: 'chart-dropdown'
+const ChartDropdownButton = styled.button.attrs({
+  className: 'chart-dropdown-button'
 })`
   background: #F9FAFB;
   border: 1px solid #E5E7EB;
@@ -160,6 +229,14 @@ const ChartDropdown = styled.select.attrs({
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #6B7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  &:hover {
+    background: #F3F4F6;
+  }
 `;
 
 const ChartPlaceholder = styled.div.attrs({
@@ -219,11 +296,14 @@ const PanelContent = styled.p.attrs({
 
 const DashboardNewClient = () => {
   const [showNotification, setShowNotification] = useState(true);
-  const [showProfileUpdate, setShowProfileUpdate] = useState(false);
 
   const handleUpdateProfile = () => {
-    setShowProfileUpdate(!showProfileUpdate);
     console.log('Update profile clicked');
+    // Navigate to profile update page or show modal
+  };
+
+  const handleCloseNotification = () => {
+    setShowNotification(false);
   };
 
   return (
@@ -232,17 +312,28 @@ const DashboardNewClient = () => {
       
       <MainContent>
         <GreetingSection>
-          <GreetingText>Hello, John! Good evening</GreetingText>
-          <Badge>Cloud evening!</Badge>
+          <GreetingText>Hello, John!</GreetingText>
+          <Badge>Good evening</Badge>
         </GreetingSection>
 
         <NotificationBanner visible={showNotification}>
-          <NotificationText>
-            Complete your profile. Your profile is 60% complete. Complete your profile for a better experience
-          </NotificationText>
-          <UpdateButton onClick={handleUpdateProfile}>
-            Update profile
-          </UpdateButton>
+          <NotificationContent>
+            <NotificationIcon>ℹ</NotificationIcon>
+            <NotificationTextContainer>
+              <NotificationTitle>Complete your profile</NotificationTitle>
+              <NotificationText>
+                Your profile is 60% complete. Complete your profile for a better experience
+              </NotificationText>
+            </NotificationTextContainer>
+          </NotificationContent>
+          <NotificationActions>
+            <UpdateButton onClick={handleUpdateProfile}>
+              Update profile
+            </UpdateButton>
+            <CloseButton onClick={handleCloseNotification}>
+              <X size={16} />
+            </CloseButton>
+          </NotificationActions>
         </NotificationBanner>
 
         <StatsGrid>
@@ -256,21 +347,40 @@ const DashboardNewClient = () => {
           <ChartContainer>
             <ChartHeader>
               <ChartTitle>Amount Spent ($)</ChartTitle>
-              <ChartDropdown>
-                <option>Monthly</option>
-              </ChartDropdown>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <ChartDropdownButton>
+                    Monthly ▼
+                  </ChartDropdownButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white">
+                  <DropdownMenuItem>Daily</DropdownMenuItem>
+                  <DropdownMenuItem>Monthly</DropdownMenuItem>
+                  <DropdownMenuItem>Yearly</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </ChartHeader>
             <ChartPlaceholder>
-              No spending data available
+              You have no projects.<br />
+              Select on 'New request' to request for a service
             </ChartPlaceholder>
           </ChartContainer>
 
           <ChartContainer>
             <ChartHeader>
               <ChartTitle>Project Stats</ChartTitle>
-              <ChartDropdown>
-                <option>Monthly</option>
-              </ChartDropdown>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <ChartDropdownButton>
+                    Monthly ▼
+                  </ChartDropdownButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white">
+                  <DropdownMenuItem>Daily</DropdownMenuItem>
+                  <DropdownMenuItem>Monthly</DropdownMenuItem>
+                  <DropdownMenuItem>Yearly</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </ChartHeader>
             <ChartPlaceholder>
               No project data available
@@ -282,14 +392,16 @@ const DashboardNewClient = () => {
           <Panel>
             <PanelTitle>Your Projects</PanelTitle>
             <PanelContent>
-              You have no projects. Select on 'New request' to request for a service
+              You have no projects.<br />
+              Select on 'New request' to request for a service
             </PanelContent>
           </Panel>
 
           <Panel>
             <PanelTitle>Recent Activities</PanelTitle>
             <PanelContent>
-              Recent login 12:35
+              Recent login<br />
+              12:35
             </PanelContent>
           </Panel>
         </PanelsGrid>

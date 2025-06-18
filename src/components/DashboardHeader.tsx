@@ -1,7 +1,13 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Search, ChevronDown, User } from 'lucide-react';
+import { Search, ChevronDown, User, Plus } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const HeaderContainer = styled.header.attrs({
   className: 'header'
@@ -20,7 +26,6 @@ const LogoSection = styled.div.attrs({
 })`
   display: flex;
   align-items: center;
-  gap: 12px;
 `;
 
 const LogoImage = styled.img.attrs({
@@ -28,16 +33,6 @@ const LogoImage = styled.img.attrs({
 })`
   width: 40px;
   height: 40px;
-`;
-
-const LogoText = styled.div.attrs({
-  className: 'logo-text'
-})`
-  color: #7642FE;
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.2;
 `;
 
 const Navigation = styled.nav.attrs({
@@ -60,6 +55,9 @@ const NavLink = styled.a.attrs({
   font-size: 14px;
   text-decoration: none;
   transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   
   &:hover {
     color: #7642FE;
@@ -124,10 +122,26 @@ const SearchIcon = styled(Search).attrs({
   height: 16px;
 `;
 
-const UserProfileContainer = styled.div.attrs({
-  className: 'user-profile-container'
+const NewRequestButton = styled.button.attrs({
+  className: 'new-request-button'
 })`
-  position: relative;
+  background: #7642FE;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &:hover {
+    background: #5f35cc;
+  }
 `;
 
 const UserProfileButton = styled.button.attrs({
@@ -149,53 +163,13 @@ const UserProfileButton = styled.button.attrs({
   }
 `;
 
-const DropdownMenu = styled.div.attrs({
-  className: 'dropdown-menu'
-})<{ isOpen: boolean }>`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: 8px 0;
-  min-width: 160px;
-  z-index: 50;
-  display: ${props => props.isOpen ? 'block' : 'none'};
-  margin-top: 8px;
-`;
-
-const DropdownItem = styled.a.attrs({
-  className: 'dropdown-item'
-})`
-  display: block;
-  padding: 8px 16px;
-  color: #374151;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-  
-  &:hover {
-    background: #F3F4F6;
-  }
-`;
-
 interface DashboardHeaderProps {
   isReturningUser?: boolean;
 }
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({ isReturningUser = false }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
   const handleLogout = () => {
     console.log('Logout clicked');
-    // Navigate to sign in page
     window.location.href = '/';
   };
 
@@ -203,13 +177,12 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ isReturningUser = fal
     <HeaderContainer>
       <LogoSection>
         <LogoImage src="/lovable-uploads/9151f3ef-ba23-444e-98d3-3f78b4ab32a2.png" alt="DMA Logo" />
-        <LogoText>
-          DMA
-        </LogoText>
       </LogoSection>
 
       <Navigation>
-        <NavLink href="/services">Services</NavLink>
+        <NavLink href="/services">
+          Services <ChevronDown size={16} />
+        </NavLink>
         <NavLink href="/messages">
           Messages
           <MessagesBadge>2</MessagesBadge>
@@ -224,20 +197,37 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ isReturningUser = fal
           <SearchInput placeholder="Search..." />
         </SearchContainer>
 
-        <UserProfileContainer>
-          <UserProfileButton onClick={toggleDropdown}>
-            <User size={20} color="#6B7280" />
-          </UserProfileButton>
-          
+        {!isReturningUser && (
+          <NewRequestButton>
+            <Plus size={16} />
+            New Request
+          </NewRequestButton>
+        )}
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <UserProfileButton>
+              <User size={20} color="#6B7280" />
+            </UserProfileButton>
+          </DropdownMenuTrigger>
           {isReturningUser && (
-            <DropdownMenu isOpen={dropdownOpen}>
-              <DropdownItem href="/profile">Your Profile</DropdownItem>
-              <DropdownItem href="/dashboard">Dashboard</DropdownItem>
-              <DropdownItem href="/settings">Settings</DropdownItem>
-              <DropdownItem href="#" onClick={handleLogout}>Logout</DropdownItem>
-            </DropdownMenu>
+            <DropdownMenuContent align="end" className="w-48 bg-white">
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                Your Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Dashboard
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                Settings
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
           )}
-        </UserProfileContainer>
+        </DropdownMenu>
       </RightSection>
     </HeaderContainer>
   );

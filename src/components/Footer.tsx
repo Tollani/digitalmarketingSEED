@@ -131,6 +131,14 @@ const ColumnTitle = styled.h4.attrs({
   margin: 0;
 `;
 
+const LinksList = styled.div.attrs({
+  className: 'links-list'
+})`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 const LinkItem = styled.a.attrs({
   className: 'link-item'
 })`
@@ -202,24 +210,30 @@ const Footer = () => {
 
         <FooterColumn>
           <ColumnTitle>Company</ColumnTitle>
-          <LinkItem href="/home">Home</LinkItem>
-          <LinkItem href="/about-us">About Us</LinkItem>
-          <LinkItem href="/services">Services</LinkItem>
-          <LinkItem href="/payments-billings">Payments & billings</LinkItem>
+          <LinksList>
+            <LinkItem href="/home">Home</LinkItem>
+            <LinkItem href="/about-us">About Us</LinkItem>
+            <LinkItem href="/services">Services</LinkItem>
+            <LinkItem href="/payments-billings">Payments & billings</LinkItem>
+          </LinksList>
         </FooterColumn>
 
         <FooterColumn>
           <ColumnTitle>Others</ColumnTitle>
-          <LinkItem href="/support-help">Support & Help</LinkItem>
-          <LinkItem href="/privacy-policy">Privacy Policy</LinkItem>
-          <LinkItem href="/licensees-agreement">Licensees & Agreement</LinkItem>
+          <LinksList>
+            <LinkItem href="/support-help">Support & Help</LinkItem>
+            <LinkItem href="/privacy-policy">Privacy Policy</LinkItem>
+            <LinkItem href="/licensees-agreement">Licensees & Agreement</LinkItem>
+          </LinksList>
         </FooterColumn>
 
         <FooterColumn>
           <ColumnTitle>Contact</ColumnTitle>
-          <LinkItem href="/support-help">Support & Help</LinkItem>
-          <LinkItem href="/privacy-policy">Privacy Policy</LinkItem>
-          <LinkItem href="/licensees-agreement">Licensees & Agreement</LinkItem>
+          <LinksList>
+            <LinkItem href="/support-help">Support & Help</LinkItem>
+            <LinkItem href="/privacy-policy">Privacy Policy</LinkItem>
+            <LinkItem href="/licensees-agreement">Licensees & Agreement</LinkItem>
+          </LinksList>
         </FooterColumn>
       </FooterContent>
 

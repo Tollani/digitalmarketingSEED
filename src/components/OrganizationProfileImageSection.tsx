@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Phone } from 'lucide-react';
 import SocialIcons from './SocialIcons';
 
-const OrganizationProfileImageContainer = styled.div.attrs({
-  className: 'organization-profile-image-container'
+const OrganizationImageContainer = styled.div.attrs({
+  className: 'organization-image-container'
 })`
   width: 100%;
   height: 100%;
@@ -18,8 +18,8 @@ const OrganizationProfileImageContainer = styled.div.attrs({
   flex-direction: column;
 `;
 
-const OrganizationProfileGradientOverlay = styled.div.attrs({
-  className: 'organization-profile-gradient-overlay'
+const OrganizationGradientOverlay = styled.div.attrs({
+  className: 'organization-gradient-overlay'
 })`
   position: absolute;
   top: 50%;
@@ -36,8 +36,8 @@ const OrganizationProfileGradientOverlay = styled.div.attrs({
   );
 `;
 
-const OrganizationProfileContentWrapper = styled.div.attrs({
-  className: 'organization-profile-content-wrapper'
+const OrganizationContentWrapper = styled.div.attrs({
+  className: 'organization-content-wrapper'
 })`
   position: relative;
   z-index: 2;
@@ -51,8 +51,8 @@ const OrganizationProfileContentWrapper = styled.div.attrs({
   }
 `;
 
-const OrganizationProfileLogo = styled.img.attrs({
-  className: 'organization-profile-logo'
+const OrganizationLogo = styled.img.attrs({
+  className: 'organization-logo'
 })`
   width: 200px;
   height: auto;
@@ -66,8 +66,8 @@ const OrganizationProfileLogo = styled.img.attrs({
   }
 `;
 
-const OrganizationProfileEmailText = styled.div.attrs({
-  className: 'organization-profile-email-text'
+const OrganizationEmailText = styled.div.attrs({
+  className: 'organization-email-text'
 })`
   color: white;
   font-weight: 400;
@@ -80,8 +80,8 @@ const OrganizationProfileEmailText = styled.div.attrs({
   }
 `;
 
-const OrganizationProfileContactItem = styled.div.attrs({
-  className: 'organization-profile-contact-item'
+const OrganizationContactItem = styled.div.attrs({
+  className: 'organization-contact-item'
 })`
   display: flex;
   align-items: center;
@@ -98,18 +98,18 @@ const OrganizationProfileContactItem = styled.div.attrs({
 
 const OrganizationProfileImageSection = () => {
   return (
-    <OrganizationProfileImageContainer>
-      <OrganizationProfileGradientOverlay />
-      <OrganizationProfileContentWrapper>
-        <OrganizationProfileLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="DMA Digital Marketing Agency Logo" />
-        <OrganizationProfileEmailText>help@digitalmarketingng.com</OrganizationProfileEmailText>
-        <OrganizationProfileContactItem>
+    <OrganizationImageContainer>
+      <OrganizationGradientOverlay />
+      <OrganizationContentWrapper>
+        <OrganizationLogo src="/DMA-uploads/81f50eda-4cdd-4aa2-b217-a1a96ca6757f.png" alt="DMA Digital Marketing Agency Logo" />
+        <OrganizationEmailText>help@digitalmarketingng.com</OrganizationEmailText>
+        <OrganizationContactItem>
           <Phone size={16} />
           +234 123 456 7890
-        </OrganizationProfileContactItem>
+        </OrganizationContactItem>
         <SocialIcons />
-      </OrganizationProfileContentWrapper>
-    </OrganizationProfileImageContainer>
+      </OrganizationContentWrapper>
+    </OrganizationImageContainer>
   );
 };
 

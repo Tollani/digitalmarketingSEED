@@ -2,8 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledActionButton = styled.button.attrs({
-  className: 'styled-action-button'
+const PrimaryActionButton = styled.button.attrs({
+  className: 'primary-action-button'
 })<{ disabled?: boolean }>`
   width: 100%;
   padding: 12px;
@@ -36,9 +36,9 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ children, type = 'button', onClick, disabled = false }) => {
   return (
-    <StyledActionButton type={type} onClick={onClick} disabled={disabled}>
+    <PrimaryActionButton type={type} onClick={onClick} disabled={disabled}>
       {children}
-    </StyledActionButton>
+    </PrimaryActionButton>
   );
 };
 

@@ -6,12 +6,16 @@ import Button from './Button';
 import Alert from './Alert';
 import OTPInput from './OTPInput';
 
-const FormContainer = styled.div`
+const VerifyOTPFormContainer = styled.div.attrs({
+  className: 'verify-otp-form-container'
+})`
   width: 100%;
   max-width: 400px;
 `;
 
-const Title = styled.h1`
+const VerifyOTPTitle = styled.h1.attrs({
+  className: 'verify-otp-title'
+})`
   font-size: 32px;
   font-weight: 800;
   color: #7642FE;
@@ -20,7 +24,9 @@ const Title = styled.h1`
   text-align: left;
 `;
 
-const Subtitle = styled.p`
+const VerifyOTPSubtitle = styled.p.attrs({
+  className: 'verify-otp-subtitle'
+})`
   font-size: 16px;
   font-weight: 400;
   color: #6B7280;
@@ -30,28 +36,38 @@ const Subtitle = styled.p`
   text-align: left;
 `;
 
-const Form = styled.form`
+const VerifyOTPForm = styled.form.attrs({
+  className: 'verify-otp-form'
+})`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
-const AlertWrapper = styled.div`
+const AlertWrapper = styled.div.attrs({
+  className: 'alert-wrapper'
+})`
   margin-bottom: 16px;
 `;
 
-const ResendContainer = styled.div`
+const ResendContainer = styled.div.attrs({
+  className: 'resend-container'
+})`
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
 `;
 
-const ResendText = styled.span`
+const ResendText = styled.span.attrs({
+  className: 'resend-text'
+})`
   color: #6B7280;
 `;
 
-const ResendLink = styled.button`
+const ResendLink = styled.button.attrs({
+  className: 'resend-link'
+})`
   color: #7642FE;
   text-decoration: underline;
   background: none;
@@ -65,18 +81,24 @@ const ResendLink = styled.button`
   }
 `;
 
-const SignInContainer = styled.div`
+const SignInContainer = styled.div.attrs({
+  className: 'signin-container'
+})`
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
 `;
 
-const SignInText = styled.span`
+const SignInText = styled.span.attrs({
+  className: 'signin-text'
+})`
   color: #6B7280;
 `;
 
-const SignInLink = styled(Link)`
+const SignInLink = styled(Link).attrs({
+  className: 'signin-link'
+})`
   color: #7642FE;
   text-decoration: underline;
   font-weight: 400;
@@ -121,11 +143,11 @@ const VerifyOTPForm = () => {
   };
 
   return (
-    <FormContainer>
-      <Title>Verify Your Email Address</Title>
-      <Subtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</Subtitle>
+    <VerifyOTPFormContainer>
+      <VerifyOTPTitle>Verify Your Email Address</VerifyOTPTitle>
+      <VerifyOTPSubtitle>Please enter the 4-digit OTP sent to johnsnow@abc.com</VerifyOTPSubtitle>
       
-      <Form onSubmit={handleSubmit}>
+      <VerifyOTPForm onSubmit={handleSubmit}>
         {showAlert && (
           <AlertWrapper>
             <Alert message="Please enter a valid 4-digit code" visible={showAlert} />
@@ -143,7 +165,7 @@ const VerifyOTPForm = () => {
         <Button type="submit">
           VERIFY CODE
         </Button>
-      </Form>
+      </VerifyOTPForm>
       
       <ResendContainer>
         <ResendText>Didn't receive a code? </ResendText>
@@ -158,7 +180,7 @@ const VerifyOTPForm = () => {
           Sign In
         </SignInLink>
       </SignInContainer>
-    </FormContainer>
+    </VerifyOTPFormContainer>
   );
 };
 

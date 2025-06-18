@@ -3,13 +3,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 
-const SocialContainer = styled.div`
+const SocialIconsContainer = styled.div.attrs({
+  className: 'social-icons-container'
+})`
   display: flex;
   gap: 10px;
   margin-top: 16px;
 `;
 
-const SocialIcon = styled.button`
+const SocialIconButton = styled.button.attrs({
+  className: 'social-icon-button'
+})`
   background: none;
   border: none;
   color: white;
@@ -42,17 +46,17 @@ const SocialIcons = () => {
   };
 
   return (
-    <SocialContainer>
-      <SocialIcon onClick={handleInstagramClick} aria-label="Instagram">
+    <SocialIconsContainer>
+      <SocialIconButton onClick={handleInstagramClick} aria-label="Instagram">
         <FaInstagram size={24} />
-      </SocialIcon>
-      <SocialIcon onClick={handleFacebookClick} aria-label="Facebook">
+      </SocialIconButton>
+      <SocialIconButton onClick={handleFacebookClick} aria-label="Facebook">
         <FaFacebook size={24} />
-      </SocialIcon>
-      <SocialIcon onClick={handleWhatsAppClick} aria-label="WhatsApp">
+      </SocialIconButton>
+      <SocialIconButton onClick={handleWhatsAppClick} aria-label="WhatsApp">
         <FaWhatsapp size={24} />
-      </SocialIcon>
-    </SocialContainer>
+      </SocialIconButton>
+    </SocialIconsContainer>
   );
 };
 

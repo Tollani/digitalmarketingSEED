@@ -2,7 +2,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
-const OTPContainer = styled.div`
+const OTPInputContainer = styled.div.attrs({
+  className: 'otp-input-container'
+})`
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -13,7 +15,9 @@ const OTPContainer = styled.div`
   }
 `;
 
-const OTPBox = styled.input<{ hasError: boolean }>`
+const OTPInputBox = styled.input.attrs({
+  className: 'otp-input-box'
+})<{ hasError: boolean }>`
   width: 40px;
   height: 40px;
   border: 2px solid ${props => props.hasError ? '#EF4444' : '#D1D5DB'};
@@ -113,9 +117,9 @@ const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onRes
   };
 
   return (
-    <OTPContainer>
+    <OTPInputContainer>
       {otp.map((digit, index) => (
-        <OTPBox
+        <OTPInputBox
           key={index}
           type="text"
           maxLength={1}
@@ -128,7 +132,7 @@ const OTPInput: React.FC<OTPInputProps> = ({ length, onComplete, hasError, onRes
           onKeyDown={(e) => handleKeyDown(e, index)}
         />
       ))}
-    </OTPContainer>
+    </OTPInputContainer>
   );
 };
 
